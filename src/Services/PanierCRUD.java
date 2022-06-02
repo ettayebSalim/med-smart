@@ -7,10 +7,14 @@ package Services;
 
 import Models.Panier;
 import Utiles.MyConnection;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +37,7 @@ public class PanierCRUD {
             String req = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
 
-            ps = new MyConnection().getCnx().prepareStatement(req);
+            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
              
             //ps.setInt(1, p.getIdUser());
             ps.setDate(1, p.getDate());
@@ -48,8 +52,40 @@ public class PanierCRUD {
 
     }
 
-    public void ajouterPanier1() {
+    public void ajouterPanier1(Panier P) {
+        String req2 = "INSERT INTO `Panier`(`date`)"
+                    + " VALUES (?)";
+        try {
+            PreparedStatement pst = new MyConnection().getCnx().prepareStatement(req2);
+            pst.setDate(1, p.getDate());
+            pst.executeUpdate();
+                        System.out.println("Panier a été ajouté avec succé");
 
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
+    }
+    public List<Panier> afficherPanier() {
+                     List<Panier> myList = new ArrayList<>();
+
+        try {
+              String req3 =  "SELECT * FROM panier";
+              Statement st = new MyConnection().getCnx().createStatement();
+              ResultSet rs = st.executeQuery(req3);
+              while (rs.next()) {
+                  Panier p = new Panier();
+                 p.setId(rs.getInt(1));
+                // p.setDate(rs.getDate());
+                 myList.add(p);
+              }
+            
+        } catch (SQLException ex) {
+                System.err.println(ex.getMessage());        }
+     
+        
+        
+        return myList;
     }
 
 }
