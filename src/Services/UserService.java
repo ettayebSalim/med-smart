@@ -52,7 +52,7 @@ public class UserService {
 
     }
     
-        //Select
+        //Select All Users
     public List<User> fetchUsers() {
         List<User> users = new ArrayList<>();
         
@@ -87,4 +87,76 @@ public class UserService {
     }
     
 
+        //Select User by id
+    public User getUserByID(int id){
+        
+        User user = new User();
+        
+        try {
+            String req4 = "SELECT * from user WHERE id = ?";
+            ps = new MyConnection().getCnx().prepareStatement(req4);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                user.setId(rs.getInt(1));
+                user.setNom(rs.getString(2));
+                user.setPrenom(rs.getString(3));
+                user.setEmail(rs.getString(4));
+                user.setCin(rs.getString(6));
+                user.setHashedPwd(rs.getString(5));
+                user.setNumtel(rs.getString(7));
+                user.setRole(rs.getString(8));
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return user;
+    }
+
+   //Delete User    
+    public void deleteUser(int id){
+        
+        
+        try {
+            String req5 = "delete from user WHERE id ="+id;
+            ps = new MyConnection().getCnx().prepareStatement(req5);
+            ps.executeUpdate(req5);
+            System.out.println("Utilisateur supprimé avec succés");
+            }
+            
+            
+         catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    //
+    public void updateUser(User u,int id) {
+        
+         try{
+        
+       String req6="UPDATE `user` SET `nom`='"+u.getNom()
+               +"',`prenom`='"+u.getPrenom()
+               +"',`email`='"+u.getEmail()
+               +"',`cin`='"+u.getCin()
+               +"',`hashedpwd`='"+u.getHashedPwd()
+               +"',`numtel`='"+u.getNumtel()
+               +"',`role`='"+u.getRole()
+               +"' WHERE id= "+id;
+       
+            ps = new MyConnection().getCnx().prepareStatement(req6);
+            ps.executeUpdate(req6);
+            
+        System.out.println("Utilisateur modifié avec succés ");
+        }catch(SQLException e){
+        System.out.println(e.getMessage());
+    
+    }     
+    }
 }
