@@ -81,7 +81,9 @@ public class PanierCRUD {
               }
             
         } catch (SQLException ex) {
-                System.err.println(ex.getMessage());        }
+                System.err.println(ex.getMessage());    
+                System.out.println("abdesslam");
+        }
      
         
         
