@@ -9,6 +9,7 @@ import Services.PanierCRUD;
 import Services.UserService;
 import java.sql.DriverManager;
 import Utiles.MyConnection;
+import services.ForumService;
 
 /**
  *
@@ -31,6 +32,10 @@ public class Main {
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
       userService.updateUser(user,3);
+      
+      //ForumService pcd = new ForumService();
+       // Categorie G2 = new Categorie("healthy");
+        //pcd.ajouterCategorie(G2);
     }
     
 }
