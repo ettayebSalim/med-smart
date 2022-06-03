@@ -8,6 +8,7 @@ package Services;
 import Models.Panier;
 import Utiles.MyConnection;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +24,11 @@ import java.util.logging.Logger;
  * @author 21622
  */
 public class PanierCRUD {
+        Connection cnx2;
+    public PanierCRUD() {
+        cnx2 = MyConnection.getInstance().getCnx();
+        
+    }
 
     PreparedStatement ps = null;
 
@@ -37,7 +43,7 @@ public class PanierCRUD {
             String req = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
 
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
+            PreparedStatement ps = cnx2.prepareStatement(req);
              
             //ps.setInt(1, p.getIdUser());
             ps.setDate(1, p.getDate());
@@ -56,7 +62,7 @@ public class PanierCRUD {
         String req2 = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
         try {
-            PreparedStatement pst = new MyConnection().getCnx().prepareStatement(req2);
+            PreparedStatement pst = cnx2.prepareStatement(req2);
             pst.setDate(1, p.getDate());
             pst.executeUpdate();
                         System.out.println("Panier a été ajouté avec succé");
@@ -71,7 +77,7 @@ public class PanierCRUD {
 
         try {
               String req3 =  "SELECT * FROM panier";
-              Statement st = new MyConnection().getCnx().createStatement();
+              Statement st = cnx2.createStatement();
               ResultSet rs = st.executeQuery(req3);
               while (rs.next()) {
                   Panier p = new Panier();
@@ -82,12 +88,47 @@ public class PanierCRUD {
             
         } catch (SQLException ex) {
                 System.err.println(ex.getMessage());    
-                System.out.println("abdesslam");
+                
         }
-     
-        
-        
+  
         return myList;
+    }
+    public void updatePanier() {
+        String req3 = "UPDATE `panier` SET `id`='[value-1]',`id_user`='[value-2]',`date`='[value-3]' WHERE 1";
+        
+    }
+    //Delete User    
+    public void deletePanier(int id){
+
+
+        try {
+            String req4 = "delete from Panier WHERE id ="+id;
+            ps = cnx2.prepareStatement(req4);
+            ps.executeUpdate(req4);
+            System.out.println("Panier supprimé avec succés");
+            }
+
+
+         catch (SQLException ex) {
+             System.err.println(ex.getMessage()) ;
+         }
+
+    }
+    
+      public void updatePanier(Panier u,int id) {
+
+         try{
+
+       String req5 ="UPDATE `panier` SET `id`='[value-1]',`id_user`='[value-2]',`date`='[value-3]' WHERE 1" ;
+
+            ps = cnx2.prepareStatement(req5);
+            ps.executeUpdate(req5);
+
+        System.out.println("Paier modifié avec succés ");
+        }catch(SQLException e){
+        System.out.println(e.getMessage());
+
+    }     
     }
 
 }

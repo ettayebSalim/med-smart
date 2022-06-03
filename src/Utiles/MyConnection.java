@@ -31,9 +31,10 @@ public class MyConnection {
     private final static String PASSWORD = "";
     private final static String URL = "jdbc:mysql://localhost:3306/PIDEV";
     static Connection cnx;
+    public static MyConnection instance ;
 
     
-    public MyConnection()  {
+    private MyConnection()  {
 
 
         try {
@@ -50,6 +51,13 @@ public class MyConnection {
 
 public Connection getCnx() {
 return cnx ;
+}
+public static MyConnection  getInstance() {
+    if(instance == null) {
+        instance = new MyConnection() ;
+        
+    }
+    return instance ;
 }
 }
 

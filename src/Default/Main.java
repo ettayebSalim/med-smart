@@ -25,9 +25,10 @@ public class Main {
      * @param args the command line arguments
      */
 
+
     public static void main(String[] args) {
-//     MyConnection mc = new MyConnection();
-    // PanierCRUD paniercrud = new PanierCRUD();
+     MyConnection mc = MyConnection.getInstance();
+     PanierCRUD paniercrud = new PanierCRUD();
      //paniercrud.ajouterPanier();
              Date now = new Date(System.currentTimeMillis());
 
@@ -39,6 +40,12 @@ public class Main {
     // System.out.println(userService.deleteUser(2));
       userService.updateUser(user,3);
 
+
+
+ 
+    
+    
+     
     }
     
 }
