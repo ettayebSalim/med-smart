@@ -51,7 +51,7 @@ public class Etablissments {
 
     @Override
     public String toString() {
-        return "Etablissments{" + "id=" + id + ", name=" + name + ", adresse=" + adresse + ", type=" + type + ", libelle=" + libelle + '}';
+        return "Etablissmens{" + "id=" + id + ", name=" + name + ", adresse=" + adresse + ", type=" + type + ", libelle=" + libelle + '}';
     }
 
     public void setAdresse(String adresse) {
