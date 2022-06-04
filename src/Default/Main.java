@@ -9,7 +9,13 @@ import Services.PanierCRUD;
 import Services.UserService;
 import java.sql.DriverManager;
 import Utiles.MyConnection;
+
 import java.io.PrintStream;
+
+
+import Services.ProduitService;
+import Models.Produit;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,18 +26,25 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
-     //MyConnection mc = new MyConnection();
+
+//     MyConnection mc = new MyConnection();
     // PanierCRUD paniercrud = new PanierCRUD();
      //paniercrud.ajouterPanier();
-     
-     UserService userService = new UserService();
-   //  User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
-//   userService.ajouterUtilisateur(user);
-      //    System.out.println(userService.fetchUsers());
-        //System.out.println(userService.getUserByID(4));
-        // userService.updateUser(user,3);
-     //   System.out.println(userService.deleteUser(4));
+    
+     ProduitService ps = new ProduitService();
+     Produit p = new Produit();
+     p.setId_prod(1);
+     ps.Supprimerproduits(p);
+    //ps.insertProduit(p);
+//     UserService userService = new UserService();
+//     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
+  //  userService.ajouterUtilisateur(user);
+//     System.out.println(userService.fetchUsers());
+ //    System.out.println(userService.getUserByID(3));
+    // System.out.println(userService.deleteUser(2));
+//      userService.updateUser(user,3);
     }
     
 }
