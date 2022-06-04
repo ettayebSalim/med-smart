@@ -38,23 +38,19 @@ public class PanierCRUD {
 
     //add panier and declare var date
     Date now = new Date(System.currentTimeMillis());
-     User u = new User();
-    Panier p = new Panier(u.getId(),now);
+    Panier p = new Panier(now);
    
 
     // Add panier 
-    public void ajouterPanier() {
+    public void ajouterPanier(Panier p) {
        
         try {
             String req = "INSERT INTO `panier`(`id_user`, `date`) VALUES (?,?)";
 
-<<<<<<< HEAD
+
             PreparedStatement ps = cnx2.prepareStatement(req);
-=======
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
-             
-            ps.setInt(1, u.getId());
+            
+            ps.setInt(1, p.getUser().getId());
             ps.setDate(2, p.getDate());
 
             ps.executeUpdate();
@@ -71,11 +67,8 @@ public class PanierCRUD {
         String req2 = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
         try {
-<<<<<<< HEAD
             PreparedStatement pst = cnx2.prepareStatement(req2);
-=======
-            PreparedStatement pst = new MyConnection().getCnx().prepareStatement(req2);
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
+             ps.setInt(1, p.getUser().getId());
             pst.setDate(1, p.getDate());
             pst.executeUpdate();
                         System.out.println("Panier a été ajouté avec succé");
@@ -83,7 +76,6 @@ public class PanierCRUD {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-<<<<<<< HEAD
 
     }
     public List<Panier> afficherPanier() {
@@ -95,6 +87,7 @@ public class PanierCRUD {
               ResultSet rs = st.executeQuery(req3);
               while (rs.next()) {
                   Panier p = new Panier();
+                  p.setUser(rs. );
                  p.setId(rs.getInt(1));
                 // p.setDate(rs.getDate());
                  myList.add(p);
@@ -141,33 +134,10 @@ public class PanierCRUD {
         System.out.println("Paier modifié avec succés ");
         }catch(SQLException e){
         System.out.println(e.getMessage());
-=======
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
+
 
     }     
     }
-    public List<Panier> afficherPanier() {
-                     List<Panier> myList = new ArrayList<>();
 
-        try {
-              String req3 =  "SELECT * FROM panier";
-              Statement st = new MyConnection().getCnx().createStatement();
-              ResultSet rs = st.executeQuery(req3);
-              while (rs.next()) {
-                  Panier p = new Panier();
-                 p.setId(rs.getInt(1));
-                // p.setDate(rs.getDate());
-                 myList.add(p);
-              }
-            
-        } catch (SQLException ex) {
-                System.err.println(ex.getMessage());    
-                System.out.println("abdesslam");
-        }
-     
-        
-        
-        return myList;
-    }
 
 }
