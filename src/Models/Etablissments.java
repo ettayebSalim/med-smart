@@ -13,8 +13,10 @@ public class Etablissments {
     private long id;
     private String name;
     private String adresse;
+
+    public Etablissments() {
+    }
     private String type;
-    private String libelle;
 
     public Etablissments(long id, String name, String adresse, String type) {
         this.id = id;
@@ -51,7 +53,7 @@ public class Etablissments {
 
     @Override
     public String toString() {
-        return "Etablissments{" + "id=" + id + ", name=" + name + ", adresse=" + adresse + ", type=" + type + ", libelle=" + libelle + '}';
+        return "Etablissments{" + "id=" + id + ", name=" + name + ", adresse=" + adresse + ", type=" + type  + '}';
     }
 
     public void setAdresse(String adresse) {
@@ -66,12 +68,5 @@ public class Etablissments {
         this.type = type;
     }
 
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
     
 }
