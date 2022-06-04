@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * @author 21622
  */
 public class MyConnection {
-<<<<<<< HEAD
+
     
     //finals Db config
     private final static String USERNAME = "root";
@@ -26,13 +26,7 @@ public class MyConnection {
     static Connection cnx;
     public static MyConnection instance;
 
-    
-    public MyConnection()  {
-=======
-    private Connection cnx;
->>>>>>> 749a3fa (fichier)
 
-    static MyConnection instance = null;
 
     private MyConnection() {
         try {
@@ -43,7 +37,7 @@ public class MyConnection {
         }
     }
 
-<<<<<<< HEAD
+
 public Connection getCnx() {
 return cnx ;
 }
@@ -53,20 +47,6 @@ public static MyConnection getInstance() {
     }
     return instance;
 }
-=======
-    //getter
-    public static MyConnection getInstance() {
-        if (instance == null) {
-            instance = new MyConnection();
-        }
 
-        return instance;
-    }
-
-    public Connection getCnx() {
-        return cnx;
-    }
-   
->>>>>>> 749a3fa (fichier)
 }
 
