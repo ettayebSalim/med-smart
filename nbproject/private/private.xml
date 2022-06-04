@@ -3,22 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Utiles/MyConnection.java</file>
-            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Services/PanierCRUD.java</file>
-            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/Main.java</file>
-=======
-            <file>file:/C:/Users/NAD/Desktop/Esprit/med-smart/med-smart/src/Models/Produit.java</file>
-            <file>file:/C:/Users/NAD/Desktop/Esprit/med-smart/med-smart/src/Default/Main.java</file>
-            <file>file:/C:/Users/NAD/Desktop/Esprit/med-smart/med-smart/src/Services/ProduitService.java</file>
->>>>>>> 6a521226fc444a039851ab4e4968f2f0d81c0b8a
-=======
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/FichierService.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/TypeFichierService.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/Main.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Utiles/MyConnection.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/UserService.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/Fichier.java</file>
->>>>>>> 749a3fa (fichier)
         </group>
     </open-files>
 </project-private>
