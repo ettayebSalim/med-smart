@@ -15,17 +15,17 @@ import java.time.LocalDateTime;
  */
 public class Panier {
     private int id;
-    private int idUser ;
+    private User user ;
     private Date date ;
 
     public Panier(int id, int idUser, Date date) {
         this.id = id;
-        this.idUser = idUser;
+        this.user = user;
         this.date = date;
     }
 
     public Panier(int idUser, Date date) {
-        this.idUser = idUser;
+        this.user = user;
         this.date = date;
     }
 
@@ -40,9 +40,6 @@ public class Panier {
         return id;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
 
     public Date getDate() {
         return date;
@@ -53,17 +50,29 @@ public class Panier {
     }
 
     public void setIdUser(int idUser) {
-        this.idUser = idUser;
+        this.user = user;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Panier{" + "id=" + id + ", idUser=" + idUser + ", date=" + date + '}';
+        return "Panier{" + "id=" + id + ", user=" + user + ", date=" + date + '}';
     }
+
+
+ 
     
     
     

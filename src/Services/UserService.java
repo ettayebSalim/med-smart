@@ -39,14 +39,15 @@ public class UserService {
                     + " VALUES (?,?,?,?,?,?,?)";
 
             ps = cnx2.prepareStatement(req2);
-             
-            ps.setString(1,utilisateur.getNom());
-            ps.setString(2,utilisateur.getPrenom());
-            ps.setString(3,utilisateur.getEmail());
-            ps.setString(4,utilisateur.getCin());
-            ps.setString(5,utilisateur.getHashedPwd());
-            ps.setString(6,utilisateur.getRole());
-            ps.setString(7,utilisateur.getNumtel());
+           
+
+            ps.setString(2,utilisateur.getNom());
+            ps.setString(3,utilisateur.getPrenom());
+            ps.setString(4,utilisateur.getEmail());
+            ps.setString(5,utilisateur.getCin());
+            ps.setString(6,utilisateur.getHashedPwd());
+            ps.setString(7,utilisateur.getRole());
+            ps.setString(8,utilisateur.getNumtel());
 
             ps.executeUpdate();
 

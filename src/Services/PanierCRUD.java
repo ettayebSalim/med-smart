@@ -30,26 +30,26 @@ public class PanierCRUD {
         cnx2 = MyConnection.getInstance().getCnx();
         
     }
+    UserService cs = new UserService() ;
 
     PreparedStatement ps = null;
 
     //add panier and declare var date
     Date now = new Date(System.currentTimeMillis());
-     User u = new User();
-    Panier p = new Panier(u.getId(),now);
+    User u = new User();
+    Panier p = new Panier( now);
    
 
     // Add panier 
-    public void ajouterPanier() {
+    public void ajouterPanier(User u,Panier p) {
        
         try {
             String req = "INSERT INTO `panier`(`id_user`, `date`) VALUES (?,?)";
             PreparedStatement ps = cnx2.prepareStatement(req);
 
-
-             
-            ps.setInt(1, u.getId());
+           ps.setInt(1, u.getId());
             ps.setDate(2, p.getDate());
+
 
             ps.executeUpdate();
 
@@ -86,7 +86,10 @@ public class PanierCRUD {
               ResultSet rs = st.executeQuery(req3);
               while (rs.next()) {
                   Panier p = new Panier();
-                 p.setId(rs.getInt(1));
+               
+                  p.setId(rs.getInt("id")) ;
+                 p.setUser(cs.getUserByID(rs.getInt(2)));
+                 p.setDate(rs.getDate("date"));
                 // p.setDate(rs.getDate());
                  myList.add(p);
               }
@@ -98,18 +101,16 @@ public class PanierCRUD {
   
         return myList;
     }
-    public void updatePanier() {
-        String req3 = "UPDATE `panier` SET `id`='[value-1]',`id_user`='[value-2]',`date`='[value-3]' WHERE 1";
-        
-    }
+ 
     //Delete User    
     public void deletePanier(int id){
 
 
         try {
-            String req4 = "delete from Panier WHERE id ="+id;
+            String req4 = "delete from panier WHERE id ="+id;
             ps = cnx2.prepareStatement(req4);
-            ps.executeUpdate(req4);
+          
+           ps.executeUpdate(req4);
             System.out.println("Panier supprimé avec succés");
             }
 
@@ -120,21 +121,22 @@ public class PanierCRUD {
 
     }
     
-      public void updatePanier(Panier u,int id) {
-
+     public void updatePanier(Panier u,int id) {
+        
          try{
-
-       String req5 ="UPDATE `panier` SET `id`='[value-1]',`id_user`='[value-2]',`date`='[value-3]' WHERE 1" ;
-
-            ps = cnx2.prepareStatement(req5);
-            ps.executeUpdate(req5);
-
-        System.out.println("Paier modifié avec succés ");
+        
+       String req6="UPDATE `panier` SET  `id_user`='"+cs.getUserByID(2).getId()
+               +"',`date`='"+u.getDate()
+               +"' WHERE id= "+u.getId() ;
+             System.out.println(u.getId());
+             System.out.println(cs.getUserByID(2).getId());
+            ps = cnx2.prepareStatement(req6);
+            ps.executeUpdate(req6);
+            
+        System.out.println("Panier modifié avec succés ");
         }catch(SQLException e){
         System.out.println(e.getMessage());
-
-    }     
-    }
+        }}
  
 
 }

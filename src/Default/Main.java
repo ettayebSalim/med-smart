@@ -30,13 +30,27 @@ public class Main {
 
     public static void main(String[] args) {
      MyConnection mc = MyConnection.getInstance();
-     PanierCRUD paniercrud = new PanierCRUD();
-     //paniercrud.ajouterPanier();
+    
              Date now = new Date(System.currentTimeMillis());
 
-    // UserService userService = new UserService();
+    //UserService userService = new UserService();
      //User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
   //  userService.ajouterUtilisateur(user);
+    // User user = new User(6,"chi2hdadoui","fadddres","fares.chihadodfui@esprit.tn","212234424","azéesrtzzy","12313345256","DS2OdCTOR");
+         
+        Panier p = new Panier(now);
+
+    PanierCRUD paniercrud = new PanierCRUD();
+    //paniercrud.ajouterPanier(user,p);
+    paniercrud.deletePanier(25);
+    //paniercrud.updatePanier();
+      //p.setId(17);
+     // paniercrud.updatePanier(p,19);
+    //System.out.println(paniercrud.afficherPanier());
+   
+
+  // UserService userService = new UserService();
+  // userService.ajouterUtilisateur(user);
 //     System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
