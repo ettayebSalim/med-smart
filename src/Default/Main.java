@@ -37,10 +37,10 @@ public class Main {
     // PanierCRUD paniercrud = new PanierCRUD();
      //paniercrud.ajouterPanier();
     
-     ProduitService ps = new ProduitService();
-     Produit p = new Produit();
-     p.setId_prod(1);
-     ps.Supprimerproduits(p);
+    // ProduitService ps = new ProduitService();
+     //Produit p = new Produit();
+     //p.setId_prod(1);
+     //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
 //     UserService userService = new UserService();
 //     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
