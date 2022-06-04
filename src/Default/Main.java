@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Default;
-<<<<<<< HEAD
+
 import Models.User;
-=======
-import Models.Panier;
->>>>>>> b0bca6e (panier crud)
+import java.sql.DriverManager;
 import Services.PanierCRUD;
 import Services.UserService;
-import java.sql.DriverManager;
 import Utiles.MyConnection;
 import java.sql.Date;
 
@@ -28,17 +25,17 @@ public class Main {
 
     public static void main(String[] args) {
      MyConnection mc = MyConnection.getInstance();
-     PanierCRUD paniercrud = new PanierCRUD();
+     //PanierCRUD paniercrud = new PanierCRUD();
      //paniercrud.ajouterPanier();
              Date now = new Date(System.currentTimeMillis());
 
-     UserService userService = new UserService();
-     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
+    // UserService userService = new UserService();
+     //User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
   //  userService.ajouterUtilisateur(user);
 //     System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
-      userService.updateUser(user,3);
+    //  userService.updateUser(user,3);
 
 
 

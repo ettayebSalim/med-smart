@@ -4,21 +4,13 @@
  * and open the template in the editor.
  */
 package Utiles;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
-import java.sql.*;
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import static java.time.Clock.system;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import Models.Panier;
+
 
 /**
  *

@@ -6,6 +6,7 @@
 package Services;
 
 import Models.Panier;
+import Models.User;
 import Utiles.MyConnection;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.sql.Connection;
@@ -34,19 +35,20 @@ public class PanierCRUD {
 
     //add panier and declare var date
     Date now = new Date(System.currentTimeMillis());
-    Panier p = new Panier( now);
+     User u = new User();
+    Panier p = new Panier(u.getId(),now);
+   
 
     // Add panier 
     public void ajouterPanier() {
-
+       
         try {
-            String req = "INSERT INTO `Panier`(`date`)"
-                    + " VALUES (?)";
+            String req = "INSERT INTO `panier`(`id_user`, `date`) VALUES (?,?)";
 
             PreparedStatement ps = cnx2.prepareStatement(req);
              
-            //ps.setInt(1, p.getIdUser());
-            ps.setDate(1, p.getDate());
+            ps.setInt(1, u.getId());
+            ps.setDate(2, p.getDate());
 
             ps.executeUpdate();
 
