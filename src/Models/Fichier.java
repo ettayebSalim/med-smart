@@ -6,6 +6,7 @@
 package Models;
 
 import Services.TypeFichierService;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -111,9 +112,14 @@ public class Fichier {
     @Override
     public String toString() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", IdUtilisateur=" + user.getId() + '}';
 =======
         return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Id=" + user.getId()+ '}';
 >>>>>>> 749a3fa (fichier)
+=======
+        
+        return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Attributes=" + user.toString()+ '}';
+>>>>>>> 9281fde (fichier)
     }
 }

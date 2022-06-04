@@ -56,6 +56,12 @@ public class Main {
 
 
 
+
+Fichier fichier=new Fichier("IRM","C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png",user);
+       System.out.println(fichier);
+//FichierService fs=new FichierService();
+//fs.insertFichier(fichier);
+
     }
 
 }

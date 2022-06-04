@@ -21,11 +21,8 @@ import java.util.logging.Logger;
  * @author AGuizani
  */
 public class FichierService {
-<<<<<<< HEAD
-       //var 
-=======
-        //var 
->>>>>>> 749a3fa (fichier)
+
+
     Connection cnx = MyConnection.getInstance().getCnx();
     UserService us = new UserService();
 
@@ -75,17 +72,14 @@ public class FichierService {
     //get  Fichier by id_physique
     public Fichier getFichierByIdPhysique(String s) {
         Fichier f = new Fichier();
-<<<<<<< HEAD
+
        
         try {
 
             String req = "SELECT `id`, `type`, `id_physique`, `id_user` FROM `fichier` WHERE id_physique =? ";
-=======
-        char ch = '"';
-        try {
 
-            String req = "SELECT `id`, `type`, `id_physique`, `id_user` FROM `fichier` WHERE id_physique = ?";
->>>>>>> 749a3fa (fichier)
+        char ch = '"';
+      
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(3, s);
             ResultSet rs = ps.executeQuery();
@@ -137,10 +131,9 @@ public class FichierService {
             Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
-<<<<<<< HEAD
+
      
-     //Update Fichier by Id 
-=======
+
      //delete Fichier By id_physique
 //      public void DeleteFichierByIdPhysique(String s) {
 //             char ch = '"';
@@ -154,12 +147,12 @@ public class FichierService {
 //            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
 //        }  
 //    }
-      
->>>>>>> 749a3fa (fichier)
+
+     //Update Fichier by Id 
  public void updateFichierById(Fichier f,long numb) {
 
         try {
-            String req="UPDATE `fichier` SET `type`='"+f.getType()+"',`id_physique`='"+f.getIdPhysique()+"',`id_user`='"+f.getUser().getId()+"' WHERE id=?";
+            String req= "UPDATE `fichier` SET `type`='"+f.getType()+"',`id_physique`='"+f.getIdPhysique()+"' WHERE id=?";
             
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setLong(1, numb);
