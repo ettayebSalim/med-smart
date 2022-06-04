@@ -9,10 +9,7 @@ import Models.Panier;
 import Models.User;
 import Utiles.MyConnection;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-<<<<<<< HEAD
 import java.sql.Connection;
-=======
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,12 +44,9 @@ public class PanierCRUD {
        
         try {
             String req = "INSERT INTO `panier`(`id_user`, `date`) VALUES (?,?)";
-
-<<<<<<< HEAD
             PreparedStatement ps = cnx2.prepareStatement(req);
-=======
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
+
+
              
             ps.setInt(1, u.getId());
             ps.setDate(2, p.getDate());
@@ -71,11 +65,8 @@ public class PanierCRUD {
         String req2 = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
         try {
-<<<<<<< HEAD
             PreparedStatement pst = cnx2.prepareStatement(req2);
-=======
-            PreparedStatement pst = new MyConnection().getCnx().prepareStatement(req2);
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
+
             pst.setDate(1, p.getDate());
             pst.executeUpdate();
                         System.out.println("Panier a été ajouté avec succé");
@@ -83,7 +74,7 @@ public class PanierCRUD {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-<<<<<<< HEAD
+
 
     }
     public List<Panier> afficherPanier() {
@@ -141,33 +132,9 @@ public class PanierCRUD {
         System.out.println("Paier modifié avec succés ");
         }catch(SQLException e){
         System.out.println(e.getMessage());
-=======
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
 
     }     
     }
-    public List<Panier> afficherPanier() {
-                     List<Panier> myList = new ArrayList<>();
-
-        try {
-              String req3 =  "SELECT * FROM panier";
-              Statement st = new MyConnection().getCnx().createStatement();
-              ResultSet rs = st.executeQuery(req3);
-              while (rs.next()) {
-                  Panier p = new Panier();
-                 p.setId(rs.getInt(1));
-                // p.setDate(rs.getDate());
-                 myList.add(p);
-              }
-            
-        } catch (SQLException ex) {
-                System.err.println(ex.getMessage());    
-                System.out.println("abdesslam");
-        }
-     
-        
-        
-        return myList;
-    }
+ 
 
 }

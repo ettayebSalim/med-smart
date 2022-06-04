@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package Default;
-<<<<<<< HEAD
+
 
 import Models.User;
-=======
+
 import Models.Panier;
 import Services.PanierCRUD;
->>>>>>> 767669dd82b10847a3e94fe78c93dc1c4a441601
 import java.sql.DriverManager;
 import Services.PanierCRUD;
 import Services.UserService;
