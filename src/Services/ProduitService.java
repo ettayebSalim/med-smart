@@ -73,18 +73,18 @@ public class ProduitService {
     }
 
     public void Supprimerproduits(Produit p) {
-        try {
+        //try {
             String req = "DELETE FROM `produit` WHERE id=" + p.getId_prod();
 
             //PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
 
             //ResultSet rs = ps.executeQuery();
-            Statement st = new MyConnection().getCnx().createStatement();
-            st.executeUpdate(req);
-            System.out.println("Produit supprimer");
-        } catch (SQLException ex) {
-            Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           // Statement st = new MyConnection().getCnx().createStatement();
+           // st.executeUpdate(req);
+         //   System.out.println("Produit supprimer");
+      //  } catch (SQLException ex) {
+          //  Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
+       // }
         //return produit;
     }
 
