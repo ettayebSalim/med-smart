@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Utiles;
+<<<<<<< HEAD
 
 
 
@@ -11,6 +12,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+=======
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+>>>>>>> etab
 
 /**
  *
@@ -23,8 +29,12 @@ public class MyConnection {
     private final static String PASSWORD = "";
     private final static String URL = "jdbc:mysql://localhost:3306/PIDEV";
     static Connection cnx;
+<<<<<<< HEAD
     public static MyConnection instance ;
 
+=======
+    public static MyConnection instance;
+>>>>>>> etab
     
     private MyConnection()  {
 
@@ -44,12 +54,20 @@ public class MyConnection {
 public Connection getCnx() {
 return cnx ;
 }
+<<<<<<< HEAD
 public static MyConnection  getInstance() {
     if(instance == null) {
         instance = new MyConnection() ;
         
     }
     return instance ;
+=======
+public static MyConnection getInstance(){
+    if(instance==null){
+        instance = new MyConnection();
+    }
+    return instance;
+>>>>>>> etab
 }
 }
 
