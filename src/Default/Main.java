@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Default;
+
+import Models.Fichier;
 import Models.User;
 import Services.PanierCRUD;
 import Services.UserService;
 import java.sql.DriverManager;
 import Utiles.MyConnection;
+import java.io.IOException;
 
 import java.io.PrintStream;
 
@@ -26,6 +29,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+
 
     public static void main(String[] args) {
 
@@ -45,6 +49,13 @@ public class Main {
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
 //      userService.updateUser(user,3);
+
+   MyConnection.getInstance();
+        // PanierCRUD paniercrud = new PanierCRUD();
+        //paniercrud.ajouterPanier();
+
+
+
     }
-    
+
 }

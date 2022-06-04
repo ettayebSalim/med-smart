@@ -12,8 +12,10 @@ import Models.TypeFichier;
  * @author AGuizani
  */
 public class TypeFichierService {
+
     
     public static Boolean checkType(String s) {
+
         boolean bool = false;
         for (TypeFichier tf : TypeFichier.values()) {
             if ((tf.toString().equalsIgnoreCase(s))) {

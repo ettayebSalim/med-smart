@@ -11,14 +11,21 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 749a3fa (fichier)
 /**
  *
  * @author AGuizani
  */
 public class Fichier {
+<<<<<<< HEAD
      private long id;
+=======
+    private long id;
+>>>>>>> 749a3fa (fichier)
     private String type;
     private String idPhysique;
     private User user;
@@ -103,6 +110,10 @@ public class Fichier {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", IdUtilisateur=" + user.getId() + '}';
+=======
+        return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Id=" + user.getId()+ '}';
+>>>>>>> 749a3fa (fichier)
     }
 }

@@ -4,27 +4,20 @@
  * and open the template in the editor.
  */
 package Utiles;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import static java.time.Clock.system;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Models.Panier;
+
 
 /**
  *
  * @author 21622
  */
 public class MyConnection {
+<<<<<<< HEAD
     
     //finals Db config
     private final static String USERNAME = "root";
@@ -35,20 +28,22 @@ public class MyConnection {
 
     
     public MyConnection()  {
+=======
+    private Connection cnx;
+>>>>>>> 749a3fa (fichier)
 
+    static MyConnection instance = null;
 
+    private MyConnection() {
         try {
-            //DB connection
-            
-             cnx = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Connexon etablie avec succes");
-            
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/pidev", "root", "");
+            System.out.println("Connexion etablie!");
         } catch (SQLException ex) {
-            System.out.println(ex);       
+            Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
-}
+    }
 
+<<<<<<< HEAD
 public Connection getCnx() {
 return cnx ;
 }
@@ -58,5 +53,20 @@ public static MyConnection getInstance() {
     }
     return instance;
 }
+=======
+    //getter
+    public static MyConnection getInstance() {
+        if (instance == null) {
+            instance = new MyConnection();
+        }
+
+        return instance;
+    }
+
+    public Connection getCnx() {
+        return cnx;
+    }
+   
+>>>>>>> 749a3fa (fichier)
 }
 
