@@ -9,9 +9,14 @@ import Services.PanierCRUD;
 import Services.UserService;
 import java.sql.DriverManager;
 import Utiles.MyConnection;
+
+import java.io.PrintStream;
+
+
 import Services.ProduitService;
 import Models.Produit;
 import java.sql.SQLException;
+
 /**
  *
  * @author 21622
@@ -21,7 +26,9 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+
+    public static void main(String[] args) {
+
 //     MyConnection mc = new MyConnection();
     // PanierCRUD paniercrud = new PanierCRUD();
      //paniercrud.ajouterPanier();

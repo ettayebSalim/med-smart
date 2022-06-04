@@ -7,6 +7,7 @@ package Services;
 
 import Models.Panier;
 import Utiles.MyConnection;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,6 +20,11 @@ import java.util.logging.Logger;
  * @author 21622
  */
 public class PanierCRUD {
+    Connection cnx2;
+    
+    public PanierCRUD() {
+        cnx2 = MyConnection.getInstance().getCnx();
+    }
 
     PreparedStatement ps = null;
 
@@ -33,7 +39,7 @@ public class PanierCRUD {
             String req = "INSERT INTO `Panier`(`date`)"
                     + " VALUES (?)";
 
-            ps = new MyConnection().getCnx().prepareStatement(req);
+            ps = cnx2.prepareStatement(req);
              
             //ps.setInt(1, p.getIdUser());
             ps.setDate(1, p.getDate());
