@@ -32,7 +32,6 @@ public class ProduitService {
         try {
             String req = "INSERT INTO `produit`(`Nom`,`id_physique_img`,`qte`,`id_etab`) VALUES (?,?,?,?)";
             PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
-
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getId_physique());
             ps.setInt(3, p.getQte_prod());
@@ -46,65 +45,66 @@ public class ProduitService {
     }
 
     //Select
-    public List<Produit> fetchProduit() {
+    public List<Produit> fetchProduit(String Nom_prod) {
         List<Produit> produit = new ArrayList<>();
-
         try {
-
-            String req = "SELECT * FROM Produit";
-
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-
+            String req = "select * FROM `produit`";
+            Statement ps = new MyConnection().getCnx().createStatement();
+            //ps.executeQuery(req);
+            //rst= ps.executeQuery(req);
+            //rst.;
+            //int nbrRow = rst.getRow();
+            //if (nbrRow!=0) {
+            //    System.out.println("Produit trouver");
+            //} else {
+            //    System.out.println("Produit non trouver");
+            //}
+            ResultSet rs = ps.executeQuery(req);
+            while (rs.next()){
                 Produit p = new Produit();
                 p.setId_prod(rs.getInt(1));
-                p.setNom_prod(rs.getString("name_produit"));
-                p.setQte_prod(rs.getInt(3));
+                p.setNom_prod(rs.getString("Nom"));
+                p.setId_physique("id_physique_img");
+                p.setQte_prod(0);
+                p.setId_etab(0);
                 produit.add(p);
-
+              
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return produit;
     }
 
     public void Supprimerproduits(Produit p) {
         try {
             String req = "DELETE FROM `produit` WHERE id=" + p.getId_prod();
-
-            //PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
-
-            //ResultSet rs = ps.executeQuery();
             Statement st = new MyConnection().getCnx().createStatement();
             st.executeUpdate(req);
             System.out.println("Produit supprimer");
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //return produit;
     }
 
-    public List<Produit> ModifProduits() {
+    public void ModifProduits(Produit p) {
         List<Produit> produit = new ArrayList<>();
         try {
-            Produit p = new Produit();
-            String req = "IPDATE INTO `produit`('id',Nom','id_physique_img','qte','id_etab') VALUES (?,?,?,?,?)";
+            //Produit p = new Produit();
+            String req = "UPDATE INTO `produit`('id','Nom','id_physique_img','qte','id_etab') VALUES (?,?,?,?,?)";
 
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
-            ps.setInt(3, p.getId_prod());
+             PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
             ps.setString(1, p.getNom_prod());
-            ps.setInt(2, p.getId_etab());
-            ps.setString(4, p.getId_physique());
-            ps.setFloat(5, p.getQte_prod());
+            ps.setString(2, p.getId_physique());
+            ps.setInt(3, p.getQte_prod());
+            ps.setInt(4, p.getId_etab());
+            System.out.println("Product " + p.getNom_prod() + " Modified successfully");
             ps.executeUpdate();
-            System.out.println("Product " + p.getNom_prod() + " added successfully");
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return produit;
+        //return produit;
     }
 }
