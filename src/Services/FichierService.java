@@ -40,7 +40,7 @@ public class FichierService {
             ps.executeUpdate();
             System.out.println("File added successfully!");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.println(ex.getMessage());
         }
     }
     
@@ -63,7 +63,7 @@ public class FichierService {
                 fichiers.add(f);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         return fichiers;
@@ -72,25 +72,20 @@ public class FichierService {
     //get  Fichier by id_physique
     public Fichier getFichierByIdPhysique(String s) {
         Fichier f = new Fichier();
-
-       
+      char ch='"';
         try {
-
-            String req = "SELECT `id`, `type`, `id_physique`, `id_user` FROM `fichier` WHERE id_physique =? ";
-
-        char ch = '"';
-      
+            String req = "SELECT * FROM `fichier` WHERE id_physique ="+ch+s+ch;
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(3, s);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 f.setId(rs.getInt(1));
-                f.setType(rs.getString("type"));
-                f.setIdPhysique(rs.getString("id_physique"));
+                f.setType(rs.getString(2));
+                f.setIdPhysique(rs.getString(3));
                 f.setUser(us.getUserByID(rs.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return f;
     }
@@ -113,7 +108,7 @@ public class FichierService {
                 f.setUser(us.getUserByID(rs.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return f;
     }
@@ -126,9 +121,9 @@ public class FichierService {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setLong(1, numb);
             ps.executeUpdate();
-            System.out.println("Fichier wich Id is :"+numb +"is deleted successfully ");
+            System.out.println("Fichier wich Id is :"+numb +" is deleted successfully ");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }  
     }
 
@@ -157,9 +152,9 @@ public class FichierService {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setLong(1, numb);
             ps.executeUpdate();
-            System.out.println("Fichier wich Id is :"+numb +"is updated successfully ");
+            System.out.println("Fichier wich Id is :"+numb +" is updated successfully ");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }  
     }
 }

@@ -106,7 +106,7 @@ public class Fichier {
     @Override
     public String toString() {
 
-        return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Attributes=" + user.toString()+ '}';
+        return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Id=" + user.getId()+ '}';
 
     }
 }
