@@ -127,8 +127,6 @@ public class FichierService {
         }  
     }
 
-     
-
      //delete Fichier By id_physique
 //      public void DeleteFichierByIdPhysique(String s) {
 //             char ch = '"';
