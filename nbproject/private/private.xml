@@ -5,13 +5,17 @@
         <group>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Services/PanierCRUD.java</file>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Services/RendezVousService.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Default/FXML.fxml</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Services/UserService.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Default/NewFXMain1.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/RendezVous.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Default/Main.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/Produit.java</file>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/Panier.java</file>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/Etablissments.java</file>
-            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Services/UserService.java</file>
-            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/RendezVous.java</file>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/User.java</file>
-            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Models/Produit.java</file>
             <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Utiles/MyConnection.java</file>
+            <file>file:/C:/Users/user/Desktop/pidev/med-smart/src/Default/FXMLController.java</file>
         </group>
     </open-files>
 </project-private>

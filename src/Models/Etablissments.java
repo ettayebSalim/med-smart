@@ -10,7 +10,7 @@ package Models;
  * @author haith
  */
 public class Etablissments {
-    private long id;
+    private int id;
     private String name;
     private String adresse;
     private String type;

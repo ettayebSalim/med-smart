@@ -36,9 +36,7 @@ public class RendezVous {
         this.etablissments = etablissments;
     }
 
-    public RendezVous(java.sql.Date now) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public int getId() {
         return id;

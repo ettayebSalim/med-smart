@@ -18,17 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author user
  */
 public class RendezVousService {
-        Date now = new Date(System.currentTimeMillis());
-        RendezVous p = new RendezVous(now); 
 
-  
-        PreparedStatement ps = null;
+       //var
+    PreparedStatement ps = null;
+
     
 
     public void ajouterRendezVous(RendezVous r) {
@@ -38,8 +38,14 @@ public class RendezVousService {
                     + " VALUES (?,?,?)";
 
             ps = new MyConnection().getCnx().prepareStatement(req2);
-            ps.setDate(1, (Date) p.getDate());
-            
+           
+    
+
+      java.sql.Date sqlDate = new java.sql.Date(r.getDate().getTime());
+           ps.setDate(1,  sqlDate );
+           ps.setInt(2,r.getUser().getId());          
+           ps.setInt(3,r.getEtablissments().setId());
+
             
             //id user
             //id etalb
@@ -63,13 +69,13 @@ public class RendezVousService {
             while (rs.next())
             {                
               
-                                Etablissments e=new Etablissments();
+          Etablissments e=new Etablissments();
 
-                  rendezVous.setId(rs.getInt(1));
-                rendezVous.setDate(rs.getDate(2));
-                User u = new User();
-                u.setId(rs.getInt(3));
-                e.setId(rs.getInt(4));
+           rendezVous.setId(rs.getInt(1));
+           rendezVous.setDate(rs.getDate(2));
+           User u = new User();
+           u.setId(rs.getInt(3));
+           e.setId(rs.getInt(4));
                 rendezVous.setUser(u);
                 rendezVous.setEtablissments(e);
             }
@@ -95,6 +101,7 @@ public void deleteRendezVous(RendezVous r){
          catch (SQLException ex) {
             Logger.getLogger(RendezVousService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
 public List<RendezVous> fetchRDV() {
@@ -131,5 +138,21 @@ public List<RendezVous> fetchRDV() {
         }
 
         return RDV;
-    }    
+    } public void updateRendezVous(RendezVous r,int id) {
+        
+         try{
+        
+       String req6="UPDATE `date` SET `date`='"+r.getDate()
+               +"',`id_user`='"+r.getUser()
+               +"',`id_etab`='" +r.getEtablissments()
+               +" WHERE id="+id;
+       
+            ps = new MyConnection().getCnx().prepareStatement(req6);
+            ps.executeUpdate(req6);
+            
+        System.out.println("ReNDEZ VOUS modifié avec succés ");
+        }
+         catch(SQLException e){
+        System.out.println(e.getMessage());   
 }
+    }}
