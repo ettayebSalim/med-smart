@@ -30,6 +30,8 @@ public ProduitService() {
             cnx2 = MyConnection.getInstance().getCnx();
 
 }
+    PreparedStatement ps = null;
+
     Date now = new Date(System.currentTimeMillis());
 
     //Create Produit
@@ -77,15 +79,15 @@ public ProduitService() {
         return produit;
     }
 
-    public void Supprimerproduits(Produit p) {
+    public void Supprimerproduits(int id) {
         try {
-            String req = "DELETE FROM `produit` WHERE id=" + p.getId_prod();
+            String req = "DELETE FROM `produit` WHERE id=" + id;
 
-            //PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
+             ps = cnx2.prepareStatement(req);
 
             //ResultSet rs = ps.executeQuery();
-            Statement st = cnx2.createStatement();
-            st.executeUpdate(req);
+            //Statement st = cnx2.createStatement();
+            ps.executeUpdate(req);
             System.out.println("Produit supprimer");
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);

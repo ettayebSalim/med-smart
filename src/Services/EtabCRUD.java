@@ -118,14 +118,21 @@ public class EtabCRUD {
 
         try {
             String req = "select * from etablissements WHERE id="+id;
-            Statement cr = cnx2.createStatement();
-            ResultSet rs;
-            rs = cr.executeQuery(req);
-            Etablissments e = new Etablissments();
+                        Etablissments e = new Etablissments();
+
+            Statement st = cnx2.createStatement();
+            
+              ResultSet rs = st.executeQuery(req);
+              
+              while (rs.next()) {                
             e.setId(rs.getInt(1));
             e.setName(rs.getString(2));
             e.setAdresse(rs.getString(3));
             e.setType(rs.getString(4));
+
+            }
+              
+            
             System.out.println(e);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

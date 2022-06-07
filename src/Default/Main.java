@@ -37,9 +37,9 @@ public class Main {
      //paniercrud.ajouterPanier();
     
      ProduitService ps = new ProduitService();
-     Produit p = new Produit();
-     p.setId_prod(1);
-     ps.Supprimerproduits(p);
+     //Produit p = new Produit();
+    // p.setId_prod(1);
+     //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
 //     UserService userService = new UserService();
 //     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
@@ -52,11 +52,11 @@ public class Main {
         //paniercrud.ajouterPanier();
 
         EtabCRUD etab = new EtabCRUD();
-        Etablissments e = new Etablissments("name2", "adresse2", "type2");
-        // etab.deleteEtab(1);
-        // etab.updateEtab(e, 1);
-        //etab.ajouterEtab(e);
-        etab.getEtabById(2);
+        Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
+         etab.deleteEtab(1);
+       // etab.updateEtab(e, 1);
+       // etab.ajouterEtab(e);
+       //etab.getEtabById(1);
         //System.out.println(etab.afficherEtab());
 
     }
