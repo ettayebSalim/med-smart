@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/User.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/NewFXMain.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXMLController.java</file>
@@ -25,6 +26,10 @@
             <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Utiles/MyConnection.java</file>
             <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Services/PanierCRUD.java</file>
 >>>>>>> 619065cdb95574cf8d475174a950aad961fe3fcb
+=======
+            <file>file:/C:/Users/NAD/Desktop/Esprit/med-smart/med-smart/src/Default/Main.java</file>
+            <file>file:/C:/Users/NAD/Desktop/Esprit/med-smart/med-smart/src/Services/ProduitService.java</file>
+>>>>>>> produit
         </group>
     </open-files>
 </project-private>

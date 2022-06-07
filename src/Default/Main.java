@@ -8,6 +8,7 @@ package Default;
 
 import Models.Fichier;
 
+
 import Models.User;
 import Services.PanierCRUD;
 import java.sql.DriverManager;
@@ -26,7 +27,7 @@ import Models.Produit;
 import Services.FichierService;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -91,12 +92,21 @@ public class Main {
     // p.setId_prod(1);
      //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
+
+        Produit p = new Produit("daf01","11",5,8);
+        ps.ModifProduits(p);
+       
+
+        //p.setId_prod(1);
+        // ps.fetchProduit();
+     
+
 //     UserService userService = new UserService();
 //     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
-  //  userService.ajouterUtilisateur(user);
+        //  userService.ajouterUtilisateur(user);
 //     System.out.println(userService.fetchUsers());
- //    System.out.println(userService.getUserByID(3));
-    // System.out.println(userService.deleteUser(2));
+        //    System.out.println(userService.getUserByID(3));
+        // System.out.println(userService.deleteUser(2));
 //      userService.updateUser(user,3);
       // PanierCRUD paniercrud = new PanierCRUD();
         //paniercrud.ajouterPanier();
