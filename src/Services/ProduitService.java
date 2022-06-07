@@ -23,6 +23,13 @@ import java.sql.Date;
  * @author NAD
  */
 public class ProduitService {
+    
+    Connection cnx2;
+    
+    public ProduitService() {
+        cnx2 = MyConnection.getInstance().getCnx();
+
+    }
     //var
 
     Date now = new Date(System.currentTimeMillis());
@@ -31,7 +38,7 @@ public class ProduitService {
     public void insertProduit(Produit p) throws SQLException {
         try {
             String req = "INSERT INTO `produit`(`Nom`,`id_physique_img`,`qte`,`id_etab`) VALUES (?,?,?,?)";
-            PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
+            PreparedStatement ps = cnx2.prepareStatement(req);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getId_physique());
             ps.setInt(3, p.getQte_prod());
@@ -49,18 +56,9 @@ public class ProduitService {
         List<Produit> produit = new ArrayList<>();
         try {
             String req = "select * FROM `produit`";
-            Statement ps = new MyConnection().getCnx().createStatement();
-            //ps.executeQuery(req);
-            //rst= ps.executeQuery(req);
-            //rst.;
-            //int nbrRow = rst.getRow();
-            //if (nbrRow!=0) {
-            //    System.out.println("Produit trouver");
-            //} else {
-            //    System.out.println("Produit non trouver");
-            //}
+            Statement ps = cnx2.createStatement();
             ResultSet rs = ps.executeQuery(req);
-            while (rs.next()){
+            while (rs.next()) {
                 Produit p = new Produit();
                 p.setId_prod(rs.getInt(1));
                 p.setNom_prod(rs.getString("Nom"));
@@ -68,7 +66,7 @@ public class ProduitService {
                 p.setQte_prod(0);
                 p.setId_etab(0);
                 produit.add(p);
-              
+
             }
 
         } catch (SQLException ex) {
@@ -77,17 +75,19 @@ public class ProduitService {
 
         return produit;
     }
+// supprimer produit 
 
     public void Supprimerproduits(Produit p) {
         try {
             String req = "DELETE FROM `produit` WHERE id=" + p.getId_prod();
-            Statement st = new MyConnection().getCnx().createStatement();
+            Statement st = cnx2.createStatement();
             st.executeUpdate(req);
             System.out.println("Produit supprimer");
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+// modifier Produit
 
     public void ModifProduits(Produit p) {
         List<Produit> produit = new ArrayList<>();
@@ -95,7 +95,7 @@ public class ProduitService {
             //Produit p = new Produit();
             String req = "UPDATE INTO `produit`('id','Nom','id_physique_img','qte','id_etab') VALUES (?,?,?,?,?)";
 
-             PreparedStatement ps = new MyConnection().getCnx().prepareStatement(req);
+            PreparedStatement ps = cnx2.prepareStatement(req);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getId_physique());
             ps.setInt(3, p.getQte_prod());
@@ -105,6 +105,5 @@ public class ProduitService {
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //return produit;
     }
 }
