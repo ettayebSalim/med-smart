@@ -87,22 +87,22 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void addFile(ActionEvent e) throws IOException{
-    String t;
+    String s;
      String idF;
      int id=0;
-     t=typeEnum.getText();
+     s=typeEnum.getText();
      idF=path_text.getText();
      try{
      id=Integer.valueOf(userId_text.getText());
      }catch(NumberFormatException ex){
          ex.getMessage();
      }
-         System.out.println(t);
+         System.out.println(s);
          System.out.println(idF);
          System.out.println(id);
          UserService us = new UserService();
          FichierService f=new FichierService();
-         Fichier fichier=new Fichier(t,idF,us.getUserByID(id));
+         Fichier fichier=new Fichier(s,idF,us.getUserByID(id));
          f.insertFichier(fichier);
          
     }
