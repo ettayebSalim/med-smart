@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/User.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/NewFXMain.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXMLController.java</file>
@@ -12,6 +13,18 @@
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXML_1.fxml</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/Fichier.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXML.fxml</file>
+=======
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Models/Panier.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Models/Produit.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Models/User.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Services/UserService.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Services/EtabCRUD.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Default/Main.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Services/ProduitService.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Models/Etablissments.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Utiles/MyConnection.java</file>
+            <file>file:/C:/Users/21622/Documents/NetBeansProjects/JavaApplicationCinfo01/src/Services/PanierCRUD.java</file>
+>>>>>>> 619065cdb95574cf8d475174a950aad961fe3fcb
         </group>
     </open-files>
 </project-private>
