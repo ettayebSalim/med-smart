@@ -21,8 +21,7 @@ import java.util.logging.Logger;
  * @author AGuizani
  */
 public class FichierService {
-       //var 
-    Connection cnx = MyConnection.getInstance().getCnx();
+  Connection cnx = MyConnection.getInstance().getCnx();
     UserService us = new UserService();
 
     //Insert Fichier into BD
@@ -39,7 +38,7 @@ public class FichierService {
             ps.executeUpdate();
             System.out.println("File added successfully!");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.println(ex.getMessage());
         }
     }
     
@@ -62,7 +61,7 @@ public class FichierService {
                 fichiers.add(f);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
 
         return fichiers;
@@ -71,21 +70,20 @@ public class FichierService {
     //get  Fichier by id_physique
     public Fichier getFichierByIdPhysique(String s) {
         Fichier f = new Fichier();
-       
+      char ch='"';
         try {
-
-            String req = "SELECT `id`, `type`, `id_physique`, `id_user` FROM `fichier` WHERE id_physique =? ";
+            String req = "SELECT * FROM `fichier` WHERE id_physique ="+ch+s+ch;
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(3, s);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 f.setId(rs.getInt(1));
-                f.setType(rs.getString("type"));
-                f.setIdPhysique(rs.getString("id_physique"));
+                f.setType(rs.getString(2));
+                f.setIdPhysique(rs.getString(3));
                 f.setUser(us.getUserByID(rs.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return f;
     }
@@ -108,7 +106,7 @@ public class FichierService {
                 f.setUser(us.getUserByID(rs.getInt(4)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         return f;
     }
@@ -121,24 +119,38 @@ public class FichierService {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setLong(1, numb);
             ps.executeUpdate();
-            System.out.println("Fichier wich Id is :"+numb +"is deleted successfully ");
+            System.out.println("Fichier wich Id is :"+numb +" is deleted successfully ");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }  
     }
-     
+
+     //delete Fichier By id_physique
+//      public void DeleteFichierByIdPhysique(String s) {
+//             char ch = '"';
+//        try {
+//            String req = "DELETE FROM `fichier` WHERE id_physique like(" + ch + s + ch+")" ;
+//            PreparedStatement ps = cnx.prepareStatement(req);
+//            
+//            ps.executeUpdate();
+//            System.out.println("Fichier wich id_physique is :"+s +" is deleted successfully  ");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+//        }  
+//    }
+
      //Update Fichier by Id 
  public void updateFichierById(Fichier f,long numb) {
 
         try {
-            String req="UPDATE `fichier` SET `type`='"+f.getType()+"',`id_physique`='"+f.getIdPhysique()+"',`id_user`='"+f.getUser().getId()+"' WHERE id=?";
+            String req= "UPDATE `fichier` SET `type`='"+f.getType()+"',`id_physique`='"+f.getIdPhysique()+"' WHERE id=?";
             
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setLong(1, numb);
             ps.executeUpdate();
-            System.out.println("Fichier wich Id is :"+numb +"is updated successfully ");
+            System.out.println("Fichier wich Id is :"+numb +" is updated successfully ");
         } catch (SQLException ex) {
-            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }  
     }
 }
