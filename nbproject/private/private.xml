@@ -4,11 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/User.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/NewFXMain.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXMLController.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/FichierService.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/Main.java</file>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Utiles/MyConnection.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/SceneController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXML_1.fxml</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/Fichier.java</file>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/UserService.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/FXML.fxml</file>
         </group>
     </open-files>
 </project-private>
