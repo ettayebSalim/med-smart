@@ -5,18 +5,14 @@
  */
 package Default;
 
-
 import Models.Fichier;
 import Services.FichierService;
 import Services.UserService;
 import java.io.IOException;
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -29,20 +25,14 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
 /**
  * FXML Controller class
  *
-<<<<<<< HEAD
  * @author AGuizani
-=======
- * @author NAD
->>>>>>> produit
  */
 public class FXMLController implements Initializable {
 
     @FXML
-
     private Button Cancel;
     @FXML
     private Button ok;
@@ -78,7 +68,6 @@ public class FXMLController implements Initializable {
     private Scene scene;
     private Parent root;
 
-
     /**
      * Initializes the controller class.
      */
@@ -88,7 +77,6 @@ public class FXMLController implements Initializable {
     }    
 
     @FXML
-
      private void switchToscene2(ActionEvent e) throws IOException {
         root = FXMLLoader.load(getClass().getResource("FXML_1.fxml"));
         stage = (Stage) (((Node) e.getSource()).getScene().getWindow());
@@ -99,29 +87,24 @@ public class FXMLController implements Initializable {
 
     @FXML
     private void addFile(ActionEvent e) throws IOException{
-    String s;
+    String t;
      String idF;
      int id=0;
-     s=typeEnum.getText();
+     t=typeEnum.getText();
      idF=path_text.getText();
      try{
      id=Integer.valueOf(userId_text.getText());
      }catch(NumberFormatException ex){
          ex.getMessage();
      }
-         System.out.println(s);
+         System.out.println(t);
          System.out.println(idF);
          System.out.println(id);
          UserService us = new UserService();
          FichierService f=new FichierService();
-         Fichier fichier=new Fichier(s,idF,us.getUserByID(id));
+         Fichier fichier=new Fichier(t,idF,us.getUserByID(id));
          f.insertFichier(fichier);
          
     }
-
-   
-    private void action(ActionEvent event) {
-    }
-    
-
 }
+

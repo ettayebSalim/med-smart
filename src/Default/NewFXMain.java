@@ -26,34 +26,32 @@ import javafx.stage.Stage;
 
 /**
  *
-<<<<<<< HEAD
+ *
  * @author AGuizani
-=======
- * @author NAD
->>>>>>> produit
+ *
+ *
  */
 public class NewFXMain extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) {
 
-        
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXML_1.fxml"));
-            
+
             Scene scene = new Scene(root, 600, 500);
-           
+
             scene.setFill(Color.LIGHTCYAN);
-         
+
             Stage stage = new Stage();
             stage.setTitle("MedSmart");
             stage.setScene(scene);
             Image image = new Image("care.png");
             stage.getIcons().add(image);
             stage.setResizable(true);
-            
+
             stage.show();
-            
+
         } catch (IOException ex) {
             ex.getMessage();
 
@@ -66,5 +64,5 @@ public class NewFXMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
