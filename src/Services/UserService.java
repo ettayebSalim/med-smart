@@ -22,7 +22,15 @@ import java.util.logging.Logger;
  */
 public class UserService {
      //var
-    PreparedStatement ps = null;
+    Connection cnx2;
+ private UserService() {
+        cnx2 = MyConnection.getInstance().getCnx();
+    }
+        private static UserService instance = new UserService();
+           public static UserService GetInstance() {
+        return instance;
+    }
+    
     User utilisateur = new User();
 
       // Add user 
@@ -32,7 +40,7 @@ public class UserService {
             String req2 = "INSERT INTO `user`(`nom`,`prenom`,`email`,`cin`,`hashedpwd`,`role`,`numtel`)"
                     + " VALUES (?,?,?,?,?,?,?)";
 
-            ps = new MyConnection().getCnx().prepareStatement(req2);
+             PreparedStatement   ps = cnx2.prepareStatement(req2);
              
             ps.setString(1,utilisateur.getNom());
             ps.setString(2,utilisateur.getPrenom());
@@ -60,7 +68,7 @@ public class UserService {
 
             String req3 = "SELECT * FROM user";
 
-            ps = new MyConnection().getCnx().prepareStatement(req3);
+        PreparedStatement    ps = cnx2.prepareStatement(req3);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -94,7 +102,7 @@ public class UserService {
         
         try {
             String req4 = "SELECT * from user WHERE id = ?";
-            ps = new MyConnection().getCnx().prepareStatement(req4);
+       PreparedStatement     ps = cnx2.prepareStatement(req4);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
@@ -124,7 +132,7 @@ public class UserService {
         
         try {
             String req5 = "delete from user WHERE id ="+id;
-            ps = new MyConnection().getCnx().prepareStatement(req5);
+        PreparedStatement    ps = cnx2.prepareStatement(req5);
             ps.executeUpdate(req5);
             System.out.println("Utilisateur supprimé avec succés");
             }
@@ -135,7 +143,6 @@ public class UserService {
         }
         
     }
-    
     //
     public void updateUser(User u,int id) {
         
@@ -150,7 +157,7 @@ public class UserService {
                +"',`role`='"+u.getRole()
                +"' WHERE id= "+id;
        
-            ps = new MyConnection().getCnx().prepareStatement(req6);
+       PreparedStatement     ps = cnx2.prepareStatement(req6);
             ps.executeUpdate(req6);
             
         System.out.println("Utilisateur modifié avec succés ");
