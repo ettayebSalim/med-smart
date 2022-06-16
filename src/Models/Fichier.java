@@ -25,7 +25,7 @@ public class Fichier {
 
     public Fichier() {
     }
-
+   
     public Fichier(long id, String type, String idPhysique, User user) throws IOException {
         this.id = id;
         if (TypeFichierService.checkType(type)) {

@@ -73,38 +73,68 @@ public class FXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+    }
 
     @FXML
-     private void switchToscene2(ActionEvent e) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("FXML_1.fxml"));
+    private void switchToscene2(ActionEvent e) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("FichierScene1.fxml"));
         stage = (Stage) (((Node) e.getSource()).getScene().getWindow());
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
+/*
+    @FXML
+    private void chooseType(ActionEvent ex) throws IOException {
+        String s;
+        
+       
+        
+        radio.setOnAction((e) -> {
+            System.out.println("test");
+        });
+        scanner.setOnAction((e) -> {
+            System.out.println("Choice 2 selected");
+        });
+        irm.setOnAction((e) -> {
+            System.out.println("Choice 3 selected");
+        });
+        echo.setOnAction((e) -> {
+            System.out.println("Choice 3 selected");
+        });
+        analyse.setOnAction((e) -> {
+            System.out.println("Choice 3 selected");
+        });
+        ordonnance.setOnAction((e) -> {
+            System.out.println("Choice 3 selected");
+        });
+        lettre.setOnAction((e) -> {
+            System.out.println("Choice 3 selected");
+        });
+
+    }*/
 
     @FXML
-    private void addFile(ActionEvent e) throws IOException{
-    String t;
-     String idF;
-     int id=0;
-     t=typeEnum.getText();
-     idF=path_text.getText();
-     try{
-     id=Integer.valueOf(userId_text.getText());
-     }catch(NumberFormatException ex){
-         ex.getMessage();
-     }
-         System.out.println(t);
-         System.out.println(idF);
-         System.out.println(id);
-         UserService us = new UserService();
+    private void addFile(ActionEvent e) throws IOException {
+        String t;
+        String idF;
+        int id = 0;
+        t = typeEnum.getText();
+        idF = path_text.getText();
+        try {
+            id = Integer.valueOf(userId_text.getText());
+        } catch (NumberFormatException ex) {
+            ex.getMessage();
+        }
+        System.out.println(t);
+        System.out.println(idF);
+        System.out.println(id);
+        /* UserService us = new UserService();
          FichierService f=new FichierService();
          Fichier fichier=new Fichier(t,idF,us.getUserByID(id));
-         f.insertFichier(fichier);
-         
+         f.insertFichier(fichier);*/
+
     }
 }
-
