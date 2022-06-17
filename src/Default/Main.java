@@ -60,29 +60,29 @@ public class Main {
         // PanierCRUD paniercrud = new PanierCRUD();
         //paniercrud.ajouterPanier();
         
-        
-       /* //call service
+     /*   
+      //call service
         FichierService fs = new FichierService();
         UserService userService = new UserService();
-        // adding a user to table user, @author Fares
+          // adding a user to table user, @author Fares
         User user;
         user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
-        userService.ajouterUtilisateur(user);
+        //userService.ajouterUtilisateur(user);
          // adding a file to table fichier, 
         Fichier fichier;
         fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);
         fs.insertFichier(fichier);
         //System.out.println(fs.fetchFichiers());
        // get fichier by id_physique 
-        System.out.println(fs.getFichierByIdPhysique("00000141_000.png"));
+       System.out.println(fs.getFichierByIdPhysique("00000141_000.png"));
         // get fichier by id 
-        System.out.println(fs.getFichierById(1));
+       //System.out.println(fs.getFichierById(1));
        // update fichier by id 
-        Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
-        fs.updateFichierById(fichier2, 1);
+        //Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
+       // fs.updateFichierById(fichier2, 1);
         // delete fichier by id 
-         fs.DeleteFichierById(1);
-        */
+         //fs.DeleteFichierById(1);*/
+        
        
         
 

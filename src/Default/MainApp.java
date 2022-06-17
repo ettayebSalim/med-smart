@@ -5,49 +5,35 @@
  */
 package Default;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-
-import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-
-import javafx.scene.layout.StackPane;
-
 import javafx.stage.Stage;
 
 /**
  *
- *
  * @author AGuizani
- *
- *
  */
-public class NewFXMain extends Application {
+public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FichierScene1.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 
-            Scene scene = new Scene(root, 600, 500);
+            Scene scene = new Scene(root, 925, 625);
+            String css = getClass().getResource("StyleCSS.css").toExternalForm();
+            scene.getStylesheets().clear();
 
-            scene.setFill(Color.LIGHTCYAN);
+            scene.getStylesheets().add(css);
 
             Stage stage = new Stage();
-            stage.setTitle("MedSmart");
+
             stage.setScene(scene);
-            Image image = new Image("care.png");
-            stage.getIcons().add(image);
+
             stage.setResizable(true);
 
             stage.show();
