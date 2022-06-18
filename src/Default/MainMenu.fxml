@@ -39,7 +39,58 @@
                   </Label>
                   <Group AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <children>
-                        <BorderPane fx:id="borderpanebutton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="820.0" />
+                        <BorderPane fx:id="borderpanebutton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="43.0" prefWidth="820.0">
+                           <center>
+                              <HBox fx:id="UserUpMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="btuuser1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Add User">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                             <image>
+                                                <Image url="@../icons/icons8-add-file-96_-xxhdpi_-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btuuser2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Edit User">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                             <image>
+                                                <Image url="@../icons/icons8-edit-file-96-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btuuser3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Delete User">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                             <image>
+                                                <Image url="@../icons/icons8-delete-file-96-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btuuser4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="List Users">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                             <image>
+                                                <Image url="@../icons/list_FILL0_wght700_GRAD0_opsz48-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="btuuser5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Button">
+                                       <graphic>
+                                          <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                             <image>
+                                                <Image url="@../icons/icons8-upload-file-96-removebg-preview.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </center></BorderPane>
                      </children>
                   </Group>
                </children>
@@ -108,7 +159,7 @@
                   <Insets left="5.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <HBox fx:id="MedicamentUpMenu" layoutY="65.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox fx:id="MedicamentUpMenu" layoutX="44.0" layoutY="44.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="btumed1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Add Medicament">
                            <graphic>
@@ -157,7 +208,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="EtablissementUpMenu" layoutX="19.0" layoutY="167.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox fx:id="EtablissementUpMenu" layoutX="44.0" layoutY="141.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="btu111" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Add Etablissement">
                            <graphic>
@@ -206,7 +257,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="RendezVousUpMenu" layoutX="14.0" layoutY="239.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox fx:id="RendezVousUpMenu" layoutX="44.0" layoutY="225.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="btu1111" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Add Rendez-Vous">
                            <graphic>
@@ -255,9 +306,9 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="FichierUpMenu" layoutY="327.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox fx:id="FichierUpMenu" layoutX="30.0" layoutY="326.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
-                        <Button fx:id="btu1112" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#fichierMenu" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Add File">
+                        <Button fx:id="btu1112" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#fichierMenuAdd" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Add File">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
                                  <image>
@@ -266,7 +317,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="btu2112" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#fichierMenu2" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Edit File">
+                        <Button fx:id="btu2112" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#fichierMenuEdit" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Edit File">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
                                  <image>
@@ -313,7 +364,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox fx:id="PanierUpMenu" layoutY="409.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <HBox fx:id="PanierUpMenu" layoutX="30.0" layoutY="409.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="btu11121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Add Panier">
                            <graphic>
@@ -352,55 +403,6 @@
                            </graphic>
                         </Button>
                         <Button fx:id="btu51121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Button">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
-                                 <image>
-                                    <Image url="@../icons/icons8-upload-file-96-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="UserUpMenu" layoutX="19.0" layoutY="492.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                     <children>
-                        <Button fx:id="btuuser1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Add User">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
-                                 <image>
-                                    <Image url="@../icons/icons8-add-file-96_-xxhdpi_-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btuuser2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Edit User">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
-                                 <image>
-                                    <Image url="@../icons/icons8-edit-file-96-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btuuser3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Delete User">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
-                                 <image>
-                                    <Image url="@../icons/icons8-delete-file-96-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btuuser4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="List Users">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
-                                 <image>
-                                    <Image url="@../icons/list_FILL0_wght700_GRAD0_opsz48-removebg-preview.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btuuser5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Button">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
                                  <image>
