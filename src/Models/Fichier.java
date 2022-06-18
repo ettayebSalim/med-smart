@@ -35,12 +35,8 @@ public class Fichier {
             Path p = Paths.get(idPhysique);
             File f = p.toFile();
 
-            if (f.exists()) {
-                if (f.isFile()) {
-                    this.idPhysique = f.getName();
+            this.idPhysique = f.getName();
 
-                }
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,17 +52,25 @@ public class Fichier {
         try {
             Path p = Paths.get(idPhysique);
             File f = p.toFile();
+            this.idPhysique = f.getName();
 
-            if (f.exists()) {
-                if (f.isFile()) {
-                    this.idPhysique = f.getName();
-
-                }
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.user = user;
+    }
+
+    public Fichier(String type, String idPhysique) {
+        if (TypeFichierService.checkType(type)) {
+            this.type = TypeFichierService.getType(type);
+        }
+        try {
+            Path p = Paths.get(idPhysique);
+            File f = p.toFile();
+            this.idPhysique = f.getName();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public long getId() {
@@ -106,5 +110,13 @@ public class Fichier {
 
         return "Fichier:{" + "id=" + id + ", type=" + type + ", idPhysique=" + idPhysique + ", User Id=" + user.getId() + '}';
 
+    }
+
+    public boolean exists() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean isFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

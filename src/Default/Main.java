@@ -28,6 +28,8 @@ import Models.Produit;
 import Services.FichierService;
 
 import Services.UserService;
+
+import Services.UserService;
 import java.io.IOException;
 
 import java.sql.SQLException;
@@ -68,29 +70,30 @@ public class Main {
         // PanierCRUD paniercrud = new PanierCRUD();
         //paniercrud.ajouterPanier();
         
-       /* 
-        //call service
+    /*  
+      //call service
         FichierService fs = new FichierService();
         UserService userService = new UserService();
-        // adding a user to table user, @author Fares
+          // adding a user to table user, @author Fares
         User user;
         user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
-        userService.ajouterUtilisateur(user);
+        //userService.ajouterUtilisateur(user);
          // adding a file to table fichier, 
         Fichier fichier;
         fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);
         fs.insertFichier(fichier);
-        System.err.println(fs.fetchFichiers());
+        //System.out.println(fs.fetchFichiers());
        // get fichier by id_physique 
-        System.out.println(fs.getFichierByIdPhysique("00000141_000.png"));
+       System.out.println(fs.getFichierByIdPhysique("00000141_000.png"));
         // get fichier by id 
-        System.out.println(fs.getFichierById(1));
-        // update fichier by id 
-        Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
-        fs.updateFichierById(fichier2, 1);
+       //System.out.println(fs.getFichierById(1));
+       // update fichier by id 
+        //Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
+       // fs.updateFichierById(fichier2, 1);
         // delete fichier by id 
-        fs.DeleteFichierById(1);
-        */
+         //fs.DeleteFichierById(1);*/
+        
+       
         
 
     // PanierCRUD paniercrud = new PanierCRUD();
@@ -107,6 +110,9 @@ public class Main {
      //System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
+
+        //Produit p = new Produit("daf01","11",5,8);
+       // ps.ModifProduits(p);
 
        
 
@@ -125,12 +131,19 @@ public class Main {
         //paniercrud.ajouterPanier();
 
        // EtabCRUD etab = new EtabCRUD();
+        //Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
+        // etab.deleteEtab(1);
+
       //  Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
     //     etab.deleteEtab(1);
        // etab.updateEtab(e, 1);
        // etab.ajouterEtab(e);
        //etab.getEtabById(1);
         //System.out.println(etab.afficherEtab());
+        
+        
+       
+       
 
         //call service
         FichierService fs = new FichierService();
