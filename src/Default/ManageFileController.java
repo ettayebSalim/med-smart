@@ -29,8 +29,7 @@ import javafx.stage.FileChooser;
 import static Services.TypeFichierService.checkType;
 import Services.UserService;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;

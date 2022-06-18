@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.ManageFileController">
+<AnchorPane fx:id="ap" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="submenu" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.ManageFileController">
    <children>
       <BorderPane layoutX="219.0" layoutY="42.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -51,7 +51,7 @@
                               <Insets bottom="20.0" top="5.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <Button fx:id="selectbutton" mnemonicParsing="false" onAction="#selectMultipleFile" prefHeight="38.0" prefWidth="250.0" text="Select Files">
+                        <Button fx:id="selectbutton" mnemonicParsing="false" onAction="#selectMultipleFile" prefHeight="38.0" prefWidth="250.0" styleClass="MenuItem" text="Select Files">
                            <VBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
@@ -92,6 +92,12 @@
                </BorderPane.margin>
             </HBox>
          </bottom>
+         <opaqueInsets>
+            <Insets left="5.0" top="5.0" />
+         </opaqueInsets>
       </BorderPane>
    </children>
+   <opaqueInsets>
+      <Insets left="5.0" top="5.0" />
+   </opaqueInsets>
 </AnchorPane>

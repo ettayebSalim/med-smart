@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/FichierService.java</file>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/Main.java</file>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/ManageFileController.java</file>
-            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/Fichier.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MainMenu.fxml</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/StyleCSS.css</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/UpperMenuController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MenuController.java</file>
             <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MainApp.java</file>
         </group>
     </open-files>

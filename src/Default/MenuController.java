@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import javafx.scene.control.Alert;
@@ -35,6 +36,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -42,6 +44,39 @@ import javafx.util.Duration;
  * @author AGuizani
  */
 public class MenuController implements Initializable {
+
+    @FXML
+    private HBox FichierUpMenu;
+
+    @FXML
+    private HBox MedicamentUpMenu;
+
+    @FXML
+    private HBox EtablissementUpMenu;
+
+    @FXML
+    private HBox PanierUpMenu;
+
+    @FXML
+    private HBox RendezVousUpMenu;
+
+    @FXML
+    private HBox UserUpMenu;
+
+    @FXML
+    private Button btu1;
+
+    @FXML
+    private Button btu2;
+
+    @FXML
+    private Button btu3;
+
+    @FXML
+    private Button btu4;
+
+    @FXML
+    private Button btu5;
 
     @FXML
     private ImageView Exit;
@@ -62,7 +97,7 @@ public class MenuController implements Initializable {
     private BorderPane borderpanebutton;
 
     @FXML
-    private BorderPane borderpanemain;
+    public BorderPane borderpanemain;
 
     @FXML
     private Button btl1;
@@ -75,6 +110,12 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button btl4;
+    
+     @FXML
+    private Button btl5;
+     
+      @FXML
+    private Button btl6;
 
     @FXML
     private Pane p_up;
@@ -84,6 +125,9 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        
+       
 
         Exit.setOnMouseClicked(event -> {
             Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -129,9 +173,7 @@ public class MenuController implements Initializable {
 
             });
         });
-        
 
-        
         // Create Bloom Effect
         Bloom bloom = new Bloom();
         Bloom bloom2 = new Bloom();
@@ -147,11 +189,74 @@ public class MenuController implements Initializable {
         btl4.setOnMousePressed(event -> btl4.setEffect(bloom));
         btl4.setOnMouseReleased(event -> btl4.setEffect(bloom2));
         
-
-    }
+        FichierUpMenu.setVisible(false);
+        MedicamentUpMenu.setVisible(false);
+        EtablissementUpMenu.setVisible(false);
+        PanierUpMenu.setVisible(false);
+        RendezVousUpMenu.setVisible(false);
+        UserUpMenu.setVisible(false);
+        
+        btl1.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(false);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(true);
+            borderpanebutton.setCenter(UserUpMenu);
+        });
+        btl2.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(true);
+            borderpanebutton.setCenter(MedicamentUpMenu);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(false);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+        });
+        
+                btl3.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(true);
+            borderpanebutton.setCenter(EtablissementUpMenu);
+            PanierUpMenu.setVisible(false);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+        });
     
+  btl4.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            
+            PanierUpMenu.setVisible(false);
+            RendezVousUpMenu.setVisible(true);
+            borderpanebutton.setCenter(RendezVousUpMenu);
+            UserUpMenu.setVisible(false);
+        });
+  
+    btl5.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(true);
+            borderpanebutton.setCenter(FichierUpMenu);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(false);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+        });
+        btl6.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false); 
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(true);
+            borderpanebutton.setCenter( PanierUpMenu);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+        });
+    }
 
-    private void loadUIMain(String ui) {
+    public void loadUIMain(String ui) {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
@@ -159,9 +264,10 @@ public class MenuController implements Initializable {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpanemain.setCenter(root);
+
     }
 
-    private void loadUIButton(String ui) {
+    public void loadUIButton(String ui) {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
@@ -169,28 +275,51 @@ public class MenuController implements Initializable {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderpanebutton.setCenter(root);
+
     }
 
+    
+    
     @FXML
-    private void ui1(MouseEvent e) {
-
+    private void userMenu(MouseEvent e) {
         loadUIMain("addFile");
-        loadUIButton("UI1_Button");
 
     }
 
     @FXML
-    private void ui2(MouseEvent e) {
+    public void medicamentMenu(MouseEvent e) {
 
         loadUIMain("UI1");
 
     }
 
     @FXML
-    private void ui3(MouseEvent e) {
+    private void etablissementMenu(MouseEvent e) {
 
         loadUIMain("UI1");
 
     }
 
+    @FXML
+    private void rendezVousMenu(MouseEvent e) {
+
+        loadUIMain("UI1");
+
+    }
+
+    @FXML
+    private void fichierMenu(MouseEvent e) {
+        loadUIMain("addFile");
+    }
+       @FXML
+    private void fichierMenu2(MouseEvent e) {
+        loadUIMain("UI1");
+    }
+
+    @FXML
+    private void panierMenu(MouseEvent e) {
+
+        loadUIMain("UI1");
+
+    }
 }

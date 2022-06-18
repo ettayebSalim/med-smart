@@ -60,7 +60,7 @@ public class Main {
         // PanierCRUD paniercrud = new PanierCRUD();
         //paniercrud.ajouterPanier();
         
-     /*   
+    /*  
       //call service
         FichierService fs = new FichierService();
         UserService userService = new UserService();

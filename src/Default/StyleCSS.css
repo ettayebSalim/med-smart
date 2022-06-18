@@ -42,13 +42,13 @@ and open the template in the editor.
 #ap_up{
     -fx-background-color:white;
 }
-
-#ap_center{
-    -fx-background-color:light-primary-color;
-}
+/*
+.submenu{
+    -fx-background-color:dark-primary-color;
+}*/
 
 #slider{
-    -fx-background-color: default-primary-color;
+    -fx-background-color: dark-primary-color;
 }
 
 
@@ -74,6 +74,8 @@ and open the template in the editor.
 .MenuItem{
     -fx-text-fill:secondary-text-color;
     -fx-opacity:0.5;
+
+    
     
 }
 
@@ -85,6 +87,7 @@ and open the template in the editor.
     -fx-border-color: secondary-Color;
     -fx-border-width:0px 0px 3px 0px;
     -fx-opacity:1;
+
 }
 
 .BarItem:hover{
