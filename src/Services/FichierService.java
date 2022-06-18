@@ -21,9 +21,10 @@ import java.util.logging.Logger;
  * @author AGuizani
  */
 public class FichierService {
+  Connection cnx = MyConnection.getInstance().getCnx();
 
 
-    Connection cnx = MyConnection.getInstance().getCnx();
+
     UserService us = new UserService();
 
     //Insert Fichier into BD
