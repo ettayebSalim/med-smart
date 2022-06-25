@@ -24,7 +24,7 @@ public class MainApp extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 
-            Scene scene = new Scene(root, 925, 625);
+            Scene scene = new Scene(root, 1280, 800);
             String css = getClass().getResource("StyleCSS.css").toExternalForm();
             scene.getStylesheets().clear();
 
@@ -36,7 +36,7 @@ public class MainApp extends Application {
 
             stage.setResizable(true);
 
-            stage.show();
+            stage.showAndWait();
 
         } catch (IOException ex) {
             ex.getMessage();

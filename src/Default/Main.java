@@ -120,9 +120,9 @@ public class Main {
         // ps.fetchProduit();
      
 
-//     UserService userService = new UserService();
-//     User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
-        //  userService.ajouterUtilisateur(user);
+    //UserService userService = new UserService();
+     //User user = new User("Nadhem","Fekih","Nadhem.Fekih@esprit.tn","14225520","azerty","22365478","Medecin");
+         //userService.ajouterUtilisateur(user);
 //     System.out.println(userService.fetchUsers());
         //    System.out.println(userService.getUserByID(3));
         // System.out.println(userService.deleteUser(2));
@@ -146,26 +146,28 @@ public class Main {
        
 
         //call service
-        FichierService fs = new FichierService();
+        //FichierService fs = new FichierService();
         //UserService userService = new UserService();
         // adding a user to table user, @author Fares
-        User user;
-        user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
+        // User user;
+        // user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
         //userService.ajouterUtilisateur(user);
-         // adding a file to table fichier, 
+        // adding a file to table fichier, 
         //Fichier fichier;
         //fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);
         //fs.insertFichier(fichier);
-        System.out.println(fs.fetchFichiers());
-       // get fichier by id_physique 
-       System.out.println(fs.getFichierByIdPhysique("00000141_000.png"));
+        //System.out.println(fs.fetchFichiers());
+        // get fichier by id_physique 
+       // System.out.println(fs.getFichierByIdPhysique("00000141_000"));
         // get fichier by id 
-        System.out.println(fs.getFichierById(2));
+        // System.out.println(fs.getFichierById(80));
         // update fichier by id 
-       Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
-        fs.updateFichierById(fichier2, 1);
-         //delete fichier by id 
-        fs.DeleteFichierById(1);
+        //Fichier fichier2= new Fichier(2,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00001287_000.png", user);
+        // fs.updateFichierById(fichier2, 1);
+        //delete fichier by id 
+        //fs.DeleteFichierById(1);
+       // System.err.println(fs.numberOfRows());
+       
         
     }
 

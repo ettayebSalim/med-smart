@@ -29,6 +29,7 @@ import javafx.stage.FileChooser;
 import static Services.TypeFichierService.checkType;
 import Services.UserService;
 import java.io.IOException;
+import javafx.geometry.Insets;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -41,7 +42,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
  *
  * @author AGuizani
  */
-public class ManageFileController implements Initializable {
+public class AddFileController implements Initializable {
 
     @FXML
     private Label msg;
@@ -50,7 +51,7 @@ public class ManageFileController implements Initializable {
     private TableView<Fichier> addTable;
 
     @FXML
-    private AnchorPane ap;
+    private AnchorPane apaddfile;
 
     @FXML
     private AnchorPane ap_center;
@@ -94,21 +95,26 @@ public class ManageFileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+        
+        
+        // setting the File_Type column editable
         addTable.setEditable(true);
         coltype.setCellFactory(TextFieldTableCell.forTableColumn());
+        //setting-up choiceboxx
         typechoice.setDisable(true);
-
         typechoice.getItems().addAll(choice);
         typechoice.setOnAction(this::getTypeFichieChoice);
 
     }
 
+    //select Files from system 
     @FXML
     public void selectMultipleFile(ActionEvent e) throws IOException {
         FileChooser fc = new FileChooser();
 
         List<File> selectedFile = fc.showOpenMultipleDialog(null);
-        boolean bool = this.change(e);
+        boolean bool = this.activateChoiceBox(e);
         if (selectedFile != null) {
             for (int i = 0; i < selectedFile.size(); i++) {
 
@@ -127,12 +133,12 @@ public class ManageFileController implements Initializable {
         }
         colfilename.setCellValueFactory(new PropertyValueFactory<>("IdPhysique"));
         coltype.setCellValueFactory(new PropertyValueFactory<>("type"));
-
         addTable.setItems(list);
         msg.setText("Please Update File Type Column");
 
     }
 
+    //Edit the File_Type Column 
     @FXML
     public void editTableOnColoumn(TableColumn.CellEditEvent e) {
 
@@ -141,13 +147,14 @@ public class ManageFileController implements Initializable {
         selectedFichier.setType(e.getNewValue().toString());
 
         if (!checkType(e.getOldValue().toString())) {
-            msg.setText("Not a Defined File Type!");
+            msg.setText("File Type Noy Supported !");
         } else {
             msg.setText("File Type updated Sucessfully!");
         }
 
     }
 
+    //Add Data to Database using crud method
     @FXML
     public void addDataToDb(ActionEvent e) throws IOException {
 
@@ -155,29 +162,31 @@ public class ManageFileController implements Initializable {
 
         for (int i = 0; i < addTable.getItems().size(); i++) {
             f = addTable.getItems().get(i);
-    
+
             FichierService fs = new FichierService();
-            
+
             UserService us = new UserService();
-            try{
-            int userId = Integer.parseInt(userid.getText());
-             User user = us.getUserByID(userId);
-                
-            Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
-            fs.insertFichier(fichier);
-            }
-            catch (NumberFormatException ex){
+            try {
+                int userId = Integer.parseInt(userid.getText());
+                User user = us.getUserByID(userId);
+
+                Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
+                fs.insertFichier(fichier);
+                msg.setText("All Files Added Successfully");
+            } catch (NumberFormatException ex) {
                 msg.setText("Please Enter A Valid User Id");
             }
         }
     }
 
+    //Delete a row from TableView 
     @FXML
     public void deleteRowTabView(ActionEvent e) {
         int SelectedId = addTable.getSelectionModel().getSelectedIndex();
         addTable.getItems().remove(SelectedId);
     }
 
+    //Get File_Type from Choicebox
     @FXML
     public String getTypeFichieChoice(ActionEvent e) {
 
@@ -186,8 +195,9 @@ public class ManageFileController implements Initializable {
         return s;
     }
 
+    //Activate ChoiceBox for file type select
     @FXML
-    public boolean change(ActionEvent e) {
+    public boolean activateChoiceBox(ActionEvent e) {
         boolean bool = true;
 
         if (checkchoice.isSelected()) {
@@ -203,9 +213,10 @@ public class ManageFileController implements Initializable {
 
     }
 
+    //Set a chosen type from choicebox for all the uploaded files 
     @FXML
     public void SetAllType(ActionEvent e) throws IOException {
-        boolean bool = this.change(e);
+        boolean bool = this.activateChoiceBox(e);
         Fichier f = new Fichier();
 
         for (int i = 0; i < addTable.getItems().size(); i++) {
@@ -233,6 +244,7 @@ public class ManageFileController implements Initializable {
         addTable.setItems(list2);
     }
 
+    //clear tableview
     @FXML
     public void clearTable(ActionEvent e) {
         addTable.getItems().removeAll(list);

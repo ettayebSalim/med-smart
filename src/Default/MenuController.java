@@ -5,7 +5,7 @@
  */
 package Default;
 
-import com.sun.scenario.effect.Glow;
+import Models.Fichier;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -13,14 +13,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,15 +27,14 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Bloom;
-import javafx.scene.effect.DropShadow;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
 
 /**
@@ -171,6 +169,10 @@ public class MenuController implements Initializable {
     @FXML
     private Button btu51121;
 
+    
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -178,7 +180,6 @@ public class MenuController implements Initializable {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Quit SmartCare");
             alert.setHeaderText("Quit SmartCare? ");
-
             ButtonType buttonTypeOne = new ButtonType("Yes");
             ButtonType buttonTypeCancel = new ButtonType("No", ButtonData.CANCEL_CLOSE);
             alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
@@ -186,19 +187,21 @@ public class MenuController implements Initializable {
             if (result.get() == buttonTypeOne) {
                 System.exit(0);
             }
-            //System.exit(0);
+            
         }
         );
 
-        slider.setTranslateX(-176);
+        //Setting the Translation of the Slider Menu
+        
+        slider.setTranslateX(-225);
 
         Menu.setOnMouseClicked(enent -> {
             TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.1));
+            slide.setDuration(Duration.seconds(0.3));
             slide.setNode(slider);
             slide.setToX(0);
             slide.play();
-            slider.setTranslateX(-176);
+            slider.setTranslateX(-225);
             slide.setOnFinished((ActionEvent e) -> {
                 Menu.setVisible(false);
                 MenuClose.setVisible(true);
@@ -209,7 +212,7 @@ public class MenuController implements Initializable {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.6));
             slide.setNode(slider);
-            slide.setToX(-176);
+            slide.setToX(-225);
             slide.play();
             slider.setTranslateX(0);
             slide.setOnFinished((ActionEvent e) -> {
@@ -219,7 +222,7 @@ public class MenuController implements Initializable {
             });
         });
 
-        // Create Bloom Effect
+        // Create Bloom Effect for the Slider menu buttons
         Bloom bloom = new Bloom();
         Bloom bloom2 = new Bloom();
         // Setting Threshold
@@ -233,8 +236,11 @@ public class MenuController implements Initializable {
         btl3.setOnMouseReleased(event -> btl3.setEffect(bloom2));
         btl4.setOnMousePressed(event -> btl4.setEffect(bloom));
         btl4.setOnMouseReleased(event -> btl4.setEffect(bloom2));
+        btl5.setOnMousePressed(event -> btl5.setEffect(bloom));
+        btl5.setOnMouseReleased(event -> btl5.setEffect(bloom2));
+        btl6.setOnMousePressed(event -> btl6.setEffect(bloom));
+        btl6.setOnMouseReleased(event -> btl6.setEffect(bloom2));
 
-        
         //Initialise Upper Menu
         FichierUpMenu.setVisible(false);
         MedicamentUpMenu.setVisible(false);
@@ -242,8 +248,8 @@ public class MenuController implements Initializable {
         PanierUpMenu.setVisible(false);
         RendezVousUpMenu.setVisible(false);
         UserUpMenu.setVisible(true);
-
-        //Change Upper Menu
+        
+        //setting up the  Slider Menu with the "OnMouseClicked" event
         btl1.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
             MedicamentUpMenu.setVisible(false);
@@ -291,8 +297,8 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
-             loadUIMain("addFile");
-            
+            loadUIMain("addFile");//on Mouse clicked first FXML addFile is loaded 
+
         });
         btu111.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
@@ -325,8 +331,13 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
         });
+         
+       
     }
 
+   /*method that takes the FXML file name as input  which will be concatinated with ".fxml" 
+    then  loaded and centerd in the "work area" the border pane borderpanemain */ 
+    
     public void loadUIMain(String ui) {
         Parent root = null;
         try {
@@ -338,23 +349,17 @@ public class MenuController implements Initializable {
 
     }
 
-    public void loadUIButton(String ui) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        borderpanebutton.setCenter(root);
 
-    }
 
     private void userMenu(MouseEvent e) {
-        loadUIMain("addFile");
+        loadUIMain("UI1");
 
     }
 
-    public void medicamentMenu(MouseEvent e) {
+
+    @FXML
+    private void medicamentMenu(MouseEvent e) {
+
 
         loadUIMain("UI1");
 
@@ -371,15 +376,37 @@ public class MenuController implements Initializable {
         loadUIMain("UI1");
 
     }
-
+    
+    
+/* this method calls the loadUIMain method to add the addFile.fxml 
+to the work area and associated to slider menu button btl5 "Fichier" and 
+ the Upper menu button "AddFile"
+Slider Menu:the button action is initialized in the initialize method
+Upper Menu:the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
     @FXML
     private void fichierMenuAdd(MouseEvent e) {
         loadUIMain("addFile");
+       
+     
     }
 
+    /* this method calls the loadUIMain method to load the listFile.fxml 
+to the work area and associated to Upper menu button "ListFile"
+the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
     @FXML
-    private void fichierMenuEdit(MouseEvent e) {
-        loadUIMain("UI1");
+    private void fichierMenulist(MouseEvent e) {
+        loadUIMain("listFile");
+        
+    }
+
+     /* this method calls the loadUIMain method to load the editFile.fxml 
+to the work area and associated to Upper menu button "EditFile"
+the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
+    @FXML
+    public void fichierMenuEdit(MouseEvent e) throws IOException {
+        loadUIMain("editFile");
+
+
     }
 
     private void panierMenu(MouseEvent e) {
@@ -388,10 +415,12 @@ public class MenuController implements Initializable {
 
     }
 
+
     @FXML
     private void AddEtablissement(ActionEvent event) {
 
         
         
     }
+
 }
