@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/StyleCSS.css</file>
+=======
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/FichierService.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/EditFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/ListFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/AddFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MenuController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MainApp.java</file>
+>>>>>>> 5c58c02 (appfxml)
         </group>
     </open-files>
 </project-private>

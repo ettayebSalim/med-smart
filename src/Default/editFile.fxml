@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane fx:id="apeditfile" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1000.0" styleClass="submenu" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.EditFileController">
+   <children>
+      <BorderPane layoutX="219.0" layoutY="42.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane fx:id="ap_centereditfile" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="5.0" top="5.0" />
+               </BorderPane.margin>
+               <children>
+                  <TableView fx:id="editfile" layoutX="127.0" layoutY="14.0" prefHeight="330.0" prefWidth="553.0" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                    <columns>
+                      <TableColumn fx:id="colfileid1" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="File Id" />
+                      <TableColumn fx:id="colfiletype1" maxWidth="250.0" minWidth="150.0" prefWidth="150.0" text="File Type" />
+                        <TableColumn fx:id="colfilename1" maxWidth="300.0" minWidth="200.0" prefWidth="200.0" text="File Name" />
+                        <TableColumn fx:id="coluserid1" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="User Id" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutY="535.0" prefHeight="65.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="535.0">
+                     <children>
+                        <Button fx:id="canceledit" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="50.0" right="20.0" top="15.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="validateedit" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="OK">
+                           <HBox.margin>
+                              <Insets left="425.0" top="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </HBox>
+               </children></AnchorPane>
+         </center>
+         <opaqueInsets>
+            <Insets left="5.0" top="5.0" />
+         </opaqueInsets>
+      </BorderPane>
+   </children>
+   <opaqueInsets>
+      <Insets left="5.0" top="5.0" />
+   </opaqueInsets>
+</AnchorPane>
