@@ -52,7 +52,10 @@ public class Main {
 
         MyConnection.getInstance();
 //     MyConnection mc = new MyConnection();
-        // PanierCRUD paniercrud = new PanierCRUD();
+        //PanierCRUD paniercrud = new PanierCRUD();
+        
+        
+       // System.out.println(paniercrud.afficherPanier());
         //paniercrud.ajouterPanier();
 
         // ProduitService ps = new ProduitService();

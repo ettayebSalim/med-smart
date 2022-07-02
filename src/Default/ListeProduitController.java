@@ -5,8 +5,8 @@
  */
 package Default;
 
-import Models.Etablissments;
-import Services.EtabCRUD;
+import Models.Produit;
+import Services.ProduitService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -21,34 +22,33 @@ import javafx.scene.layout.Region;
 /**
  * FXML Controller class
  *
- * @author haith
+ * @author NAD
  */
-public class ListeEtabController implements Initializable {
+public class ListeProduitController implements Initializable {
 
     @FXML
     private GridPane grid;
-    private SupprimerEtab supEtab;
-    @FXML
+    private SupprimerProduit supProd;
+    
     private AnchorPane MyPane;
 
-private void supprimerr(Etablissments etab){
-         EtabCRUD etabli =new EtabCRUD();
-         etabli.deleteEtab((int) etab.getId());
-         
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Erreur");
-            alert.setHeaderText(null);
-            alert.setContentText("Etabissement deleted successfully");
-            alert.showAndWait();
-            
-            
-           MyPane.getChildren().clear();
-            
-             try {
+   private void supprimerr(Produit prod) {
+        ProduitService produit = new ProduitService();
+        produit.Supprimerproduits((int) prod.getId_prod());
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("Produit deleted successfully");
+        alert.showAndWait();
+
+        MyPane.getChildren().clear();
+
+        try {
             // TODO
             FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ListeEtab.fxml"));
-                 
+            cards.setLocation(getClass().getResource("ListeProduit.fxml"));
+
             AnchorPane anchorPane = cards.load();
 
             MyPane.getChildren().add(anchorPane);
@@ -57,42 +57,38 @@ private void supprimerr(Etablissments etab){
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-}
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        EtabCRUD etab =new EtabCRUD();
-        
-        
-         if(etab.afficherEtab().size()>0){
-         supEtab=new SupprimerEtab() {
-             @Override
-             public void supprimer(Etablissments etab) {
-                 supprimerr(etab);
-             }
-         };
-             
-             
-         }
-        
-        int column =1;
-        int row=0;
-       
-       try{
-        for(int i=0;i<etab.afficherEtab().size();i++){
-            
-            FXMLLoader cards = new FXMLLoader();
-                cards.setLocation(getClass().getResource("Etab.fxml"));
+
+        ProduitService prod = new ProduitService();
+
+        if (prod.fetchProduit().size()>0) {
+            supProd = new SupprimerProduit() {
+                public void supprimer(Produit prod) {
+                    supprimerr(prod);
+                }
+            };
+
+        }
+
+        int column = 1;
+        int row = 0;
+
+        try {
+            for (int i = 0; i < prod.fetchProduit().size(); i++) {
+
+                FXMLLoader cards = new FXMLLoader();
+                cards.setLocation(getClass().getResource("Produit.fxml"));
 
                 AnchorPane anchorPane = cards.load();
 
-                EtabController Etabservice = cards.getController();
-
-                Etabservice.setData(etab.afficherEtab().get(i),supEtab);
-               
+                ProduitController Produitservice = cards.getController();
+                Produitservice.setData(prod.fetchProduit().get(i),supProd);
 
                 // System.out.println("hhh");
                 // System.out.println(offreservice.getAllHoreca().get(i).getClass().getSimpleName());
@@ -118,11 +114,7 @@ private void supprimerr(Etablissments etab){
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-            
-        }
-                
-                
-               
-    }    
-    
 
+    }
+
+}
