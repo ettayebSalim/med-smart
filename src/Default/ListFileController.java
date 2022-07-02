@@ -14,8 +14,11 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -75,11 +78,12 @@ public class ListFileController implements Initializable {
     @FXML
     private TextField filebyid;
 
-    @FXML
-    private TextField filebyname;
 
     @FXML
     public BorderPane borderpanemain;
+
+    @FXML
+    private TextField tablefilter;
 
     private MenuController menucontroller;
 
@@ -91,17 +95,10 @@ public class ListFileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        fetchNFiles(0, 25);
+         fetchNFiles(0, 25);
         listfile.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-//Filter By Idphysique text field  
-        FichierService fs = new FichierService();
-        filebyname.setOnKeyPressed((KeyEvent e) -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                getFileByIdPhysique();
-            }
-        });
-
+//Search File By Id text field  
         filebyid.setOnKeyPressed((KeyEvent e) -> {
             if (e.getCode() == KeyCode.ENTER) {
                 getFileById();
@@ -122,7 +119,8 @@ public class ListFileController implements Initializable {
     @FXML
     public void fetchFiles() {
         n = 0;
-        listfile.getItems().removeAll(listFile);
+        showTableView();
+        listfile.getItems().clear();
         FichierService fs = new FichierService();
         List<Fichier> allFichier = fs.fetchFichiers();
 
@@ -131,7 +129,6 @@ public class ListFileController implements Initializable {
 
         }
         showTableView();
-
     }
 
     @FXML
@@ -152,7 +149,8 @@ public class ListFileController implements Initializable {
         FichierService fs = new FichierService();
         n = n + m;
 
-        listfile.getItems().removeAll(listFile);
+        showTableView();
+        listfile.getItems().clear();
         int max = fs.numberOfRows();
         if (n <= (max / m) * m) {
             List<Fichier> allFichier = fs.fetchNFichiers(n, m);
@@ -175,8 +173,8 @@ public class ListFileController implements Initializable {
     public void moveListdowwn() {
         FichierService fs = new FichierService();
         n = n - m;
-
-        listfile.getItems().removeAll(listFile);
+        showTableView();
+        listfile.getItems().clear();
         if (n > 0) {
 
             List<Fichier> fichier = fs.fetchNFichiers(n, m);
@@ -195,46 +193,26 @@ public class ListFileController implements Initializable {
 
     public void getFileById() {
         FichierService fs = new FichierService();
-
+        showTableView();
         try {
             int id = Integer.parseInt(filebyid.getText());
             try {
                 Fichier fichier = fs.getFichierById(id);
                 System.out.println(fichier);
-                listfile.getItems().removeAll(listFile);
+                listfile.getItems().clear();
                 listFile.add(fichier);
                 showTableView();
             } catch (NullPointerException npe) {
-                listfile.getItems().removeAll(listFile);
+                listfile.getItems().clear();
                 listfile.setPlaceholder(new Label("File Not Found"));
             }
         } catch (NumberFormatException ex) {
-            listfile.getItems().removeAll(listFile);
+            listfile.getItems().clear();
             listfile.setPlaceholder(new Label("Please enter only valid Integer "));
         }
 
     }
 
-    public void getFileByIdPhysique() {
-        FichierService fs = new FichierService();
-        if (!filebyname.getText().equals("")) {
-            listfile.getItems().removeAll(listFile);
-            String s = filebyname.getText();
-            try {
-                Fichier fichier = fs.getFichierByIdPhysique(s);
-                System.out.println(fichier);
-                listFile.add(fichier);
-                showTableView();
-            } catch (NullPointerException ex) {
-                listfile.getItems().removeAll(listFile);
-                listfile.setPlaceholder(new Label("File Not Found!"));
-            }
-        } else {
-
-            listfile.getItems().removeAll(listFile);
-            listfile.setPlaceholder(new Label("Please Enter a Valid File Name"));
-        }
-    }
 
     @FXML
     public void loadEditfile(MouseEvent e) throws IOException {
@@ -262,8 +240,38 @@ public class ListFileController implements Initializable {
         }
     }
 
+    @FXML
     public void SearchTableByTypeOrUser() {
 
+        FilteredList<Fichier> filteredData = new FilteredList(listFile, bool -> true);
+        tablefilter.textProperty().addListener((ObservableValue<? extends String> obervable, String oldValue, String newValue) -> {
+
+            filteredData.setPredicate(fichier -> {
+                if (newValue == null || newValue.isEmpty()) {
+
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+                String userId = String.valueOf(fichier.getUser().getId());
+                if (fichier.getType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                }else if(fichier.getIdPhysique().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;                   
+                } else if (userId.toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<Fichier> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(listfile.comparatorProperty());
+        ObservableList<Fichier> listFile = sortedData;
+        listfile.setItems(listFile);
+
     }
-    
+
 }

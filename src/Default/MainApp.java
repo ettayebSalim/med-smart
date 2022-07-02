@@ -36,7 +36,7 @@ public class MainApp extends Application {
 
             stage.setResizable(true);
 
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException ex) {
             ex.getMessage();
