@@ -62,6 +62,9 @@ public class MenuController implements Initializable {
 
     @FXML
     private HBox UserUpMenu;
+    
+        @FXML
+    private HBox CategorieUpMenu;
 
     @FXML
     private Button btu1;
@@ -116,6 +119,9 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button btl6;
+    
+        @FXML
+    private Button btl7;
 
     @FXML
     private Pane p_up;
@@ -185,6 +191,8 @@ public class MenuController implements Initializable {
         btl3.setOnMouseReleased(event -> btl3.setEffect(bloom2));
         btl4.setOnMousePressed(event -> btl4.setEffect(bloom));
         btl4.setOnMouseReleased(event -> btl4.setEffect(bloom2));
+        btl7.setOnMousePressed(event -> btl4.setEffect(bloom));
+        btl7.setOnMouseReleased(event -> btl4.setEffect(bloom2));
 
         
         //Initialise Upper Menu
@@ -194,6 +202,7 @@ public class MenuController implements Initializable {
         PanierUpMenu.setVisible(false);
         RendezVousUpMenu.setVisible(false);
         UserUpMenu.setVisible(true);
+        CategorieUpMenu.setVisible(false);
 
         //Change Upper Menu
         btl1.setOnMouseClicked(e -> {
@@ -204,6 +213,7 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(true);
             borderpanebutton.setCenter(UserUpMenu);
+            CategorieUpMenu.setVisible(false);
         });
         btl2.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
@@ -213,6 +223,7 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+            CategorieUpMenu.setVisible(false);
         });
 
         btl3.setOnMouseClicked(e -> {
@@ -223,6 +234,7 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+            CategorieUpMenu.setVisible(false);
         });
 
         btl4.setOnMouseClicked(e -> {
@@ -233,6 +245,7 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(true);
             borderpanebutton.setCenter(RendezVousUpMenu);
             UserUpMenu.setVisible(false);
+            CategorieUpMenu.setVisible(false);
         });
 
         btl5.setOnMouseClicked(e -> {
@@ -244,6 +257,7 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
              loadUIMain("addFile");
+             CategorieUpMenu.setVisible(false);
             
         });
         btl6.setOnMouseClicked(e -> {
@@ -254,7 +268,20 @@ public class MenuController implements Initializable {
             borderpanebutton.setCenter(PanierUpMenu);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+            CategorieUpMenu.setVisible(false);
         });
+                btl7.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(false); 
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+            CategorieUpMenu.setVisible(true);
+            borderpanebutton.setCenter(CategorieUpMenu);
+            loadUIMain("Forum");
+        });
+        
     }
 
     public void loadUIMain(String ui) {
@@ -320,6 +347,13 @@ public class MenuController implements Initializable {
     private void panierMenu(MouseEvent e) {
 
         loadUIMain("UI1");
+
+    }
+    
+      @FXML
+    private void forumMenu(MouseEvent e) {
+
+        loadUIMain("Forum");
 
     }
 }

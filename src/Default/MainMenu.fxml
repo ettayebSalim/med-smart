@@ -145,6 +145,15 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
+                        <Button fx:id="btl7" mnemonicParsing="false" prefHeight="55.0" prefWidth="176.0" styleClass="BarItem" text="Forum">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/1871927-200.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -403,6 +412,64 @@
                            </graphic>
                         </Button>
                         <Button fx:id="btu51121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" styleClass="MenuItem" text="Button">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/icons8-upload-file-96-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="CategorieUpMenu" layoutX="14.0" layoutY="510.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#forumMenu" prefHeight="38.0" styleClass="MenuItem" text="Add Categorie">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/icons8-add-file-96_-xxhdpi_-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btu211211" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Edit Categorie">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/icons8-edit-file-96-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btu311211" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Delete Categorie">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/icons8-delete-file-96-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btu411211" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="List Categorie">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/list_FILL0_wght700_GRAD0_opsz48-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btu511211" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Delete News">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                                 <image>
+                                    <Image url="@../icons/icons8-upload-file-96-removebg-preview.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btu5112111" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="38.0" styleClass="MenuItem" text="Add News">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
                                  <image>
