@@ -27,7 +27,7 @@ public class ListeEtabController implements Initializable {
 
     @FXML
     private GridPane grid;
-private SupprimerEtab supEtab;
+    private SupprimerEtab supEtab;
     @FXML
     private AnchorPane MyPane;
 
