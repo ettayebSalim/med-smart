@@ -31,16 +31,6 @@
                               <Insets left="5.0" right="5.0" top="25.0" />
                            </VBox.margin>
                         </TextField>
-                        <Label prefHeight="38.0" prefWidth="240.0" text="Filter By File Name:">
-                           <VBox.margin>
-                              <Insets left="5.0" top="25.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="filebyname" prefHeight="38.0" prefWidth="240.0">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="25.0" />
-                           </VBox.margin>
-                        </TextField>
                         <Button mnemonicParsing="false" onMouseClicked="#fetchFiles" prefHeight="50.0" prefWidth="240.0" text="Fetch All Files">
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" top="135.0" />
@@ -62,8 +52,8 @@
                   </TableView>
                   <Button fx:id="down" layoutX="500.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#moveListdowwn" prefHeight="36.0" prefWidth="138.0" text="Down" textAlignment="CENTER" AnchorPane.rightAnchor="362.0" />
                   <Button fx:id="up" layoutX="765.0" layoutY="635.0" mnemonicParsing="false" onMouseClicked="#moveListUp" prefHeight="38.0" prefWidth="136.0" text="Up" textAlignment="CENTER" AnchorPane.rightAnchor="99.0" />
-                  <Label layoutX="387.0" layoutY="22.0" prefHeight="38.0" prefWidth="266.0" text="Search Table by File Type Or User Id :" AnchorPane.rightAnchor="382.0" AnchorPane.topAnchor="20.0" />
-                  <TextField layoutX="558.0" layoutY="22.0" prefHeight="38.0" prefWidth="332.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+                  <Label layoutX="387.0" layoutY="22.0" prefHeight="38.0" prefWidth="119.0" text="Filter Table :" AnchorPane.rightAnchor="529.0" AnchorPane.topAnchor="20.0" />
+                  <TextField fx:id="tablefilter" layoutX="558.0" layoutY="22.0" onKeyTyped="#SearchTableByTypeOrUser" prefHeight="38.0" prefWidth="472.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
                </children></AnchorPane>
          </center>
          <opaqueInsets>

@@ -25,12 +25,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
-
 import static Services.TypeFichierService.checkType;
 import Services.UserService;
 import java.io.IOException;
-import javafx.geometry.Insets;
-
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -91,13 +88,11 @@ public class AddFileController implements Initializable {
 
     private ObservableList<Fichier> list = FXCollections.observableArrayList();
     private ObservableList<Fichier> list2 = FXCollections.observableArrayList();
-    private String[] choice = {"RADIO", "SCANNER", "IRM", "ECHO", "ANALYSE_LAB", "ORDONNANCE", "LETTRE_DE_LIAISON"};
+    private String[] choice = {"RADIO", "SCANNER", "IRM", "ECHO", "ANALYSE_LABO", "ORDONNANCE", "LETTRE_DE_LIAISON"};
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
-        
-        
+
         // setting the File_Type column editable
         addTable.setEditable(true);
         coltype.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -108,7 +103,8 @@ public class AddFileController implements Initializable {
 
     }
 
-    //select Files from system 
+    
+    //select Files from Local
     @FXML
     public void selectMultipleFile(ActionEvent e) throws IOException {
         FileChooser fc = new FileChooser();
@@ -147,9 +143,9 @@ public class AddFileController implements Initializable {
         selectedFichier.setType(e.getNewValue().toString());
 
         if (!checkType(e.getOldValue().toString())) {
-            msg.setText("File Type Noy Supported !");
+            msg.setText("File Type Not Supported !");
         } else {
-            msg.setText("File Type updated Sucessfully!");
+            msg.setText("File Type updated !");
         }
 
     }
@@ -157,25 +153,35 @@ public class AddFileController implements Initializable {
     //Add Data to Database using crud method
     @FXML
     public void addDataToDb(ActionEvent e) throws IOException {
+        if (!addTable.getItems().isEmpty() && !userid.getText().equals("")) {
+            Fichier f = new Fichier();
 
-        Fichier f = new Fichier();
+            for (int i = 0; i < addTable.getItems().size(); i++) {
+                f = addTable.getItems().get(i);
 
-        for (int i = 0; i < addTable.getItems().size(); i++) {
-            f = addTable.getItems().get(i);
+                FichierService fs = new FichierService();
 
-            FichierService fs = new FichierService();
+                UserService us = new UserService();
+                try {
+                    int userId = Integer.parseInt(userid.getText());
 
-            UserService us = new UserService();
-            try {
-                int userId = Integer.parseInt(userid.getText());
-                User user = us.getUserByID(userId);
+                    User user = us.getUserByID(userId);
+                    System.out.println(user);
+                    if (user.getCin() != null) {
+                        Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
+                        System.out.println(fichier);
+                        fs.insertFichier(fichier);
+                        msg.setText("All Files Added Successfully");
+                    } else {
+                        msg.setText("User Not Found!");
+                    }
 
-                Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
-                fs.insertFichier(fichier);
-                msg.setText("All Files Added Successfully");
-            } catch (NumberFormatException ex) {
-                msg.setText("Please Enter A Valid User Id");
+                } catch (NumberFormatException ex) {
+                    msg.setText("Please Enter A Valid User Id!");
+                }
             }
+        } else {
+            msg.setText("Please Select Files and enter User Id First!");
         }
     }
 
@@ -218,21 +224,27 @@ public class AddFileController implements Initializable {
     public void SetAllType(ActionEvent e) throws IOException {
         boolean bool = this.activateChoiceBox(e);
         Fichier f = new Fichier();
-
+list2.clear();
         for (int i = 0; i < addTable.getItems().size(); i++) {
             f = addTable.getItems().get(i);
             String s = f.getIdPhysique();
-
+            System.out.println( addTable.getItems().size()+"  1");
+                
             if (!bool) {
+                
+                System.out.println( addTable.getItems().size()+"  2");
                 Fichier f2 = new Fichier();
-                f2.setIdPhysique(list.get(i).getIdPhysique());
+                f2.setIdPhysique(s);
                 f2.setType(this.getTypeFichieChoice(e));
                 list2.add(f2);
 
             } else {
+                
+                System.out.println( addTable.getItems().size()+"   3");
                 Fichier f2 = new Fichier();
-                f2.setIdPhysique(list.get(i).getIdPhysique());
-
+                f2.setIdPhysique(s);
+                f2.setType("RADIO");
+                
                 list2.add(f2);
             }
 
@@ -247,9 +259,9 @@ public class AddFileController implements Initializable {
     //clear tableview
     @FXML
     public void clearTable(ActionEvent e) {
-        addTable.getItems().removeAll(list);
-        addTable.getItems().removeAll(list2);
-
+        
+        addTable.getItems().clear();
+     
     }
 
 }

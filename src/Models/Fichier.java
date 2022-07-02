@@ -73,6 +73,8 @@ public class Fichier {
         }
     }
 
+    
+    
     public long getId() {
         return id;
     }
@@ -105,6 +107,7 @@ public class Fichier {
         this.user = user;
     }
 
+    
     @Override
     public String toString() {
 
@@ -112,12 +115,6 @@ public class Fichier {
 
     }
 
-    public boolean exists() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public boolean isFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
   
 }

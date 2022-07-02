@@ -10,5 +10,5 @@ package Models;
  * @author AGuizani
  */
 public enum TypeFichier {
-    RADIO, SCANNER, IRM, ECHO, ANALYSE_LAB, ORDONNANCE, LETTRE_DE_LIAISON;
+    RADIO, SCANNER, IRM, ECHO, ANALYSE_LABO, ORDONNANCE, LETTRE_DE_LIAISON;
 }
