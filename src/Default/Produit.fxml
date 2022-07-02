@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="53.0" prefWidth="600.0" style="-fx-background-color: #230b52;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.ProduitController">
+   <children>
+      <Label fx:id="labelqte" layoutX="147.0" layoutY="18.0" prefHeight="17.0" prefWidth="175.0" text="Quantité" textFill="WHITE" />
+      <Button fx:id="btnSupp" layoutX="465.0" layoutY="14.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="25.0" prefWidth="124.0" text="Supprimer" textFill="RED" />
+      <Label fx:id="labelName" layoutX="20.0" layoutY="18.0" prefHeight="17.0" prefWidth="77.0" text="Name" textFill="WHITE" />
+   </children>
+</AnchorPane>
