@@ -7,34 +7,56 @@ package Default;
 
 import Models.Fichier;
 import Services.FichierService;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.rendering.PDFRenderer;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 /**
  *
@@ -61,8 +83,8 @@ public class ListFileController implements Initializable {
     private TableColumn<Fichier, String> colfiletype;
 
     @FXML
-    private TableColumn<Fichier, Integer> coluserid;
-
+    // private TableColumn<Fichier, Integer> coluserid;
+    private TableColumn<Fichier, String> coluserid;
     @FXML
     public TableView<Fichier> listfile;
 
@@ -78,30 +100,52 @@ public class ListFileController implements Initializable {
     @FXML
     private TextField filebyid;
 
-
     @FXML
     public BorderPane borderpanemain;
 
     @FXML
     private TextField tablefilter;
 
+    @FXML
+    private TextField test;
+
+    @FXML
+    private ImageView imageView;
+
+    private final String fileout = "C:\\Users\\AGuizani\\Desktop\\med-smart _CodeNameOne\\backNodeCodeNameOne\\backNodeCodeNameOne\\public\\fichiers\\";
+
     private MenuController menucontroller;
 
     public ObservableList<Fichier> listFile = FXCollections.observableArrayList();
+
     public ObservableList<Fichier> listFileTopass = FXCollections.observableArrayList();
+
     private int n = 0;
     final int m = 25;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-         fetchNFiles(0, 25);
+        fetchNFiles(0, 25);
         listfile.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-//Search File By Id text field  
+        //Search File By Id text field  
         filebyid.setOnKeyPressed((KeyEvent e) -> {
             if (e.getCode() == KeyCode.ENTER) {
                 getFileById();
+            }
+        });
+
+        listfile.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+
+                Fichier f = new Fichier(newSelection.getType(), newSelection.getIdPhysique());
+                test.setText("Nom Fichier: " + f.getIdPhysique() + "    Type Fichier: " + f.getType());
+                previewFile(f.getIdPhysique());
+                imageView.setOnMouseClicked(e -> {
+                    FullSizeView(imageView.getImage(), f.getIdPhysique());
+                });
+
             }
         });
 
@@ -112,12 +156,14 @@ public class ListFileController implements Initializable {
         colfileid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colfiletype.setCellValueFactory(new PropertyValueFactory<>("type"));
         colfilename.setCellValueFactory(new PropertyValueFactory<>("IdPhysique"));
-        coluserid.setCellValueFactory(cellData -> new SimpleIntegerProperty((cellData.getValue().getUser().getId())).asObject());
+        //coluserid.setCellValueFactory(cellData -> new SimpleIntegerProperty((cellData.getValue().getUser().getId())).asObject());
+        coluserid.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getCin()));
         listfile.setItems(listFile);
     }
 
     @FXML
     public void fetchFiles() {
+
         n = 0;
         showTableView();
         listfile.getItems().clear();
@@ -133,6 +179,7 @@ public class ListFileController implements Initializable {
 
     @FXML
     public int fetchNFiles(int n, int m) {
+
         FichierService fs = new FichierService();
         List<Fichier> allFichier = fs.fetchNFichiers(n, m);
 
@@ -194,6 +241,7 @@ public class ListFileController implements Initializable {
     public void getFileById() {
         FichierService fs = new FichierService();
         showTableView();
+
         try {
             int id = Integer.parseInt(filebyid.getText());
             try {
@@ -212,7 +260,6 @@ public class ListFileController implements Initializable {
         }
 
     }
-
 
     @FXML
     public void loadEditfile(MouseEvent e) throws IOException {
@@ -256,8 +303,8 @@ public class ListFileController implements Initializable {
                 String userId = String.valueOf(fichier.getUser().getId());
                 if (fichier.getType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                }else if(fichier.getIdPhysique().toLowerCase().indexOf(lowerCaseFilter) != -1){
-                    return true;                   
+                } else if (fichier.getIdPhysique().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
                 } else if (userId.toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else {
@@ -271,6 +318,96 @@ public class ListFileController implements Initializable {
         sortedData.comparatorProperty().bind(listfile.comparatorProperty());
         ObservableList<Fichier> listFile = sortedData;
         listfile.setItems(listFile);
+
+    }
+
+    public void previewFile(String p) {
+
+        String extension = null;
+
+        File file = new File(fileout + p);
+        String filePath = fileout + p;
+        if (file.exists()) {
+            if (filePath.lastIndexOf(".") > 0) {
+                extension = filePath.substring(filePath.lastIndexOf(".") + 1);
+            }
+
+            if ("png".equalsIgnoreCase(extension)
+                    || "jpg".equalsIgnoreCase(extension)
+                    || "jpeg".equalsIgnoreCase(extension)
+                    || "tif".equalsIgnoreCase(extension)) {
+                try {
+
+                    FileInputStream inputstream = new FileInputStream(filePath);
+                    Image myImage = new Image(inputstream);
+
+                    imageView.setImage(myImage);
+
+                } catch (IOException ex) {
+                    ex.getStackTrace();
+                }
+            } else if ("pdf".equalsIgnoreCase(extension)) {
+                try {
+                    PDDocument doc = PDDocument.load(file);
+                    PDFRenderer renderer = new PDFRenderer(doc);
+
+                    BufferedImage image = renderer.renderImage(0);
+                    Image img = SwingFXUtils.toFXImage(image, null);
+                    imageView.setImage(img);
+
+                    doc.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+
+                Image myImage = new Image(getClass().getResourceAsStream("/icons/NoPreview.png"));
+                imageView.setImage(myImage);
+
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("File Not Found");
+            alert.setHeaderText("File Not Found ! ");
+            ButtonType buttonTypeOk = new ButtonType("Ok", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(buttonTypeOk);
+            Optional<ButtonType> result = alert.showAndWait();
+
+            alert.showAndWait();
+
+        }
+    }
+
+    @FXML
+    private void FullSizeView(Image img, String s) {
+
+        ImageView imageViewer = new ImageView(img);
+
+        imageViewer.setFitHeight(720);
+        imageViewer.setFitWidth(1280);
+        imageViewer.setPreserveRatio(true);
+        imageViewer.setSmooth(true);
+        imageViewer.setCache(true);
+        imageViewer.autosize();
+        System.out.println(imageViewer.getBoundsInParent().getWidth());
+        System.out.println(imageViewer.getBoundsInParent().getHeight());
+        Group root = new Group(imageViewer);
+        Scene scene = new Scene(root, imageViewer.getBoundsInParent().getWidth(), imageViewer.getBoundsInParent().getHeight());
+        System.out.println(scene.getWidth());
+        System.out.println(scene.getHeight());
+        String css = getClass().getResource("StyleCSS.css").toExternalForm();
+        scene.getStylesheets().clear();
+
+        scene.getStylesheets().add(css);
+
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        stage.setTitle("Full View of " + s);
+        stage.setResizable(true);
+
+        stage.show();
 
     }
 

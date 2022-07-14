@@ -126,7 +126,7 @@ public class MenuController implements Initializable {
         //Setting the Translation of the Slider Menu
         slider.setTranslateX(-225);
 
-        Menu.setOnMouseClicked(enent -> {
+        Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.3));
             slide.setNode(slider);
