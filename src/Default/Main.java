@@ -150,11 +150,11 @@ public class Main {
 
         //call service
         //FichierService fs = new FichierService();
-        //UserService userService = new UserService();
-        // adding a user to table user, @author Fares
-        // User user;
-        // user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
-        //userService.ajouterUtilisateur(user);
+       // UserService userService = new UserService();
+         //adding a user to table user, @author Fares
+         //User user;
+         //user= new User(1, "Aymen", "Guizani", "Aymen.Guizani@esprit.tn", "51756432", "azerty", "28196869", "Medecin");
+       // userService.ajouterUtilisateur(user);
         // adding a file to table fichier, 
         //Fichier fichier;
         //fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);

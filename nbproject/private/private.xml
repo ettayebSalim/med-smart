@@ -3,6 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/StyleCSS.css</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Services/FichierService.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/EditFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/AddFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/ListFileController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MenuController.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Models/Fichier.java</file>
+            <file>file:/C:/Users/AGuizani/Desktop/pidev/med-smart/src/Default/MainApp.java</file>
+
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MainMenu.fxml</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/EtabController.java</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/ListeEtabController.java</file>
@@ -18,6 +28,7 @@
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/Etab.fxml</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MenuController.java</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/PanierController.java</file>
+
         </group>
     </open-files>
 </project-private>

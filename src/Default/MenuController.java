@@ -132,7 +132,7 @@ public class MenuController implements Initializable {
         //Setting the Translation of the Slider Menu
         slider.setTranslateX(-225);
 
-        Menu.setOnMouseClicked(enent -> {
+        Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.3));
             slide.setNode(slider);
@@ -248,7 +248,7 @@ public class MenuController implements Initializable {
             borderpanebutton.setCenter(PanierUpMenu);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
-             loadUIMain("Panier");
+            loadUIMain("Panier");
 
         });
          btu111.setOnMouseClicked(e -> {
@@ -340,7 +340,6 @@ the button action (Mouse click event) is set with Scene builder in the MainMenu.
         loadUIMain("editFile");
 
     }
-
 
     @FXML
     private void AddEtablissement(ActionEvent event) {

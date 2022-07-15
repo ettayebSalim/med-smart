@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="apaddfile" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1000.0" styleClass="submenu" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.AddFileController">
@@ -22,76 +21,56 @@
                   <Insets left="5.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <TableView fx:id="addTable" layoutX="348.0" layoutY="17.0" prefHeight="325.0" prefWidth="325.0" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="15.0">
+                  <TableView fx:id="addTable" layoutX="598.0" layoutY="14.0" prefHeight="530.0" prefWidth="525.0" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
                     <columns>
-                      <TableColumn fx:id="colfilename" minWidth="200.0" prefWidth="200.0" text="File Name" />
-                      <TableColumn fx:id="coltype" minWidth="100.0" onEditCommit="#editTableOnColoumn" prefWidth="100.0" text="File Type" />
+                      <TableColumn fx:id="colfilename" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="300.0" text="File Name" />
+                      <TableColumn fx:id="coltype" minWidth="32.0" onEditCommit="#editTableOnColoumn" prefWidth="225.0" text="File Type" />
                     </columns>
                   </TableView>
-                  <Label fx:id="msg" alignment="CENTER" layoutX="412.0" layoutY="366.0" prefHeight="38.0" prefWidth="200.0" text="Please Select Some Files" AnchorPane.bottomAnchor="5.0" />
-                  <VBox layoutX="45.0" layoutY="202.0" prefHeight="286.0" prefWidth="250.0" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Label fx:id="msg" alignment="CENTER" layoutX="506.0" layoutY="555.0" prefHeight="38.0" prefWidth="354.0" text="Please Select Some Files" AnchorPane.bottomAnchor="100.0" AnchorPane.rightAnchor="140.0" />
+                  <VBox layoutX="45.0" layoutY="202.0" prefHeight="523.0" prefWidth="275.0" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
                      <children>
-                        <Label prefHeight="38.0" prefWidth="136.0" text="User Id:">
+                        <Label prefHeight="38.0" prefWidth="265.0" text="User Id:">
                            <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="userid" prefHeight="30.0" prefWidth="250.0">
+                        <TextField fx:id="userid" accessibleHelp="Set User Id" prefHeight="38.0" prefWidth="265.0">
                            <VBox.margin>
-                              <Insets bottom="20.0" top="5.0" />
+                              <Insets bottom="30.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </TextField>
-                        <CheckBox fx:id="checkchoice" mnemonicParsing="false" onAction="#activateChoiceBox" prefWidth="130.0" text="Set Type For all Files">
+                        <CheckBox fx:id="checkchoice" accessibleHelp="Activate File Type Choose Mode" mnemonicParsing="false" onAction="#activateChoiceBox" prefHeight="38.0" prefWidth="200.0" text="Activate To Set Type For a File(s)">
                            <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <ChoiceBox fx:id="typechoice" prefHeight="38.0" prefWidth="250.0">
+                        <ChoiceBox fx:id="typechoice" accessibleHelp="Activate and Choose  File Type " accessibleText="Choose File Type" prefHeight="38.0" prefWidth="265.0">
                            <VBox.margin>
-                              <Insets bottom="20.0" top="5.0" />
+                              <Insets bottom="120.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <Button fx:id="selectbutton" mnemonicParsing="false" onAction="#selectMultipleFile" prefHeight="38.0" prefWidth="250.0" styleClass="MenuItem" text="Select Files">
+                        <Button mnemonicParsing="false" onAction="#selectMultipleFile" prefHeight="50.0" prefWidth="265.0" styleClass="MenuItem" text="Select Files">
                            <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="15.0" left="5.0" right="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="delrow" mnemonicParsing="false" onAction="#deleteRowTabView" prefHeight="38.0" prefWidth="250.0" text="Delete File from Table ">
+                        <Button accessibleHelp="Remove Filefrom TableView" mnemonicParsing="false" onAction="#deleteRowTabView" prefHeight="50.0" prefWidth="265.0" text="Delete File from Table ">
                            <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="setalltype" mnemonicParsing="false" onAction="#SetAllType" prefHeight="43.0" prefWidth="250.0" text="Set Type For All Files In Table">
+                        <Button accessibleHelp="Use Choice Box to set File Type for the Selected Files in the TableView" mnemonicParsing="false" onAction="#SetSelectedType" prefHeight="50.0" prefWidth="265.0" text="Set Type For The Selected Files ">
                            <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button fx:id="clear" mnemonicParsing="false" onAction="#clearTable" prefHeight="38.0" prefWidth="250.0" text="Clear Table">
-                           <VBox.margin>
-                              <Insets bottom="5.0" top="5.0" />
+                              <Insets bottom="15.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
+                  <Button layoutX="260.0" layoutY="620.0" mnemonicParsing="false" onAction="#CancelAdd" prefHeight="38.0" prefWidth="136.0" text="Cancel" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="250.0" />
+                  <Button layoutX="602.0" layoutY="620.0" mnemonicParsing="false" onAction="#addDataToDb" prefHeight="38.0" prefWidth="136.0" text="OK" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="250.0" />
                </children></AnchorPane>
          </center>
-         <bottom>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="canceladd" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="Cancel">
-                     <HBox.margin>
-                        <Insets left="250.0" right="20.0" top="15.0" />
-                     </HBox.margin></Button>
-                  <Button fx:id="validateadd" mnemonicParsing="false" onAction="#addDataToDb" prefHeight="38.0" prefWidth="136.0" text="OK">
-                     <HBox.margin>
-                        <Insets left="20.0" top="15.0" />
-                     </HBox.margin></Button>
-               </children>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </HBox>
-         </bottom>
          <opaqueInsets>
             <Insets left="5.0" top="5.0" />
          </opaqueInsets>
