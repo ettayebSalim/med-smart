@@ -240,7 +240,7 @@ public class MenuController implements Initializable {
             borderpanebutton.setCenter(PanierUpMenu);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
-             loadUIMain("Panier");
+            loadUIMain("Panier");
 
         });
 
@@ -311,7 +311,6 @@ the button action (Mouse click event) is set with Scene builder in the MainMenu.
         loadUIMain("editFile");
 
     }
-
 
     @FXML
     private void AddEtablissement(ActionEvent event) {

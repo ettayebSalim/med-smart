@@ -107,8 +107,8 @@ public class UserService {
                 user.setNom(rs.getString(2));
                 user.setPrenom(rs.getString(3));
                 user.setEmail(rs.getString(4));
-                user.setCin(rs.getString(6));
-                user.setHashedPwd(rs.getString(5));
+                user.setCin(rs.getString(5));
+                user.setHashedPwd(rs.getString(6));
                 user.setNumtel(rs.getString(7));
                 user.setRole(rs.getString(8));
 

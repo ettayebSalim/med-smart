@@ -157,7 +157,7 @@ public class ListFileController implements Initializable {
         colfiletype.setCellValueFactory(new PropertyValueFactory<>("type"));
         colfilename.setCellValueFactory(new PropertyValueFactory<>("IdPhysique"));
         //coluserid.setCellValueFactory(cellData -> new SimpleIntegerProperty((cellData.getValue().getUser().getId())).asObject());
-        coluserid.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getCin()));
+        coluserid.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getCin()));// after modifying getUserById UserService
         listfile.setItems(listFile);
     }
 
@@ -300,12 +300,12 @@ public class ListFileController implements Initializable {
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
-                String userId = String.valueOf(fichier.getUser().getId());
+                String userCIN = String.valueOf(fichier.getUser().getCin());
                 if (fichier.getType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else if (fichier.getIdPhysique().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
-                } else if (userId.toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (userCIN.toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else {
                     return false;

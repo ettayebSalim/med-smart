@@ -35,7 +35,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField prefHeight="38.0" prefWidth="265.0">
+                        <TextField fx:id="fileIDText" prefHeight="38.0" prefWidth="265.0">
                            <VBox.margin>
                               <Insets bottom="15.0" left="5.0" right="5.0" />
                            </VBox.margin>
@@ -50,27 +50,32 @@
                               <Insets bottom="15.0" left="5.0" right="5.0" />
                            </VBox.margin>
                         </TextField>
+                        <Label prefHeight="38.0" prefWidth="265.0" text="FileType:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="fileTypeText" prefHeight="38.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </TextField>
                         <Label prefHeight="38.0" prefWidth="265.0" text="File Type:">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" />
                            </VBox.margin>
                         </Label>
-                        <ComboBox fx:id="fileTypeChoice" prefHeight="38.0" prefWidth="265.0">
+                        <ComboBox fx:id="fileTypeChoice" prefHeight="38.0" prefWidth="265.0" promptText="Please Choose A File Type">
                            <VBox.margin>
-                              <Insets bottom="85.0" left="5.0" right="5.0" />
+                              <Insets bottom="65.0" left="5.0" right="5.0" />
                            </VBox.margin>
                         </ComboBox>
-                        <Button mnemonicParsing="false" onAction="#selectFile" prefHeight="50.0" prefWidth="265.0" text="Select a File">
+                        <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Update">
                            <VBox.margin>
                               <Insets bottom="25.0" left="5.0" right="5.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Update">
-                           <VBox.margin>
-                              <Insets bottom="25.0" left="5.0" right="5.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Delete">
+                        <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Delete">
                            <VBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </VBox.margin>

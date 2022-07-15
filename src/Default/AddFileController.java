@@ -17,11 +17,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import static Services.TypeFichierService.checkType;
 import Services.UserService;
@@ -40,7 +38,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -92,6 +89,7 @@ public class AddFileController implements Initializable {
         // set selection mode to multiple rows selection
         addTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         //setting-up choiceboxx
+        
         typechoice.setDisable(true);
         typechoice.getItems().addAll(choice);
         typechoice.setOnAction(this::getTypeFichieChoice);
@@ -116,7 +114,6 @@ public class AddFileController implements Initializable {
                 } else {
                     list.add(new Fichier("radio", s));
                 }
-
             }
 
         } else {
@@ -164,32 +161,28 @@ public class AddFileController implements Initializable {
                 File fil = new File(fileout + f2.getName());
                 FichierService fs = new FichierService();
                 UserService us = new UserService();
-
                 //  try {
                 //int userId = Integer.parseInt(userid.getText());
                 //User user = us.getUserByID(userId);
                 String userCIN = userid.getText();
-
                 User user = this.getUserByCIN(userCIN);
-                System.out.println("this is the " + user);
-
                 if (user.getId() != 0) {
-                    if (!fil.exists()) {
-                        Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
-                        System.out.println(fichier);
+
+                    Fichier fichier = new Fichier(f.getType(), f.getIdPhysique(), user);
+                    b2 = saveFile(var);
+                    if (b2) {
                         fs.insertFichier(fichier);
                         b1 = true;
-                        b2 = saveFile(var);
-
                     } else {
-                        msg.setText("File " + var.getFileName() + " Already Exists!");
+                        b1 = false;
                         break;
                     }
+
                 } else {
                     msg.setText(" Invalid User CIN or User Not Found!");
                     break;
-
                 }
+
 
                 /*  } catch (NumberFormatException ex) {
                     msg.setText("Please Enter A Valid User Id!");
@@ -245,11 +238,9 @@ public class AddFileController implements Initializable {
         boolean bool = true;
 
         if (checkchoice.isSelected()) {
-            typechoice.setDisable(false);
-
+            typechoice.setDisable(false);           
         } else {
             typechoice.setDisable(true);
-
         }
         bool = typechoice.isDisabled();
 
@@ -257,7 +248,7 @@ public class AddFileController implements Initializable {
 
     }
 
-    //Set a chosen type from choicebox for all the uploaded files 
+    //Set a chosen type from choicebox for  the selected files 
     @FXML
     public void SetSelectedType(ActionEvent e) throws IOException {
         boolean bool = this.activateChoiceBox(e);
@@ -275,7 +266,6 @@ public class AddFileController implements Initializable {
                     f2.setIdPhysique(f.getIdPhysique());
                     f2.setType(this.getTypeFichieChoice(e));
                     list2.set(selectedIndex.get(i).intValue(), f2);
-
                 }
 
             } else {
@@ -302,59 +292,86 @@ public class AddFileController implements Initializable {
         fileAbsPath.clear();
         System.out.println(fileAbsPath);
     }
-
+    
+    
+   //save a File
     public boolean saveFile(Path p) {
 
         String extension = null;
         String filePath = p.toString();
         File f = new File(filePath);
         File file = new File(fileout + f.getName());
+        File folder = new File(fileout);;
+
         boolean save = false;
 
         if (filePath.lastIndexOf(".") > 0) {
             extension = filePath.substring(filePath.lastIndexOf(".") + 1);
         }
+        if (folder.isDirectory()) {
+            if (f.exists() && f.isFile()) {
+                if (!file.exists()) {
+                    
+                    if ("png".equalsIgnoreCase(extension)
+                            || "jpg".equalsIgnoreCase(extension)
+                            || "jpeg".equalsIgnoreCase(extension)
+                            || "tif".equalsIgnoreCase(extension)) {
+                        try {
+                            BufferedImage image = ImageIO.read(f);
+                            int height = image.getHeight();
+                            int width = image.getWidth();
+                            ImageIO.write(image, "png", file);
+                            save = true;
+                        } catch (IOException ex) {
+                            ex.getStackTrace();
+                        }
+                    }
 
-        if ("png".equalsIgnoreCase(extension)
-                || "jpg".equalsIgnoreCase(extension)
-                || "jpeg".equalsIgnoreCase(extension)
-                || "tif".equalsIgnoreCase(extension)) {
-            try {
-                BufferedImage image = ImageIO.read(f);
-                int height = image.getHeight();
-                int width = image.getWidth();
-                ImageIO.write(image, "png", file);
-                save = true;
-            } catch (IOException ex) {
-                ex.getStackTrace();
+                   else if ("pdf".equalsIgnoreCase(extension)) {
+                        try {
+                            PDDocument doc = PDDocument.load(f);
+                            doc.save(file);
+                            doc.close();
+                            save = true;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                   else if ("docx".equalsIgnoreCase(extension)) {
+                        try {
+                            InputStream fis = new FileInputStream(f);
+                            XWPFDocument docu = new XWPFDocument(fis);
+                            OutputStream stream = new FileOutputStream(file);
+                            docu.write(stream);
+                            save = true;
+                            stream.close();
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                   else{
+                       save = false;
+                        msg.setText("The File Format Is Not Supported !");
+                   }
+
+                } else {
+                    save = false;
+                    msg.setText("The File " + f.getName() + " Already Exists in Destination Folder !");
+                   
+
+                }
+            } else {
+                save = false;
+                msg.setText("The File " + f.getName() + "  does not exist or is not a File !");
+               
             }
+        } else {
+            save = false;
+            msg.setText("The Folder " + folder.getName() + " does not Exist !");
+            
         }
-
-        if ("pdf".equalsIgnoreCase(extension)) {
-            try {
-                PDDocument doc = PDDocument.load(f);
-                doc.save(file);
-                doc.close();
-                save = true;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if ("docx".equalsIgnoreCase(extension)) {
-            try {
-                InputStream fis = new FileInputStream(f);
-                XWPFDocument docu = new XWPFDocument(fis);
-                OutputStream stream = new FileOutputStream(file);
-                docu.write(stream);
-                save = true;
-                stream.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         return save;
     }
 
