@@ -215,6 +215,7 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+             loadUIMain("AddEtablissement");
         });
 
         btl4.setOnMouseClicked(e -> {
