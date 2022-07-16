@@ -226,6 +226,7 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(true);
             borderpanebutton.setCenter(RendezVousUpMenu);
             UserUpMenu.setVisible(false);
+            loadUIMain("AddRendezVousFXML");
         });
 
         
