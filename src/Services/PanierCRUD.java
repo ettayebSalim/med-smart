@@ -67,7 +67,7 @@ public class PanierCRUD {
                      List<Panier> myList = new ArrayList<>();
 
         try {
-              String req3 =  "SELECT * FROM panier";
+              String req3 =  "SELECT * FROM Panier";
               Statement st = cnx2.createStatement();
               ResultSet rs = st.executeQuery(req3);
               while (rs.next()) {

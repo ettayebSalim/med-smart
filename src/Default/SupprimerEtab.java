@@ -5,14 +5,10 @@
  */
 package Default;
 
-import Models.Etablissments;
-
 /**
  *
- * @author haith
+ * @author 21622
  */
-public interface SupprimerEtab {
-    
-    public void supprimer(Etablissments etab);
+class SupprimerEtab {
     
 }

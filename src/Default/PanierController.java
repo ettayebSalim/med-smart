@@ -11,6 +11,7 @@ import Models.Panier;
 import Services.FichierService;
 import Services.PanierCRUD;
 import Utiles.MyConnection;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,7 +27,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
@@ -34,6 +37,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -41,6 +46,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author 21622
  */
 public class PanierController implements Initializable {
+@FXML
+    private BorderPane BplistPanier;
+
 
     @FXML
     private TextField tfproduit;
@@ -54,11 +62,19 @@ public class PanierController implements Initializable {
     private TableColumn<Panier, String> datepanier;
     @FXML
     private TableView<Panier> listpanier;
+    
+    
+   @FXML
+    public BorderPane borderpanemain;
+
+    private MenuController menucontroller;
 
     
-    
         public ObservableList<Panier> listPanier = FXCollections.observableArrayList();
+        public ObservableList<Panier> listPanierTopass = FXCollections.observableArrayList();
+
         private int n = 0;
+    
 
 
     /**
@@ -66,22 +82,8 @@ public class PanierController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        Connection cnx2 = MyConnection.getInstance().getCnx();
-
-        try {
-            ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM panier");
-              while (rs.next()) {
-                  listPanier.add(new Panier (rs.getString("nomProd"), rs.getString("date")));
-                 
-                
-              }
-        } catch (SQLException ex) {
-            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        nomprod.setCellValueFactory(new PropertyValueFactory<>("nomProd"));
-        datepanier.setCellValueFactory(new PropertyValueFactory<>("date"));
-        listpanier.setItems(listPanier);
+        getAllPaniers();
+     
         // TODO
     }    
 
@@ -116,14 +118,67 @@ public class PanierController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Panier Ajouté avec Succé");
             alert.showAndWait();
+            getAllPaniers();
                     }
       
           
     
     
 }
+    public void getAllPaniers () {
+           Connection cnx2 = MyConnection.getInstance().getCnx();
+
+        try {
+            ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM panier");
+              while (rs.next()) {
+                  listPanier.add(new Panier (rs.getString("nomProd"), rs.getString("date")));
+                 
+                
+              }
+        } catch (SQLException ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listpanier.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        nomprod.setCellValueFactory(new PropertyValueFactory<>("nomProd"));
+        datepanier.setCellValueFactory(new PropertyValueFactory<>("date"));
+        listpanier.setItems(listPanier);
+    
+}
     
 
+    public void loadEditpanier(MouseEvent e) throws IOException{
+
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            Parent root = loader.load();
+            MenuController menuController = loader.getController();
+            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("editPanier.fxml"));
+            Parent root2 = loader2.load();
+            if (listpanier.getSelectionModel().getSelectedItems().isEmpty()) {
+                listPanierTopass = listPanier;
+            } else {
+                listPanierTopass = listpanier.getSelectionModel().getSelectedItems();
+            }
+
+            EditPanierController editPanierController = loader2.getController();
+            editPanierController.passPaniertoEdit(listPanierTopass);
+            BplistPanier.setCenter(root2);
+            menucontroller.borderpanemain.setCenter(BplistPanier);
+            
+            
+
+        } catch (RuntimeException err) {
+            err.getMessage();
+        }
+    }
+    
+  //Delete a row from TableView 
+    @FXML
+    public void deleteRowTabView(ActionEvent e) {
+        int SelectedId = listpanier.getSelectionModel().getSelectedIndex();
+        listpanier.getItems().remove(SelectedId);
+    }
     
    //  @FXML
     //public void afficherPanier() {
