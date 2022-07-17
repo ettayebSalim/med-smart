@@ -2,9 +2,7 @@ package Default;
 
 
 import Utiles.MyConnection;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
