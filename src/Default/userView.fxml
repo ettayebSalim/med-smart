@@ -9,11 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1163.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.UserController">
    <children>
-      <VBox layoutX="14.0" layoutY="91.0" prefHeight="244.0" prefWidth="83.0" spacing="20.0">
+      <VBox layoutX="29.0" layoutY="186.0" prefHeight="244.0" prefWidth="83.0" spacing="20.0">
          <children>
+            <Label layoutX="10.0" layoutY="10.0" lineSpacing="15.0" text="Id" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Britannic Bold" size="16.0" />
+               </font>
+            </Label>
             <Label lineSpacing="15.0" text="Nom" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Britannic Bold" size="16.0" />
@@ -37,11 +43,6 @@
                   <Font name="Britannic Bold" size="14.0" />
                </font>
             </Label>
-            <Label text="Mot de passe">
-               <font>
-                  <Font name="Britannic Bold" size="14.0" />
-               </font>
-            </Label>
             <Label text="Tel">
                <font>
                   <Font name="Britannic Bold" size="14.0" />
@@ -54,41 +55,47 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="109.0" layoutY="91.0" prefHeight="251.0" prefWidth="187.0" spacing="11.0">
+      <VBox layoutX="133.0" layoutY="182.0" prefHeight="251.0" prefWidth="187.0" spacing="11.0">
          <children>
-            <TextField fx:id="fxnom" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="158.0" />
+            <TextField fx:id="fxid" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="236.0" />
+            <TextField fx:id="fxnom" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="236.0" />
             <TextField fx:id="fxprenom" layoutX="10.0" layoutY="10.0" />
             <TextField fx:id="fxemail" layoutX="10.0" layoutY="10.0" />
             <TextField fx:id="fxcin" layoutX="10.0" layoutY="10.0" />
-            <TextField fx:id="fxmdp" layoutX="10.0" layoutY="10.0" />
             <TextField fx:id="fxtel" layoutX="10.0" layoutY="10.0" />
             <TextField fx:id="fxrole" layoutX="10.0" layoutY="10.0" />
          </children>
       </VBox>
-      <TableView fx:id="tableusers" layoutX="444.0" layoutY="71.0" prefHeight="442.0" prefWidth="555.0">
+      <TableView fx:id="tableusers" layoutX="365.0" layoutY="119.0" prefHeight="442.0" prefWidth="721.0">
         <columns>
           <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="84.0" text="Nom" />
           <TableColumn fx:id="colprenom" minWidth="0.0" prefWidth="64.0" text="Prénom" />
-            <TableColumn fx:id="colemail" prefWidth="140.0" text="Email" />
-            <TableColumn fx:id="colcin" prefWidth="88.0" text="CIN" />
-            <TableColumn fx:id="coltel" prefWidth="114.0" text="Tel" />
-            <TableColumn fx:id="colid" prefWidth="64.0" text="Identifiant" />
+            <TableColumn fx:id="colemail" prefWidth="182.0" text="Email" />
+            <TableColumn fx:id="colcin" prefWidth="117.0" text="CIN" />
+            <TableColumn fx:id="coltel" prefWidth="97.0" text="Tel" />
+            <TableColumn fx:id="colrole" prefWidth="102.0" text="Role" />
+            <TableColumn fx:id="colid" prefWidth="74.0" text="Identifiant" />
         </columns>
       </TableView>
-      <Button fx:id="btnajout" layoutX="26.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter">
+      <Button fx:id="btnsupp" blendMode="SRC_ATOP" layoutX="227.0" layoutY="500.0" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: rgb(220, 20, 60);" text="Supprimer">
          <font>
             <Font name="Candara Light Italic" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnsupp" layoutX="109.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Supprimer">
+      <Button fx:id="btnupdate" layoutX="133.0" layoutY="500.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: rgb(127, 255, 212);" text="Modifier">
          <font>
-            <Font name="Candara Light Italic" size="13.0" />
+            <Font name="Candara Light" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnupdate" layoutX="209.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Modifier">
+      <Text accessibleRole="TITLED_PANE" layoutX="5.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Des Utilisateurs">
          <font>
-            <Font name="Candara Light Italic" size="13.0" />
+            <Font name="Haettenschweiler" size="52.0" />
          </font>
-      </Button>
+      </Text>
+      <Button fx:id="btnView" layoutX="966.0" layoutY="85.0" mnemonicParsing="false" onAction="#viewUser" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: rgb(0, 191, 255);" text="Voir profil" textAlignment="CENTER" textFill="#525252">
+         <font>
+            <Font name="Candara Light" size="12.0" />
+         </font></Button>
+      <TextField fx:id="fxsearch" layoutX="365.0" layoutY="87.0" prefHeight="25.0" prefWidth="260.0" promptText="Chercher un utilisateur" />
    </children>
 </AnchorPane>

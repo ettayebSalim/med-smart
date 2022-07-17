@@ -5,6 +5,7 @@
         <group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MainApp.java</file>
 =======
 <<<<<<< HEAD
@@ -12,6 +13,9 @@
 =======
 <<<<<<< HEAD
 >>>>>>> e2da72f (fixConf)
+=======
+<<<<<<< HEAD
+>>>>>>> 64adefc (fix)
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MainMenu.fxml</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/EtabController.java</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/ListeEtabController.java</file>
@@ -98,16 +102,21 @@
 =======
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/ManageFileController.java</file>
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MenuController.java</file>
+=======
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/loginController.java</file>
+>>>>>>> 58b7019 (gestionUtilisateurs)
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/UserController.java</file>
-            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/UpperMenuController.java</file>
-            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/testCSS.fxml</file>
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MainApp.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/userView.fxml</file>
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MainMenu.fxml</file>
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Models/User.java</file>
             <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/addFile.fxml</file>
 >>>>>>> 393bdee (user fx)
 >>>>>>> b2f42f0 (fixConf)
+=======
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Utiles/SceneManager.java</file>
+>>>>>>> 58b7019 (gestionUtilisateurs)
         </group>
     </open-files>
 </project-private>

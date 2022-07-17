@@ -64,7 +64,7 @@ public class UserService {
         
         try {
 
-            String req3 = "SELECT * FROM user";
+            String req3 = "SELECT * FROM user order by id";
 
             ps = cnx2.prepareStatement(req3);
             ResultSet rs = ps.executeQuery();
