@@ -5,10 +5,16 @@
  */
 package Default;
 
+import Models.Etablissments;
+
 /**
  *
  * @author 21622
  */
 class SupprimerEtab {
+
+    void supprimer(Etablissments etabli) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

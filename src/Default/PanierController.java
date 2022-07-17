@@ -14,6 +14,7 @@ import Utiles.MyConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -39,6 +40,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -64,8 +66,8 @@ public class PanierController implements Initializable {
     private TableView<Panier> listpanier;
     
     
-   @FXML
     public BorderPane borderpanemain;
+        PreparedStatement ps = null;
 
     private MenuController menucontroller;
 
@@ -74,6 +76,11 @@ public class PanierController implements Initializable {
         public ObservableList<Panier> listPanierTopass = FXCollections.observableArrayList();
 
         private int n = 0;
+    @FXML
+    private Button editmode;
+    
+    @FXML
+    private TableColumn<Panier, Integer> id;
     
 
 
@@ -131,7 +138,7 @@ public class PanierController implements Initializable {
         try {
             ResultSet rs = cnx2.createStatement().executeQuery("SELECT * FROM panier");
               while (rs.next()) {
-                  listPanier.add(new Panier (rs.getString("nomProd"), rs.getString("date")));
+                  listPanier.add(new Panier (rs.getInt("id"),rs.getString("nomProd"), rs.getString("date")));
                  
                 
               }
@@ -139,13 +146,35 @@ public class PanierController implements Initializable {
             Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
         }
         listpanier.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomprod.setCellValueFactory(new PropertyValueFactory<>("nomProd"));
         datepanier.setCellValueFactory(new PropertyValueFactory<>("date"));
         listpanier.setItems(listPanier);
     
 }
-    
+    @FXML
+    public void deletePanier (ActionEvent event) {
+       int selectedPanier = listpanier.getSelectionModel().getSelectedIndex();
+       System.out.println(id.getCellData(selectedPanier).toString());
+      try {
+           
+             String query = "delete from panier where id ="+id.getCellData(selectedPanier).toString();   
+             Connection cnx2 = MyConnection.getInstance().getCnx();
+             ps = cnx2.prepareStatement(query);
+             ps.execute();
+             JOptionPane.showMessageDialog(null, "Panier supprimé avec succés");
+                        getAllPaniers() ;
 
+         
+      }
+       catch  (SQLException ex) {
+                       Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+                         getAllPaniers() ;
+
+
+    }
+    @FXML
     public void loadEditpanier(MouseEvent e) throws IOException{
 
         try {
@@ -174,7 +203,6 @@ public class PanierController implements Initializable {
     }
     
   //Delete a row from TableView 
-    @FXML
     public void deleteRowTabView(ActionEvent e) {
         int SelectedId = listpanier.getSelectionModel().getSelectedIndex();
         listpanier.getItems().remove(SelectedId);
