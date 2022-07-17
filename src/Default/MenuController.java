@@ -46,6 +46,7 @@ public class MenuController implements Initializable {
     @FXML
     private HBox FichierUpMenu;
 
+
     @FXML
     private HBox MedicamentUpMenu;
 
@@ -195,6 +196,8 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(true);
             borderpanebutton.setCenter(UserUpMenu);
+            loadUIMain("userView");
+
         });
 
         btl2.setOnMouseClicked(e -> {
@@ -293,6 +296,12 @@ public class MenuController implements Initializable {
 
     private void userMenu(MouseEvent e) {
         loadUIMain("UI1");
+
+    }
+    
+        @FXML
+    private void userViewMenu(MouseEvent e) {
+        loadUIMain("userView");
 
     }
 

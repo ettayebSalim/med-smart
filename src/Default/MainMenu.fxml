@@ -101,7 +101,9 @@
                <children>
                   <VBox layoutX="27.0" layoutY="55.0" prefHeight="200.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <Button fx:id="btl1" mnemonicParsing="false" prefHeight="55.0" prefWidth="225.0" styleClass="BarItem" text=" User">
+
+                        <Button fx:id="btl1" mnemonicParsing="false" prefHeight="55.0" prefWidth="176.0" styleClass="BarItem" text="Utilisateurs">
+
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

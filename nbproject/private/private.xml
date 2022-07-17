@@ -4,10 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MainApp.java</file>
 =======
 <<<<<<< HEAD
 >>>>>>> 66281e3 (fixConf)
+=======
+<<<<<<< HEAD
+>>>>>>> e2da72f (fixConf)
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MainMenu.fxml</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/EtabController.java</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/ListeEtabController.java</file>
@@ -27,6 +31,8 @@
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/MenuController.java</file>
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/PanierController.java</file>
 =======
+=======
+>>>>>>> b2f42f0 (fixConf)
 <<<<<<< HEAD
             <file>file:/C:/Users/haith/Desktop/esprit/med-smart/src/Default/StyleCSS.css</file>
 =======
@@ -86,7 +92,22 @@
 >>>>>>> 2df5e91 (main)
 >>>>>>> e3f05ce (fixConf)
 >>>>>>> fa9dec2 (fixConf)
+<<<<<<< HEAD
 >>>>>>> 5db9fda (fixConf)
+=======
+=======
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/ManageFileController.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MenuController.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/UserController.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/UpperMenuController.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/testCSS.fxml</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MainApp.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/userView.fxml</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/MainMenu.fxml</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Models/User.java</file>
+            <file>file:/C:/Users/bureau/Desktop/pi/med-smart/src/Default/addFile.fxml</file>
+>>>>>>> 393bdee (user fx)
+>>>>>>> b2f42f0 (fixConf)
         </group>
     </open-files>
 </project-private>

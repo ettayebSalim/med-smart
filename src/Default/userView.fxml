@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.UserController">
+   <children>
+      <VBox layoutX="14.0" layoutY="91.0" prefHeight="244.0" prefWidth="83.0" spacing="20.0">
+         <children>
+            <Label lineSpacing="15.0" text="Nom" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="Britannic Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Label text="Prénom">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Email">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Cin">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Mot de passe">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Tel">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Role">
+               <font>
+                  <Font name="Britannic Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="109.0" layoutY="91.0" prefHeight="251.0" prefWidth="187.0" spacing="11.0">
+         <children>
+            <TextField fx:id="fxnom" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="158.0" />
+            <TextField fx:id="fxprenom" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="fxemail" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="fxcin" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="fxmdp" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="fxtel" layoutX="10.0" layoutY="10.0" />
+            <TextField fx:id="fxrole" layoutX="10.0" layoutY="10.0" />
+         </children>
+      </VBox>
+      <TableView fx:id="tableusers" layoutX="444.0" layoutY="71.0" prefHeight="442.0" prefWidth="555.0">
+        <columns>
+          <TableColumn fx:id="colnom" minWidth="0.0" prefWidth="84.0" text="Nom" />
+          <TableColumn fx:id="colprenom" minWidth="0.0" prefWidth="64.0" text="Prénom" />
+            <TableColumn fx:id="colemail" prefWidth="140.0" text="Email" />
+            <TableColumn fx:id="colcin" prefWidth="88.0" text="CIN" />
+            <TableColumn fx:id="coltel" prefWidth="114.0" text="Tel" />
+            <TableColumn fx:id="colid" prefWidth="64.0" text="Identifiant" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajout" layoutX="26.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter">
+         <font>
+            <Font name="Candara Light Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnsupp" layoutX="109.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Supprimer">
+         <font>
+            <Font name="Candara Light Italic" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnupdate" layoutX="209.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Modifier">
+         <font>
+            <Font name="Candara Light Italic" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

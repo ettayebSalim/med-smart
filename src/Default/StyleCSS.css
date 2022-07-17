@@ -97,3 +97,7 @@ and open the template in the editor.
     transition-delay: .5s;
     
 }
+
+alert{
+    -fx-color:red;
+}
