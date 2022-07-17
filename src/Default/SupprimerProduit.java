@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
-
+package Default;
+import Models.Produit;
 /**
  *
- * @author AGuizani
+ * @author NAD
  */
-public enum TypeFichier {
-    RADIO, SCANNER, IRM, ECHO, ANALYSE_LABO, ORDONNANCE, LETTRE_DE_LIAISON;
+public interface SupprimerProduit {
+    
+    
+    public void supprimer (Produit prod);
 }

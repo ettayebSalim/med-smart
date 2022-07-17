@@ -63,7 +63,7 @@ public class Main {
         //p.setId_prod(1);
         //ps.Supprimerproduits(p);
         //ps.insertProduit(p);
-        //UserService userService = new UserService();
+        UserService userService = new UserService();
         //User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
         //userService.ajouterUtilisateur(user);
         // System.out.println(userService.fetchUsers());
@@ -105,12 +105,19 @@ public class Main {
      //ProduitService ps = new ProduitService();
      //Produit p = new Produit();
     // p.setId_prod(1);
+
+    // PanierCRUD paniercrud = new PanierCRUD();
+     //paniercrud.ajouterPanier();
+    
+    // ProduitService ps = new ProduitService();
+     //Produit p = new Produit();
+     //p.setId_prod(1);
      //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
      //UserService userService = new UserService();
-    // User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
+    //User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
   //  userService.ajouterUtilisateur(user);
-     //System.out.println(userService.fetchUsers());
+//    System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
 
@@ -143,18 +150,14 @@ public class Main {
        // etab.ajouterEtab(e);
        //etab.getEtabById(1);
         //System.out.println(etab.afficherEtab());
-        
-        
-       
-       
 
         //call service
         //FichierService fs = new FichierService();
-        //UserService userService = new UserService();
-        // adding a user to table user, @author Fares
-        // User user;
-        // user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
-        //userService.ajouterUtilisateur(user);
+       // UserService userService = new UserService();
+         //adding a user to table user, @author Fares
+         //User user;
+         //user= new User(1, "Aymen", "Guizani", "Aymen.Guizani@esprit.tn", "51756432", "azerty", "28196869", "Medecin");
+       // userService.ajouterUtilisateur(user);
         // adding a file to table fichier, 
         //Fichier fichier;
         //fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);
@@ -171,6 +174,7 @@ public class Main {
         //fs.DeleteFichierById(1);
        // System.err.println(fs.numberOfRows());
        
+
         
     }
 

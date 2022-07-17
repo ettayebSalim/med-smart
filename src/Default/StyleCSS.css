@@ -44,7 +44,7 @@ and open the template in the editor.
 }
 
 .submenu{
-    -fx-background-color:#C5CAE9;
+    /*-fx-background-color:#C5CAE9;*/
     -fx-background-insets: 5.0 0.0 0.0 5.0;
 }
 
@@ -96,4 +96,13 @@ and open the template in the editor.
     -fx-border-width:0px 0px 0px 3px;
     transition-delay: .5s;
     
+}
+
+alert{
+    -fx-color:red;
+}
+
+btnlog{
+    -fx-color:white;
+    -fx-text-align:center;
 }

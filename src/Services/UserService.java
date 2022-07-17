@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -57,12 +59,12 @@ public class UserService {
     }
     
         //Select All Users
-    public List<User> fetchUsers() {
-        List<User> users = new ArrayList<>();
+    public ObservableList<User> fetchUsers() {
+        ObservableList<User> users = FXCollections.observableArrayList();
         
         try {
 
-            String req3 = "SELECT * FROM user";
+            String req3 = "SELECT * FROM user order by id";
 
             ps = cnx2.prepareStatement(req3);
             ResultSet rs = ps.executeQuery();
@@ -107,8 +109,8 @@ public class UserService {
                 user.setNom(rs.getString(2));
                 user.setPrenom(rs.getString(3));
                 user.setEmail(rs.getString(4));
-                user.setCin(rs.getString(6));
-                user.setHashedPwd(rs.getString(5));
+                user.setCin(rs.getString(5));
+                user.setHashedPwd(rs.getString(6));
                 user.setNumtel(rs.getString(7));
                 user.setRole(rs.getString(8));
 
@@ -162,4 +164,6 @@ public class UserService {
     
     }     
     }
+
+
 }

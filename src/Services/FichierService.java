@@ -137,6 +137,8 @@ public class FichierService {
 //            Logger.getLogger(FichierService.class.getName()).log(Level.SEVERE, null, ex);
 //        }  
 //    }
+    
+    
     //Update Fichier by Id 
     public void updateFichierById(Fichier f, long numb) {
 
@@ -152,6 +154,7 @@ public class FichierService {
         }
     }
 
+    //Return total number of rows
     public int numberOfRows() {
         int numberRows = 0;
         try {
@@ -168,6 +171,7 @@ public class FichierService {
         return numberRows;
     }
 
+ //list  Fichier  where id (n+1 ,n+m+1)
     public List<Fichier> fetchNFichiers(int n, int m) {
 
         List<Fichier> fichiers = new ArrayList<>();
@@ -193,4 +197,6 @@ public class FichierService {
 
         return fichiers;
     }
+    
+    
 }

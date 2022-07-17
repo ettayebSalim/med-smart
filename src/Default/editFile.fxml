@@ -2,11 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="apeditfile" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="700.0" prefWidth="1000.0" styleClass="submenu" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.EditFileController">
    <children>
@@ -17,31 +20,69 @@
                   <Insets left="5.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <TableView fx:id="editfile" layoutX="127.0" layoutY="14.0" prefHeight="330.0" prefWidth="553.0" AnchorPane.bottomAnchor="125.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <TableView fx:id="editfile" layoutX="127.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="560.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="50.0">
                     <columns>
-                      <TableColumn fx:id="colfileid1" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="File Id" />
-                      <TableColumn fx:id="colfiletype1" maxWidth="250.0" minWidth="150.0" prefWidth="150.0" text="File Type" />
-                        <TableColumn fx:id="colfilename1" maxWidth="300.0" minWidth="200.0" prefWidth="200.0" text="File Name" />
-                        <TableColumn fx:id="coluserid1" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="User Id" />
+                      <TableColumn fx:id="colfileid1" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="File Id" />
+                      <TableColumn fx:id="colfiletype1" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="150.0" text="File Type" />
+                        <TableColumn fx:id="colfilename1" maxWidth="1.7976931348623157E308" minWidth="225.0" prefWidth="225.0" text="File Name" />
+                        <TableColumn fx:id="coluserid1" maxWidth="-1.0" minWidth="100.0" prefWidth="100.0" text="User Id" />
                     </columns>
                   </TableView>
-                  <HBox layoutY="535.0" prefHeight="65.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="535.0">
+                  <VBox layoutX="31.0" layoutY="50.0" prefHeight="580.0" prefWidth="275.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="40.0">
                      <children>
-                        <Button fx:id="canceledit" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="Cancel">
-                           <HBox.margin>
-                              <Insets left="50.0" right="20.0" top="15.0" />
-                           </HBox.margin>
+                        <Label prefHeight="38.0" prefWidth="265.0" text="File Id:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="fileIDText" prefHeight="38.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="38.0" prefWidth="265.0" text="File Name:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="fileNameText" prefHeight="38.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="38.0" prefWidth="265.0" text="FileType:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextField fx:id="fileTypeText" prefHeight="38.0" prefWidth="265.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label prefHeight="38.0" prefWidth="265.0" text="File Type:">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="fileTypeChoice" prefHeight="38.0" prefWidth="265.0" promptText="Please Choose A File Type">
+                           <VBox.margin>
+                              <Insets bottom="65.0" left="5.0" right="5.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Update">
+                           <VBox.margin>
+                              <Insets bottom="25.0" left="5.0" right="5.0" />
+                           </VBox.margin>
                         </Button>
-                        <Button fx:id="validateedit" mnemonicParsing="false" prefHeight="38.0" prefWidth="136.0" text="OK">
-                           <HBox.margin>
-                              <Insets left="425.0" top="15.0" />
-                           </HBox.margin>
+                        <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="265.0" text="Delete">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </VBox.margin>
                         </Button>
                      </children>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
-                  </HBox>
+                  </VBox>
+                  <Button layoutX="593.0" layoutY="625.0" mnemonicParsing="false" onMouseClicked="#editAllFiles" prefHeight="50.0" prefWidth="200.0" text="Fetch All Files" AnchorPane.rightAnchor="202.0" />
                </children></AnchorPane>
          </center>
          <opaqueInsets>

@@ -12,7 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+        
 /**
  *
  * @author AGuizani
@@ -22,9 +22,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
 
-            Scene scene = new Scene(root, 1280, 800);
+            Scene scene = new Scene(root, 800, 700);
             String css = getClass().getResource("StyleCSS.css").toExternalForm();
             scene.getStylesheets().clear();
 
@@ -36,7 +36,7 @@ public class MainApp extends Application {
 
             stage.setResizable(true);
 
-            stage.showAndWait();
+            stage.show();
 
         } catch (IOException ex) {
             ex.getMessage();

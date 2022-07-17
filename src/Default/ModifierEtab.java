@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package Default;
+
+import Models.Etablissments;
 
 /**
  *
- * @author AGuizani
+ * @author user
  */
-public enum TypeFichier {
-    RADIO, SCANNER, IRM, ECHO, ANALYSE_LABO, ORDONNANCE, LETTRE_DE_LIAISON;
+public interface ModifierEtab {
+        public void ModifierEtabl(Etablissments etab);
 }

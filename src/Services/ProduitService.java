@@ -42,14 +42,14 @@ public class ProduitService {
             ps.setInt(4, p.getId_etab());
             System.out.println("Product " + p.getNom_prod() + " added successfully");
             ps.executeUpdate();
-
+               System.out.println("Medicament Ajouté avec Succé");
         } catch (SQLException ex) {
             Logger.getLogger(ProduitService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     //Select
-    public List<Produit> fetchProduit(String Nom_prod) {
+    public List<Produit> fetchProduit() {
         List<Produit> produit = new ArrayList<>();
         try {
 
@@ -57,16 +57,16 @@ public class ProduitService {
             String req = "SELECT * FROM Produit";
 
             PreparedStatement ps = cnx2.prepareStatement(req);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery(req);
 
 
             while (rs.next()) {
                 Produit p = new Produit();
                 p.setId_prod(rs.getInt(1));
-                p.setNom_prod(rs.getString("Nom"));
-                p.setId_physique("id_physique_img");
-                p.setQte_prod(0);
-                p.setId_etab(0);
+                p.setNom_prod(rs.getString(2));
+                p.setId_physique(rs.getString(3));
+                p.setQte_prod(rs.getInt(4));
+                //p.setId_etab(rs.getInt(5));
                 produit.add(p);
 
             }
