@@ -29,5 +29,15 @@
             <Image url="@../care.PNG" />
          </image>
       </ImageView>
+      <Text layoutX="39.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pour nous rejoindre,">
+         <font>
+            <Font name="Franklin Gothic Medium Italic" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="177.0" layoutY="585.0" onMouseClicked="#goToRegisterPage" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliquer ici pour créer un Compte" underline="true">
+         <font>
+            <Font name="Franklin Gothic Medium Italic" size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

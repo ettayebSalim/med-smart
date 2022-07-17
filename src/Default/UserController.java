@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -102,15 +103,65 @@ public class UserController implements Initializable{
 
     @FXML
     void updateUser(ActionEvent event) {
+        
+        if(fxid.getText()==null || fxid.getText().isEmpty()){
+           
+            JOptionPane.showMessageDialog(null, "Veuillez selectionner et afficher le profil de l'utilisateur à modifier ");
+        }
+            else{
+                 
+                try{
+                    
+            Connection cnx2 = MyConnection.getInstance().getCnx();
+            
+            String value1 = fxnom.getText();
+          
+            String value2 = fxprenom.getText();
+           
+            String value3 = fxemail.getText();
+            
+            String value4= fxcin.getText();
+             
+            String value5 = fxtel.getText();
+        
+            String sql = "update user set nom = '"+value1+"',prenom = '"+value2+"',email = '"+value3+"',cin = '"+value4+"',numtel = '"+value5+"' where id= '"+fxid.getText()+"' ";
+            
+            ps = cnx2.prepareStatement(sql);
+            
+            ps.execute();
+            
+            JOptionPane.showMessageDialog(null,"Les coordonnées de "+fxnom.getText()+" "+fxprenom.getText()+" ont été modifiés avec succés");
 
+            fxid.setText(null);
+            fxnom.setText(null);
+            fxprenom.setText(null);
+            fxemail.setText(null);
+            fxcin.setText(null);
+            fxtel.setText(null);
+            fxrole.setText(null);
+
+            
+        }catch(SQLException e){
+            
+            e.printStackTrace();
+             JOptionPane.showMessageDialog(null,"Erreur");
+
+                    
+        } 
+            }
+  
+             showUsers();
+            searchUser();
+        
+        
     }
     
      @FXML
     void viewUser(ActionEvent event) {
-    if(tableusers.getSelectionModel().isEmpty()){
+    if(tableusers.getSelectionModel().getSelectedItem()==null && tableusers.getSelectionModel().isEmpty()){
            JOptionPane.showMessageDialog(null, "Veuillez selectionner un utilisateur pour voir son profil");
 
-     }
+     }else{
         int selectedUser = tableusers.getSelectionModel().getSelectedIndex();
         
         
@@ -129,6 +180,7 @@ public class UserController implements Initializable{
 
         fxrole.setText(colrole.getCellData(selectedUser));
         fxrole.setDisable(true);
+    }
         searchUser();
 
     }
@@ -136,7 +188,7 @@ public class UserController implements Initializable{
      @FXML
     void deleteUser(ActionEvent event) {
        
-        if(fxid.getText().isEmpty()){
+        if(fxid.getText()==null || fxid.getText().isEmpty()){
            
             JOptionPane.showMessageDialog(null, "Veuillez selectionner et afficher le profil de l'utilisateur à supprimer ");
 
@@ -241,9 +293,11 @@ public class UserController implements Initializable{
         showUsers();
         searchUser();
         
+
       
     }
 
+    
     
     public void showUsers(){
         

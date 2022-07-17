@@ -82,7 +82,7 @@
             <Font name="Candara Light Italic" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btnupdate" layoutX="133.0" layoutY="500.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: rgb(127, 255, 212);" text="Modifier">
+      <Button fx:id="btnupdate" layoutX="133.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateUser" style="-fx-background-color: rgb(127, 255, 212);" text="Modifier">
          <font>
             <Font name="Candara Light" size="13.0" />
          </font>
@@ -92,7 +92,7 @@
             <Font name="Haettenschweiler" size="52.0" />
          </font>
       </Text>
-      <Button fx:id="btnView" layoutX="966.0" layoutY="85.0" mnemonicParsing="false" onAction="#viewUser" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: rgb(0, 191, 255);" text="Voir profil" textAlignment="CENTER" textFill="#525252">
+      <Button fx:id="btnView" layoutX="954.0" layoutY="85.0" mnemonicParsing="false" onAction="#viewUser" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: rgb(0, 191, 255);" text="Consulter profil" textAlignment="CENTER" textFill="#525252">
          <font>
             <Font name="Candara Light" size="12.0" />
          </font></Button>

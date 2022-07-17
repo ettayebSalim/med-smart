@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -41,6 +42,27 @@ public class loginController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
+    }
+    
+        @FXML
+    void goToRegisterPage(MouseEvent event){
+
+        try{
+           Parent root = FXMLLoader.load(getClass().getResource("registerView.fxml"));
+
+            Scene scene = new Scene(root, 925, 625);
+            String css = getClass().getResource("StyleCSS.css").toExternalForm();
+            scene.getStylesheets().clear();
+
+            scene.getStylesheets().add(css);
+            
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
     }
     
     @FXML

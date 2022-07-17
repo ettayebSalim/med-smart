@@ -101,3 +101,8 @@ and open the template in the editor.
 alert{
     -fx-color:red;
 }
+
+btnlog{
+    -fx-color:white;
+    -fx-text-align:center;
+}
