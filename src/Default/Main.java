@@ -63,7 +63,7 @@ public class Main {
         //p.setId_prod(1);
         //ps.Supprimerproduits(p);
         //ps.insertProduit(p);
-        //UserService userService = new UserService();
+        UserService userService = new UserService();
         //User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
         //userService.ajouterUtilisateur(user);
         // System.out.println(userService.fetchUsers());
@@ -105,12 +105,19 @@ public class Main {
      //ProduitService ps = new ProduitService();
      //Produit p = new Produit();
     // p.setId_prod(1);
+
+    // PanierCRUD paniercrud = new PanierCRUD();
+     //paniercrud.ajouterPanier();
+    
+    // ProduitService ps = new ProduitService();
+     //Produit p = new Produit();
+     //p.setId_prod(1);
      //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
      //UserService userService = new UserService();
-    // User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
+    //User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
   //  userService.ajouterUtilisateur(user);
-     //System.out.println(userService.fetchUsers());
+//    System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
 
@@ -143,10 +150,6 @@ public class Main {
        // etab.ajouterEtab(e);
        //etab.getEtabById(1);
         //System.out.println(etab.afficherEtab());
-        
-        
-       
-       
 
         //call service
         //FichierService fs = new FichierService();
@@ -171,6 +174,7 @@ public class Main {
         //fs.DeleteFichierById(1);
        // System.err.println(fs.numberOfRows());
        
+
         
     }
 

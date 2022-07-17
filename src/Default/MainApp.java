@@ -22,9 +22,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("loginView.fxml"));
 
-            Scene scene = new Scene(root, 1280, 800);
+            Scene scene = new Scene(root, 800, 700);
             String css = getClass().getResource("StyleCSS.css").toExternalForm();
             scene.getStylesheets().clear();
 
