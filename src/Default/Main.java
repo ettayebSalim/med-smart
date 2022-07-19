@@ -30,7 +30,10 @@ import Services.FichierService;
 import Services.UserService;
 
 import Services.UserService;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -169,9 +172,7 @@ public class Main {
         // fs.updateFichierById(fichier2, 1);
         //delete fichier by id 
         //fs.DeleteFichierById(1);
-       // System.err.println(fs.numberOfRows());
-       
-        
+
     }
 
 }

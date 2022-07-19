@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -31,43 +33,42 @@
                                  </image></ImageView>
                            </children>
                            <VBox.margin>
-                              <Insets bottom="50.0" left="5.0" right="5.0" top="10.0" />
+                              <Insets bottom="30.0" left="5.0" right="5.0" top="10.0" />
                            </VBox.margin>
                         </AnchorPane>
-                        <Label prefHeight="38.0" prefWidth="310.0" text="Filter By File Id:">
+                        <Label prefHeight="38.0" prefWidth="310.0" styleClass="labelWorkArea" text="User Info:">
                            <VBox.margin>
                               <Insets bottom="5.0" left="10.0" right="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="filebyid" prefHeight="38.0" prefWidth="310.0">
+                        <ListView fx:id="user_Info" prefHeight="75.0" prefWidth="310.0">
                            <VBox.margin>
-                              <Insets bottom="45.0" left="10.0" right="10.0" />
+                              <Insets bottom="30.0" left="10.0" right="10.0" />
                            </VBox.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onMouseClicked="#fetchFiles" prefHeight="50.0" prefWidth="310.0" text="Fetch All Files">
+                        </ListView>
+                        <Button mnemonicParsing="false" onMouseClicked="#fetchFiles" prefHeight="50.0" prefWidth="310.0" styleClass="ButtonWorkArea" text="Fetch All Files">
                            <VBox.margin>
                               <Insets bottom="20.0" left="10.0" right="10.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="editmode" mnemonicParsing="false" onMouseClicked="#loadEditfile" prefHeight="50.0" prefWidth="310.0" text="Pass Selection To Edit /delete Mode">
+                        <Button fx:id="editmode" mnemonicParsing="false" onMouseClicked="#loadEditfile" prefHeight="50.0" prefWidth="310.0" styleClass="ButtonWorkArea" text="Pass Selection To Edit /delete Mode">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
                         </Button>
                      </children>
                   </VBox>
-                  <TableView fx:id="listfile" layoutX="406.0" layoutY="57.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
+                  <TableView fx:id="listfile" layoutX="406.0" layoutY="57.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="540.0" prefWidth="551.0" styleClass="tabWorkArea" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="75.0">
                     <columns>
-                      <TableColumn fx:id="colfileid" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="File Id" />
-                      <TableColumn fx:id="colfiletype" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="150.0" text="File Type" />
-                        <TableColumn fx:id="colfilename" maxWidth="1.7976931348623157E308" minWidth="225.0" prefWidth="225.0" text="File Name" />
-                        <TableColumn fx:id="coluserid" maxWidth="-1.0" minWidth="100.0" prefWidth="100.0" text="User Id" />
+                      <TableColumn fx:id="colfiletype" maxWidth="1.7976931348623157E308" minWidth="175.0" prefWidth="175.0" text="File Type" />
+                        <TableColumn fx:id="colfilename" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" text="File Name" />
+                        <TableColumn fx:id="coluserid" maxWidth="1.7976931348623157E308" minWidth="125.0" prefWidth="125.0" text="User CIN" />
                     </columns>
                   </TableView>
-                  <Button fx:id="down" layoutX="522.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#moveListdowwn" prefHeight="36.0" prefWidth="138.0" text="Down" textAlignment="CENTER" AnchorPane.rightAnchor="340.0" />
-                  <Button fx:id="up" layoutX="764.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#moveListUp" prefHeight="38.0" prefWidth="136.0" text="Up" textAlignment="CENTER" AnchorPane.rightAnchor="65.0" />
-                  <Label layoutX="425.0" layoutY="20.0" prefHeight="38.0" prefWidth="119.0" text="Filter Table :" AnchorPane.rightAnchor="456.0" AnchorPane.topAnchor="20.0" />
-                  <TextField fx:id="tablefilter" layoutX="558.0" layoutY="22.0" onKeyTyped="#SearchTableByTypeOrUser" prefHeight="38.0" prefWidth="405.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
-                  <TextField fx:id="test" layoutX="26.0" layoutY="660.0" prefHeight="37.0" prefWidth="328.0" />
+                  <Button fx:id="down" layoutX="522.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#moveListdowwn" prefHeight="36.0" prefWidth="138.0" styleClass="ButtonWorkArea" text="Down" textAlignment="CENTER" AnchorPane.rightAnchor="340.0" />
+                  <Button fx:id="up" layoutX="764.0" layoutY="641.0" mnemonicParsing="false" onMouseClicked="#moveListUp" prefHeight="38.0" prefWidth="136.0" styleClass="ButtonWorkArea" text="Up" textAlignment="CENTER" AnchorPane.rightAnchor="65.0" />
+                  <Label layoutX="425.0" layoutY="20.0" prefHeight="38.0" prefWidth="119.0" styleClass="labelWorkArea" text="Filter Table :" AnchorPane.rightAnchor="456.0" AnchorPane.topAnchor="20.0" />
+                  <TextField fx:id="tablefilter" layoutX="558.0" layoutY="22.0" onKeyTyped="#SearchTableByTypeOrUser" prefHeight="38.0" prefWidth="430.0" styleClass="textFieldWorkArea" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+                  <Group />
                </children></AnchorPane>
          </center>
          <opaqueInsets>

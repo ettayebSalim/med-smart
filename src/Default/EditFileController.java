@@ -30,13 +30,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
+
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -70,8 +71,8 @@ public class EditFileController implements Initializable {
     private TextField fileTypeText;
 
     @FXML
-    private ComboBox<String> fileTypeChoice;
-
+    private ChoiceBox<String> fileTypeChoice;
+    
     @FXML
     private Button updateButton;
 
@@ -80,7 +81,8 @@ public class EditFileController implements Initializable {
 
     private final ObservableList<Fichier> editFiles = FXCollections.observableArrayList();
     private String[] choice = {"RADIO", "SCANNER", "IRM", "ECHO", "ANALYSE_LABO", "ORDONNANCE", "LETTRE_DE_LIAISON"};
-    private final String fileout = "C:\\Users\\AGuizani\\Desktop\\med-smart _CodeNameOne\\backNodeCodeNameOne\\backNodeCodeNameOne\\public\\fichiers\\";
+    File currentDir = new File("../");
+    private final String fileout = currentDir.getAbsolutePath() + "\\backnameone\\backNodeCodeNameOne\\public\\fichiers\\";
     private static String extension = null;
     private static String fileName = null;
     private static int selectedidx = -1;
@@ -132,7 +134,7 @@ public class EditFileController implements Initializable {
                             }
                         }
                     } else {
-                        System.out.println("Please Update File  Fields");
+                        System.out.println("Please Update File Fields");
                     }
                 });
 
@@ -147,8 +149,7 @@ public class EditFileController implements Initializable {
                     alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == buttonTypeOne) {
-
-                        System.out.println("fileName before change " + fileName);
+      
                         boolean result3 = deleteFichierlocal(fileName, extension);
 
                         if (result3) {
@@ -196,9 +197,6 @@ public class EditFileController implements Initializable {
     public void passfiletoEdit(ObservableList<Fichier> x) throws IOException {
 
         editFiles.addAll(x);
-
-        System.out.println(editFiles);
-
         showTableView();
     }
 
@@ -253,7 +251,7 @@ public class EditFileController implements Initializable {
 
                     FileUtils.moveFile(source, target);
                     result = true;
-                    System.out.println("updateFichierlocal succsess");
+                    
                 } catch (IOException e) {
                     e.printStackTrace();
                     result = false;
@@ -278,9 +276,9 @@ public class EditFileController implements Initializable {
             result = Files.deleteIfExists(target);
 
             if (result) {
-                System.out.println("File is deleted!");
+                System.out.println("File is deleted !");
             } else {
-                System.out.println(" unable to delete the file.");
+                System.out.println(" unable to delete the File ");
             }
         } catch (IOException e) {
             e.printStackTrace();
