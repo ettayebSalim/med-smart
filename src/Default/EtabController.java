@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 
 /**
@@ -30,8 +31,11 @@ public class EtabController implements Initializable {
     private Label labelName;
     private Etablissments etabli;
 private SupprimerEtab supEtab;
+private ModifierEtab modif;
     @FXML
     private Button btnSupp;
+    @FXML
+    private Button btnModif;
     /**
      * Initializes the controller class.
      */
@@ -39,9 +43,10 @@ private SupprimerEtab supEtab;
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    public void setData(Etablissments etab,SupprimerEtab p)  {
+    public void setData(Etablissments etab,SupprimerEtab p,ModifierEtab m)  {
      
             this.etabli=etab;
+            this.modif=m;
             this.supEtab=p;
             labelAdresse.setText(etab.getAdresse());
          
@@ -56,4 +61,10 @@ private SupprimerEtab supEtab;
         
         
     }
-}
+
+    @FXML
+    private void Modifier(ActionEvent event) {
+        modif.ModifierEtabl(etabli);
+    }
+    }
+
