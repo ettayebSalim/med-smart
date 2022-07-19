@@ -6,6 +6,8 @@
 package Default;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 
 import javafx.application.Application;
@@ -27,10 +29,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        try {
 
-            
-            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
             ImageView imageViewer = new ImageView("/icons/WordArtMain.png");
             imageViewer.setFitHeight(720);
             imageViewer.setFitWidth(1280);
@@ -48,32 +47,30 @@ public class MainApp extends Application {
 
             PauseTransition delay = new PauseTransition(Duration.seconds(3));
             delay.setOnFinished(event -> {
-                stage2.close();
-                Scene scene = new Scene(root, 1280, 800);
-                String css = getClass().getResource("StyleCSS.css").toExternalForm();
-                scene.getStylesheets().clear();
-
-                scene.getStylesheets().add(css);
-
-           
-            scene.getStylesheets().clear();
-
-
-                Stage stage = new Stage();
-
-                stage.setScene(scene);
-
-                stage.setResizable(true);
-
-                stage.show();
+                try {
+                    stage2.close();
+                    Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+                    Scene scene = new Scene(root, 1280, 800);
+                    String css = getClass().getResource("StyleCSS.css").toExternalForm();
+                    scene.getStylesheets().clear();
+                    
+                    scene.getStylesheets().add(css);
+                    
+                    Stage stage = new Stage();
+                    
+                    stage.setScene(scene);
+                    
+                    stage.setResizable(true);
+                    
+                    stage.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             });
             delay.play();
 
-        } catch (IOException ex) {
-            ex.getMessage();
-
-        }
+       
     }
 
     /**
