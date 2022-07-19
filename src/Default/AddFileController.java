@@ -31,13 +31,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -78,7 +83,9 @@ public class AddFileController implements Initializable {
     private ObservableList<Fichier> list = FXCollections.observableArrayList();
     private List<Path> fileAbsPath = new ArrayList();
     private String[] choice = {"RADIO", "SCANNER", "IRM", "ECHO", "ANALYSE_LABO", "ORDONNANCE", "LETTRE_DE_LIAISON"};
-    private final String fileout = "C:\\Users\\AGuizani\\Desktop\\med-smart _CodeNameOne\\backNodeCodeNameOne\\backNodeCodeNameOne\\public\\fichiers\\";
+
+    File currentDir = new File("../");
+    private final String fileout = currentDir.getAbsolutePath() + "\\backnameone\\backNodeCodeNameOne\\public\\fichiers\\";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -89,8 +96,8 @@ public class AddFileController implements Initializable {
         // set selection mode to multiple rows selection
         addTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         //setting-up choiceboxx
+
         
-        typechoice.setDisable(true);
         typechoice.getItems().addAll(choice);
         typechoice.setOnAction(this::getTypeFichieChoice);
 
@@ -102,14 +109,14 @@ public class AddFileController implements Initializable {
         FileChooser fc = new FileChooser();
 
         List<File> selectedFile = fc.showOpenMultipleDialog(null);
-        boolean bool = this.activateChoiceBox(e);
+        
         if (selectedFile != null) {
             for (int i = 0; i < selectedFile.size(); i++) {
 
                 String s = selectedFile.get(i).getPath();
                 fileAbsPath.add(selectedFile.get(i).toPath());
 
-                if (!bool) {
+                if (typechoice.getValue()!=null) {
                     list.add(new Fichier(this.getTypeFichieChoice(e), s));
                 } else {
                     list.add(new Fichier("radio", s));
@@ -117,13 +124,14 @@ public class AddFileController implements Initializable {
             }
 
         } else {
-            msg.setText("file Not Valid");
+            msg.setText("File Not Valid");
+            alertFile(" File Error !","File Not Valid !");
         }
         colfilename.setCellValueFactory(new PropertyValueFactory<>("IdPhysique"));
         coltype.setCellValueFactory(new PropertyValueFactory<>("type"));
         addTable.setItems(list);
         System.out.println(fileAbsPath);
-        msg.setText("Please Update File Type Column");
+        
 
     }
 
@@ -137,6 +145,7 @@ public class AddFileController implements Initializable {
 
         if (!checkType(e.getOldValue().toString())) {
             msg.setText("File Type Not Supported !");
+            alertFile("File Type Error !","File Type Not Supported !");
         } else {
             msg.setText("File Type updated !");
         }
@@ -180,6 +189,7 @@ public class AddFileController implements Initializable {
 
                 } else {
                     msg.setText(" Invalid User CIN or User Not Found!");
+                    alertFile("User Id Error !"," Invalid User CIN or User Not Found!");
                     break;
                 }
 
@@ -232,32 +242,18 @@ public class AddFileController implements Initializable {
         return s;
     }
 
-    //Activate ChoiceBox for file type select
-    @FXML
-    public boolean activateChoiceBox(ActionEvent e) {
-        boolean bool = true;
 
-        if (checkchoice.isSelected()) {
-            typechoice.setDisable(false);           
-        } else {
-            typechoice.setDisable(true);
-        }
-        bool = typechoice.isDisabled();
-
-        return bool;
-
-    }
 
     //Set a chosen type from choicebox for  the selected files 
     @FXML
     public void SetSelectedType(ActionEvent e) throws IOException {
-        boolean bool = this.activateChoiceBox(e);
+        
         ObservableList<Fichier> list2 = FXCollections.observableArrayList();
         ObservableList<Fichier> selectedItems = addTable.getSelectionModel().getSelectedItems();
         ObservableList<Integer> selectedIndex = addTable.getSelectionModel().getSelectedIndices();
         list2.addAll(list);
         if (!selectedItems.isEmpty()) {
-            if (!bool) {
+            if (typechoice.getValue()!=null) {
                 for (int i = 0; i < selectedItems.size(); i++) {
 
                     Fichier f = selectedItems.get(i);
@@ -292,15 +288,14 @@ public class AddFileController implements Initializable {
         fileAbsPath.clear();
         System.out.println(fileAbsPath);
     }
-    
-    
-   //save a File
-    public boolean saveFile(Path p) {
+
+    //save a File
+    private boolean saveFile(Path p) {
 
         String extension = null;
         String filePath = p.toString();
-        File f = new File(filePath);
-        File file = new File(fileout + f.getName());
+        File fsource = new File(filePath);
+        File ftarget = new File(fileout + fsource.getName());
         File folder = new File(fileout);;
 
         boolean save = false;
@@ -309,40 +304,36 @@ public class AddFileController implements Initializable {
             extension = filePath.substring(filePath.lastIndexOf(".") + 1);
         }
         if (folder.isDirectory()) {
-            if (f.exists() && f.isFile()) {
-                if (!file.exists()) {
-                    
+            if (fsource.exists() && fsource.isFile()) {
+                if (!ftarget.exists()) {
+
                     if ("png".equalsIgnoreCase(extension)
                             || "jpg".equalsIgnoreCase(extension)
                             || "jpeg".equalsIgnoreCase(extension)
                             || "tif".equalsIgnoreCase(extension)) {
                         try {
-                            BufferedImage image = ImageIO.read(f);
+                            BufferedImage image = ImageIO.read(fsource);
                             int height = image.getHeight();
                             int width = image.getWidth();
-                            ImageIO.write(image, "png", file);
+                            ImageIO.write(image, "png", ftarget);
                             save = true;
                         } catch (IOException ex) {
                             ex.getStackTrace();
                         }
-                    }
-
-                   else if ("pdf".equalsIgnoreCase(extension)) {
+                    } else if ("pdf".equalsIgnoreCase(extension)) {
                         try {
-                            PDDocument doc = PDDocument.load(f);
-                            doc.save(file);
+                            PDDocument doc = PDDocument.load(fsource);
+                            doc.save(ftarget);
                             doc.close();
                             save = true;
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }
-
-                   else if ("docx".equalsIgnoreCase(extension)) {
+                    } else if ("docx".equalsIgnoreCase(extension)) {
                         try {
-                            InputStream fis = new FileInputStream(f);
+                            InputStream fis = new FileInputStream(fsource);
                             XWPFDocument docu = new XWPFDocument(fis);
-                            OutputStream stream = new FileOutputStream(file);
+                            OutputStream stream = new FileOutputStream(ftarget);
                             docu.write(stream);
                             save = true;
                             stream.close();
@@ -350,27 +341,26 @@ public class AddFileController implements Initializable {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }
-                   else{
-                       save = false;
+                    } else {
+                        save = false;
                         msg.setText("The File Format Is Not Supported !");
-                   }
+                        alertFile("File extension Error !","The File Format Is Not Supported !");
+                    }
 
                 } else {
                     save = false;
-                    msg.setText("The File " + f.getName() + " Already Exists in Destination Folder !");
-                   
-
+                    msg.setText("The File " + fsource.getName() + " Already Exists in Destination Folder !");
+                    alertFile("Duplicate File Error !","The File " + fsource.getName() + " Already Exists in Destination Folder !");
                 }
             } else {
                 save = false;
-                msg.setText("The File " + f.getName() + "  does not exist or is not a File !");
-               
+                msg.setText("The File " + fsource.getName() + "  does not exist or is not a File !");
+               alertFile("Source File Error !","The File " + fsource.getName() + "  does not exist or is not a File !");
             }
         } else {
             save = false;
             msg.setText("The Folder " + folder.getName() + " does not Exist !");
-            
+            alertFile("Folder Not Found !","The Folder " + folder.getName() + " does not Exist !");
         }
         return save;
     }
@@ -405,6 +395,16 @@ public class AddFileController implements Initializable {
         }
 
         return user;
+    }
+    
+    public Alert alertFile(String title,String msg){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle(title);
+                    alert.setHeaderText(msg);                   
+                    ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.CANCEL_CLOSE);
+                    alert.getButtonTypes().setAll( buttonTypeOk);
+                    Optional<ButtonType> result = alert.showAndWait();
+                    return alert;
     }
 
 }

@@ -7,12 +7,14 @@ package Default;
 
 import Models.Fichier;
 import Services.FichierService;
+import Utiles.MyConnection;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -31,6 +33,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -40,6 +43,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -73,8 +77,7 @@ public class ListFileController implements Initializable {
     @FXML
     private AnchorPane aplistfile;
 
-    @FXML
-    private TableColumn<Fichier, Long> colfileid;
+
 
     @FXML
     private TableColumn<Fichier, String> colfilename;
@@ -106,13 +109,15 @@ public class ListFileController implements Initializable {
     @FXML
     private TextField tablefilter;
 
-    @FXML
-    private TextField test;
+    
+     @FXML
+    private ListView<String> user_Info;
 
     @FXML
     private ImageView imageView;
 
-    private final String fileout = "C:\\Users\\AGuizani\\Desktop\\med-smart _CodeNameOne\\backNodeCodeNameOne\\backNodeCodeNameOne\\public\\fichiers\\";
+    File currentDir = new File("../");
+    private final String fileout = currentDir.getAbsolutePath() + "\\backnameone\\backNodeCodeNameOne\\public\\fichiers\\";
 
     private MenuController menucontroller;
 
@@ -125,35 +130,36 @@ public class ListFileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+ 
         fetchNFiles(0, 25);
         listfile.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        //Search File By Id text field  
-        filebyid.setOnKeyPressed((KeyEvent e) -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                getFileById();
-            }
-        });
-
+        
         listfile.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
 
-                Fichier f = new Fichier(newSelection.getType(), newSelection.getIdPhysique());
-                test.setText("Nom Fichier: " + f.getIdPhysique() + "    Type Fichier: " + f.getType());
-                previewFile(f.getIdPhysique());
-                imageView.setOnMouseClicked(e -> {
-                    FullSizeView(imageView.getImage(), f.getIdPhysique());
-                });
+                try {
+                    Fichier f = new Fichier(newSelection.getType(), newSelection.getIdPhysique(),newSelection.getUser());
+                    user_Info.getItems().clear();
+                    user_Info.getItems().add("Prenom : " + f.getUser().getPrenom() );
+                    user_Info.getItems().add("Nom : " + f.getUser().getNom());
+                    user_Info.getItems().add("Cin : " +f.getUser().getCin());
 
+                    previewFile(f.getIdPhysique());
+                    imageView.setOnMouseClicked(e -> {
+                        FullSizeView(imageView.getImage(), f.getIdPhysique());
+                    });
+                } catch (IOException ex) {
+                    Logger.getLogger(ListFileController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+   
         });
 
     }
 
     public void showTableView() {
         listfile.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        colfileid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        
         colfiletype.setCellValueFactory(new PropertyValueFactory<>("type"));
         colfilename.setCellValueFactory(new PropertyValueFactory<>("IdPhysique"));
         //coluserid.setCellValueFactory(cellData -> new SimpleIntegerProperty((cellData.getValue().getUser().getId())).asObject());
@@ -238,29 +244,7 @@ public class ListFileController implements Initializable {
 
     }
 
-    public void getFileById() {
-        FichierService fs = new FichierService();
-        showTableView();
-
-        try {
-            int id = Integer.parseInt(filebyid.getText());
-            try {
-                Fichier fichier = fs.getFichierById(id);
-                System.out.println(fichier);
-                listfile.getItems().clear();
-                listFile.add(fichier);
-                showTableView();
-            } catch (NullPointerException npe) {
-                listfile.getItems().clear();
-                listfile.setPlaceholder(new Label("File Not Found"));
-            }
-        } catch (NumberFormatException ex) {
-            listfile.getItems().clear();
-            listfile.setPlaceholder(new Label("Please enter only valid Integer "));
-        }
-
-    }
-
+    
     @FXML
     public void loadEditfile(MouseEvent e) throws IOException {
 
@@ -357,7 +341,7 @@ public class ListFileController implements Initializable {
 
                     doc.close();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {

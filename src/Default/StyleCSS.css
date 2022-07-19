@@ -22,6 +22,9 @@ and open the template in the editor.
     divider-color: #BDBDBD; 
 }*/
 
+
+/*Main Menu Style*/
+
 *{
     dark-primary-color: #00227b; 
     secondary-Dark-Color:#99aa00;
@@ -33,6 +36,7 @@ and open the template in the editor.
     primary-text-color: #212121; 
     secondary-text-color: #000000; 
     divider-color: #BDBDBD; 
+
 }
 
 #p_up{
@@ -44,8 +48,9 @@ and open the template in the editor.
 }
 
 .submenu{
-    /*-fx-background-color:#C5CAE9;*/
+
     -fx-background-insets: 5.0 0.0 0.0 5.0;
+
 }
 
 #slider{
@@ -64,45 +69,265 @@ and open the template in the editor.
     -fx-font-weight:bold;
 }
 
+#user_Info{
+    -fx-border-color: secondary-Color;
+    -fx-border-width:3px 3px 3px 3px;
+    -fx-effect: dropshadow(three-pass-box,  secondary-Color, 25, 0, 0, 3);
+}
+
+#imageView{
+    -fx-border-color: secondary-Color;
+    -fx-border-width:3px 3px 3px 3px;
+    -fx-effect: dropshadow(three-pass-box,  secondary-Color, 25, 0, 0, 3);
+}
+
 .button{
     -fx-background-color:transparent;
     -fx-font-size:15;
     -fx-font-weight:bold;
     -fx-alignment:BASELINE_LEFT;
-    
+
 }
 
 .MenuItem{
     -fx-text-fill:secondary-text-color;
     -fx-opacity:0.2;
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_CENTER;
+
 
 }
 
 .BarItem{
     -fx-text-fill:text-primary-color;
-    
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_LEFT;
+
 }
 
 .MenuItem:hover{
     -fx-border-color: secondary-Color;
     -fx-border-width:0px 0px 3px 0px;
-    -fx-opacity:1;
+    -fx-opacity:1;   
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_CENTER;
+
 
 }
+
+.MenuItem:pressed
+{
+    -fx-border-color: secondary-Color;
+    -fx-border-width:0px 0px 0px 0px;
+    -fx-opacity:1;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+    -fx-alignment:baseline-center;
+
+}
+
 
 .BarItem:hover{
     -fx-background-color:light-primary-color;
     -fx-border-color: secondary-Color; 
     -fx-border-width:0px 0px 0px 3px;
     transition-delay: .5s;
+    -fx-font-size:18;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_LEFT;
+}
+
+
+
+
+/**********************************************************************/
+/**********************************************************************/
+/**********************************************************************/
+
+
+/*WorkArea Style*/
+
+/* Label style*/
+.labelWorkArea
+{   
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+}
+
+/* text field style*/
+.textFieldWorkArea
+{
+    -fx-background-color:transparent;
+    -fx-border-color: default-primary-color;
+    -fx-border-width:0px 0px 3px 0px;
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-text-fill: primary-text-color;
+
+    -fx-prompt-text-fill: #D4CEE3;
+}
+.textFieldWorkArea:focused
+{
+    -fx-background-color:transparent;
+    -fx-border-color: secondary-Color;
+    -fx-border-width:0px 0px 3px 0px;
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-text-fill: primary-text-color;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+    -fx-prompt-text-fill: #D4CEE3;
+
+}
+
+/* Button  style*/
+.ButtonWorkArea:hover{
+
+    -fx-border-color: default-primary-color;
+    -fx-background-color:default-primary-color;
+    -fx-text-fill:text-primary-color;   
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_CENTER;
+    -fx-border-width:3px 3px 3px 3px;
+    -fx-effect: dropshadow(three-pass-box,  light-primary-color, 15, 0.5, 8, 8);
+    -fx-translate-y:-3;
+}
+
+.ButtonWorkArea{
+    -fx-border-color:transparent ;
+    -fx-background-color:default-primary-color;
+    -fx-text-fill:text-primary-color;   
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-alignment:BASELINE_CENTER;
+    -fx-background-radius: 1em;
+    -fx-border-radius: 1em;
+}
+
+.ButtonWorkArea:pressed
+{
+    /*-fx-effect: dropshadow(three-pass-box, secondary-Color, 30, 0, 0, 10);*/
+    -fx-border-color: dark-primary-color;
+    -fx-border-width:3px 3px 3px 3px;
+    -fx-background-color:dark-primary-color;
+    -fx-font-size:15;
+    -fx-font-weight:bold;
+    -fx-alignment:baseline-center;
+    -fx-text-fill:text-primary-color;  
+
+}
+
+/* Choice Box style*/
+.choiceWorkArea  {
+    -fx-background-color:default-primary-color; 
+    -fx-border-color:secondary-Color ;
+    -fx-border-width:3px 3px 3px 3px;
+    -fx-font-size:16;  
+    -fx-font-weight:bold;
+    -fx-mark-color: secondary-Color ;
+}
+.choiceWorkArea > .label { -fx-text-fill: text-primary-color; }
+
+.choiceWorkArea  .menu-item {
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+}
+
+
+.choiceWorkArea .menu-item:focused {
+    -fx-background-color: secondary-Color ; 
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-mark-color:  secondary-Color  ;
+}
+
+
+/* TableView style*/
+.tabWorkArea{
+    -fx-background-radius:30;
+}
+
+.tabWorkArea .column-header-background
+{
     
+    -fx-background-radius:30;
+    -fx-background-insets:0 0 10 0;
+    -fx-padding:0 0 10 0;
+    -fx-background-color:default-primary-color;
+    -fx-effect: dropshadow(two-pass-box, light-primary-color, 15,0, 0.1, 5);
+
+}
+.tabWorkArea .column-header,
+.tabWorkArea .column-header-background .filler {
+    -fx-cell-size : 50;
+    -fx-background-radius:30;
+    -fx-background-color:    default-primary-color;   
+    -fx-font-size:16;
+    -fx-font-weight:bold;
+    -fx-border-color:light-primary-color;
+    -fx-border-width:0px 2px 0px 0px;
+}
+.tabWorkArea .column-header .label{
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
 }
 
-alert{
-    -fx-color:red;
+
+.tabWorkArea .cell{
+
+    -fx-alignment: center-left;
+    -fx-text-fill:   primary-text-color;
+    -fx-font-size:12;
+    -fx-font-weight:bold;
+    -fx-border-color:light-primary-color;
+    -fx-border-width:0px 2px 0px 0px;
+
 }
 
-btnlog{
-    -fx-color:white;
-    -fx-text-align:center;
+
+.table-row-cell:selected {
+
+    -fx-background-color:  secondary-Color;
 }
+.table-row-cell:selected .text {
+    -fx-fill : white ;
+    -fx-font-size:13;
+    -fx-font-weight:bold;
+
+}
+
+
+/* The increment and decrement button CSS class of scrollbar */
+.tabWorkArea .increment-button ,.tabWorkArea .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+.tabWorkArea .scroll-bar:horizontal .track,
+.tabWorkArea .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive(  #2D75E8,80%);
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.tabWorkArea .scroll-bar:horizontal .thumb,
+.tabWorkArea .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #2D75E8,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+
+
+
+

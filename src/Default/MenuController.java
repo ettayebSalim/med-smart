@@ -5,7 +5,7 @@
  */
 package Default;
 
-import Models.Fichier;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -13,13 +13,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -131,7 +131,7 @@ public class MenuController implements Initializable {
         );
 
         //Setting the Translation of the Slider Menu
-        slider.setTranslateX(-225);
+        slider.setTranslateX(-250);
 
         Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
@@ -139,7 +139,7 @@ public class MenuController implements Initializable {
             slide.setNode(slider);
             slide.setToX(0);
             slide.play();
-            slider.setTranslateX(-225);
+            slider.setTranslateX(-250);
             slide.setOnFinished((ActionEvent e) -> {
                 Menu.setVisible(false);
                 MenuClose.setVisible(true);
@@ -150,7 +150,7 @@ public class MenuController implements Initializable {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.6));
             slide.setNode(slider);
-            slide.setToX(-225);
+            slide.setToX(-250);
             slide.play();
             slider.setTranslateX(0);
             slide.setOnFinished((ActionEvent e) -> {
@@ -296,7 +296,7 @@ public class MenuController implements Initializable {
     public void loadUIMain(String ui) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));       
         } catch (IOException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
