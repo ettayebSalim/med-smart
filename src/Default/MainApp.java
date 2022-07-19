@@ -28,6 +28,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+
             
             Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
             ImageView imageViewer = new ImageView("/icons/WordArtMain.png");
@@ -53,6 +54,10 @@ public class MainApp extends Application {
                 scene.getStylesheets().clear();
 
                 scene.getStylesheets().add(css);
+
+           
+            scene.getStylesheets().clear();
+
 
                 Stage stage = new Stage();
 

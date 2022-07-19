@@ -326,7 +326,7 @@ public class AddFileController implements Initializable {
                             doc.save(ftarget);
                             doc.close();
                             save = true;
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     } else if ("docx".equalsIgnoreCase(extension)) {

@@ -341,7 +341,7 @@ public class ListFileController implements Initializable {
 
                     doc.close();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {

@@ -290,6 +290,7 @@ and open the template in the editor.
 
 }
 
+
 .table-row-cell:selected {
 
     -fx-background-color:  secondary-Color;
@@ -328,3 +329,12 @@ and open the template in the editor.
 }
 
 
+
+alert{
+    -fx-color:red;
+}
+
+btnlog{
+    -fx-color:white;
+    -fx-text-align:center;
+}

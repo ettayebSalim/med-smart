@@ -46,6 +46,7 @@ public class MenuController implements Initializable {
     @FXML
     private HBox FichierUpMenu;
 
+
     @FXML
     private HBox MedicamentUpMenu;
 
@@ -195,6 +196,8 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(true);
             borderpanebutton.setCenter(UserUpMenu);
+            loadUIMain("userView");
+
         });
 
         btl2.setOnMouseClicked(e -> {
@@ -215,6 +218,7 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+             loadUIMain("AddEtablissement");
         });
 
         btl4.setOnMouseClicked(e -> {
@@ -225,6 +229,7 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(true);
             borderpanebutton.setCenter(RendezVousUpMenu);
             UserUpMenu.setVisible(false);
+            loadUIMain("AddRendezVousFXML");
         });
 
         
@@ -272,12 +277,22 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
             loadUIMain("ListeEtab");
-          });
+
+            
+        });
+        btl6.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(true);
+            borderpanebutton.setCenter(PanierUpMenu);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+           loadUIMain("Panier");
+
+    });
 
     }
-
-    /*method that takes the FXML file name as input  which will be concatinated with ".fxml" 
-    then  loaded and centerd in the "work area" the border pane borderpanemain */
     public void loadUIMain(String ui) {
         Parent root = null;
         try {
@@ -291,6 +306,12 @@ public class MenuController implements Initializable {
 
     private void userMenu(MouseEvent e) {
         loadUIMain("UI1");
+
+    }
+    
+        @FXML
+    private void userViewMenu(MouseEvent e) {
+        loadUIMain("userView");
 
     }
 
@@ -340,6 +361,15 @@ the button action (Mouse click event) is set with Scene builder in the MainMenu.
         loadUIMain("editFile");
 
     }
+    
+     @FXML
+    public void panierMenuEdit(MouseEvent e) throws IOException {
+        loadUIMain("editPanier");
+
+
+    }
+    
+
 
     @FXML
     private void AddEtablissement(ActionEvent event) {
