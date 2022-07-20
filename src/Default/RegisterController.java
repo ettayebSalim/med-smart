@@ -2,6 +2,9 @@ package Default;
 
 
 import Utiles.MyConnection;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -84,8 +87,13 @@ public class RegisterController implements Initializable {
            succesAlert.setContentText("Mr,Mme "+fxnom.getText()+" "+fxprenom.getText()+" ,le nouveau "+fxrole.getValue()+" est ajouté avec succés");
            succesAlert.showAndWait();
            
- 
-
+      Twilio.init("ACf036909e6670a84aedcd7165f1ab337d", "ce721abffd6efbf6baf9b36d7f9be0a3");
+        Message message = Message.creator(new PhoneNumber("+216"+fxtel.getText()),
+                new PhoneNumber("+18623566984"),
+                "Bienvenue sur notre application, Pour se connecter voici votre login "+fxemail.getText()+" et votre mot de passe est : "+fxcin.getText()).create();
+        System.out.println(message.getSid());
+            
+  
            fxnom.setText(null);
            fxprenom.setText(null);
            fxemail.setText(null);
@@ -93,6 +101,7 @@ public class RegisterController implements Initializable {
            fxtel.setText(null);
            fxrole.setValue(null);
 
+  
     }
     
         private void executeQuery(String query){
