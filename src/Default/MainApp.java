@@ -61,7 +61,7 @@ public class MainApp extends Application {
                     stage.setScene(scene);
                     
                     stage.setResizable(true);
-                    
+                    stage.initStyle(StageStyle.UNIFIED);
                     stage.show();
                 } catch (IOException ex) {
                     Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);

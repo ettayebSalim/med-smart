@@ -72,7 +72,7 @@ public class EditFileController implements Initializable {
 
     @FXML
     private ChoiceBox<String> fileTypeChoice;
-    
+
     @FXML
     private Button updateButton;
 
@@ -109,7 +109,6 @@ public class EditFileController implements Initializable {
 
                 fileTypeText.setText(newSelection.getType());
                 selectedidx = editfile.getSelectionModel().getSelectedIndex();
-                
 
                 updateButton.setOnMouseClicked(e -> {
                     if (!fileNameText.getText().isEmpty()) {
@@ -149,7 +148,7 @@ public class EditFileController implements Initializable {
                     alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == buttonTypeOne) {
-      
+
                         boolean result3 = deleteFichierlocal(fileName, extension);
 
                         if (result3) {
@@ -183,7 +182,7 @@ public class EditFileController implements Initializable {
 
     @FXML
     public void editAllFiles() {
-
+        editfile.getItems().clear();
         FichierService fs = new FichierService();
         List<Fichier> allFichier = fs.fetchFichiers();
 
@@ -251,7 +250,7 @@ public class EditFileController implements Initializable {
 
                     FileUtils.moveFile(source, target);
                     result = true;
-                    
+
                 } catch (IOException e) {
                     e.printStackTrace();
                     result = false;
