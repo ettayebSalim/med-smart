@@ -58,32 +58,6 @@ public class ListeProduitController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-      private void modifierr(Produit prod) {
-        ProduitService produit = new ProduitService();
-        produit.ModifProduits(prod);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Erreur");
-        alert.setHeaderText(null);
-        alert.setContentText("Produit modified successfully");
-        alert.showAndWait();
-
-        MyPane.getChildren().clear();
-
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ListeProduit.fxml"));
-
-            AnchorPane anchorPane = cards.load();
-
-            MyPane.getChildren().add(anchorPane);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
     /**
      * Initializes the controller class.

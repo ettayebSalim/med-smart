@@ -33,14 +33,14 @@ public class PanierCRUD {
 
     //add panier and declare var date
     Date now = new Date(System.currentTimeMillis());
-    Panier p = new Panier( now);
+    Panier p = new Panier( "","");
 
     // Add panier 
-    public void ajouterPanier() {
+    public void ajouterPanier(Panier p) {
 
         try {
-            String req = "INSERT INTO `Panier`(`date`)"
-                    + " VALUES (?)";
+            String req = "INSERT INTO `Panier`(`nomProd`,`date`)"
+                    + " VALUES (?,?)";
 
 
             ps = cnx2.prepareStatement(req);
@@ -48,7 +48,9 @@ public class PanierCRUD {
             PreparedStatement ps = cnx2.prepareStatement(req);
              
             //ps.setInt(1, p.getIdUser());
-            ps.setDate(1, p.getDate());
+           ps.setString(1, p.getNomProd());
+
+            ps.setString(2, p.getDate());
 
             ps.executeUpdate();
 
@@ -60,31 +62,18 @@ public class PanierCRUD {
 
     }
 
-    public void ajouterPanier1(Panier P) {
-        String req2 = "INSERT INTO `Panier`(`date`)"
-                    + " VALUES (?)";
-        try {
-            PreparedStatement pst = cnx2.prepareStatement(req2);
-            pst.setDate(1, p.getDate());
-            pst.executeUpdate();
-                        System.out.println("Panier a été ajouté avec succé");
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-
-    }
+   
     public List<Panier> afficherPanier() {
                      List<Panier> myList = new ArrayList<>();
 
         try {
-              String req3 =  "SELECT * FROM panier";
+              String req3 =  "SELECT * FROM Panier";
               Statement st = cnx2.createStatement();
               ResultSet rs = st.executeQuery(req3);
               while (rs.next()) {
-                  Panier p = new Panier();
-                 p.setId(rs.getInt(1));
-                // p.setDate(rs.getDate());
+                 Panier p = new Panier();
+                 p.setNomProd(rs.getString("nomProd"));
+                 p.setDate(rs.getString("date"));
                  myList.add(p);
               }
             

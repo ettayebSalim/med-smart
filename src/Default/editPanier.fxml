@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane id="AnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragDetected="#deleteRowTabView" prefHeight="792.0" prefWidth="1027.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.EditPanierController">
+   <children>
+      <BorderPane layoutX="437.0" layoutY="26.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="683.0" prefWidth="458.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="26.0">
+         <top>
+            <TableView fx:id="editpanier" layoutX="219.0" layoutY="42.0" prefHeight="497.0" prefWidth="986.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="nomprod" prefWidth="229.0" text="Nom Produit" />
+                <TableColumn fx:id="datepanier" prefWidth="296.0" text="Date" />
+              </columns>
+            </TableView>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#deleteRowTabView" prefHeight="38.0" prefWidth="135.0" text="Supprimer Produit" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+      <Button layoutX="804.0" layoutY="671.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="146.0" text="Imprimer" />
+   </children>
+</AnchorPane>

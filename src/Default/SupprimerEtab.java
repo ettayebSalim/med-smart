@@ -9,10 +9,12 @@ import Models.Etablissments;
 
 /**
  *
- * @author haith
+ * @author 21622
  */
-public interface SupprimerEtab {
-    
-    public void supprimer(Etablissments etab);
+class SupprimerEtab {
+
+    void supprimer(Etablissments etabli) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

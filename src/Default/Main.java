@@ -30,7 +30,10 @@ import Services.FichierService;
 import Services.UserService;
 
 import Services.UserService;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -52,7 +55,10 @@ public class Main {
 
         MyConnection.getInstance();
 //     MyConnection mc = new MyConnection();
-        // PanierCRUD paniercrud = new PanierCRUD();
+        //PanierCRUD paniercrud = new PanierCRUD();
+        
+        
+       // System.out.println(paniercrud.afficherPanier());
         //paniercrud.ajouterPanier();
 
         // ProduitService ps = new ProduitService();
@@ -60,10 +66,10 @@ public class Main {
         //p.setId_prod(1);
         //ps.Supprimerproduits(p);
         //ps.insertProduit(p);
-        //UserService userService = new UserService();
+        UserService userService = new UserService();
         //User user = new User("ettayeb","selim","selim.ettayeb@esprit.tn","14225520","azerty","22365478","Medecin");
         //userService.ajouterUtilisateur(user);
-         //System.out.println(Services.ProduitService.());
+        // System.out.println(userService.fetchUsers());
         // System.out.println(userService.getUserByID(3));
         //System.out.println(userService.deleteUser(2));
         //userService.updateUser(user,3);
@@ -102,12 +108,19 @@ public class Main {
      //ProduitService ps = new ProduitService();
      //Produit p = new Produit();
     // p.setId_prod(1);
+
+    // PanierCRUD paniercrud = new PanierCRUD();
+     //paniercrud.ajouterPanier();
+    
+    // ProduitService ps = new ProduitService();
+     //Produit p = new Produit();
+     //p.setId_prod(1);
      //ps.Supprimerproduits(p);
     //ps.insertProduit(p);
      //UserService userService = new UserService();
-    // User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
+    //User user = new User("guizani","aymen","aymen.guizani@esprit.tn","14223300","azsbfuf","21000365","Medecin");
   //  userService.ajouterUtilisateur(user);
-     //System.out.println(ProduitService.fetchProduit());
+//    System.out.println(userService.fetchUsers());
  //    System.out.println(userService.getUserByID(3));
     // System.out.println(userService.deleteUser(2));
 
@@ -130,28 +143,24 @@ public class Main {
       // PanierCRUD paniercrud = new PanierCRUD();
         //paniercrud.ajouterPanier();
 
-        //ProduitService etab = new ProduitService();
+       // EtabCRUD etab = new EtabCRUD();
         //Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
         // etab.deleteEtab(1);
 
-     //  Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
+      //  Etablissments e = new Etablissments("nahhhhhhme2", "adresse2", "type2");
     //     etab.deleteEtab(1);
        // etab.updateEtab(e, 1);
        // etab.ajouterEtab(e);
        //etab.getEtabById(1);
-       //System.out.println(etab.fetchProduit());
-        
-        
-       
-       
+        //System.out.println(etab.afficherEtab());
 
         //call service
         //FichierService fs = new FichierService();
-        //UserService userService = new UserService();
-        // adding a user to table user, @author Fares
-        // User user;
-        // user= new User(1, "ettayeb", "selim", "selim.ettayeb@esprit.tn", "14225520", "azerty", "22365478", "Medecin");
-        //userService.ajouterUtilisateur(user);
+       // UserService userService = new UserService();
+         //adding a user to table user, @author Fares
+         //User user;
+         //user= new User(1, "Aymen", "Guizani", "Aymen.Guizani@esprit.tn", "51756432", "azerty", "28196869", "Medecin");
+       // userService.ajouterUtilisateur(user);
         // adding a file to table fichier, 
         //Fichier fichier;
         //fichier= new Fichier(1,"IRM", "C:\\Users\\AGuizani\\Desktop\\test_care\\dataset\\00000141_000.png", user);
@@ -166,9 +175,14 @@ public class Main {
         // fs.updateFichierById(fichier2, 1);
         //delete fichier by id 
         //fs.DeleteFichierById(1);
+
+
+
        // System.err.println(fs.numberOfRows());
        
+
         
+
     }
 
 }

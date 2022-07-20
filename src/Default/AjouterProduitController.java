@@ -115,14 +115,6 @@ public class AjouterProduitController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Produit Ajouté avec Succé");
             alert.showAndWait();
-            //API: QR CODE
-                String qr = ("Nom: " + p.getNom_prod()
-                        + " id physique: " + p.getId_physique()
-                        + " Type d'offre: " + p.getQte_prod()
-                        + " Libellé offre: " + p.getId_etab()
-                       );
-                QRGenerate q = new QRGenerate(qr);
-
 
         }
     }
@@ -188,5 +180,4 @@ public class AjouterProduitController implements Initializable {
             }
         }
     }
-    
 }

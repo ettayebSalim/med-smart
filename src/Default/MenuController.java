@@ -5,7 +5,6 @@
  */
 package Default;
 
-import Models.Fichier;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -13,13 +12,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -60,7 +58,6 @@ public class MenuController implements Initializable {
 
     @FXML
     private HBox UserUpMenu;
-
 
     @FXML
     private ImageView Exit;
@@ -107,18 +104,12 @@ public class MenuController implements Initializable {
     @FXML
     private AnchorPane slider;
     @FXML
+    private AnchorPane apMainMenu;
+    @FXML
     private Button btu111;
     @FXML
     private Button btu411;
-    @FXML
-    private AnchorPane apMainMenu;
-    @FXML
-    private Button ListMedicament;
 
-    
-    
-    
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -133,21 +124,19 @@ public class MenuController implements Initializable {
             if (result.get() == buttonTypeOne) {
                 System.exit(0);
             }
-            
         }
         );
 
         //Setting the Translation of the Slider Menu
-        
-        slider.setTranslateX(-225);
+        slider.setTranslateX(-250);
 
-        Menu.setOnMouseClicked(enent -> {
+        Menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.3));
             slide.setNode(slider);
             slide.setToX(0);
             slide.play();
-            slider.setTranslateX(-225);
+            slider.setTranslateX(-250);
             slide.setOnFinished((ActionEvent e) -> {
                 Menu.setVisible(false);
                 MenuClose.setVisible(true);
@@ -158,7 +147,7 @@ public class MenuController implements Initializable {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.6));
             slide.setNode(slider);
-            slide.setToX(-225);
+            slide.setToX(-250);
             slide.play();
             slider.setTranslateX(0);
             slide.setOnFinished((ActionEvent e) -> {
@@ -194,7 +183,6 @@ public class MenuController implements Initializable {
         PanierUpMenu.setVisible(false);
         RendezVousUpMenu.setVisible(false);
         UserUpMenu.setVisible(true);
-        
         //setting up the  Slider Menu with the "OnMouseClicked" event
         btl1.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
@@ -204,7 +192,10 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(true);
             borderpanebutton.setCenter(UserUpMenu);
+            loadUIMain("userView");
+
         });
+
         btl2.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
             MedicamentUpMenu.setVisible(true);
@@ -223,6 +214,7 @@ public class MenuController implements Initializable {
             PanierUpMenu.setVisible(false);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
+             loadUIMain("AddEtablissement");
         });
 
         btl4.setOnMouseClicked(e -> {
@@ -233,8 +225,11 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(true);
             borderpanebutton.setCenter(RendezVousUpMenu);
             UserUpMenu.setVisible(false);
+            loadUIMain("AddRendezVousFXML");
         });
 
+        
+        
         btl5.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(true);
             borderpanebutton.setCenter(FichierUpMenu);
@@ -244,9 +239,20 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
             loadUIMain("addFile");//on Mouse clicked first FXML addFile is loaded 
+        });
+
+        btl6.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(true);
+            borderpanebutton.setCenter(PanierUpMenu);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+            loadUIMain("Panier");
 
         });
-        btu111.setOnMouseClicked(e -> {
+         btu111.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
             borderpanebutton.setCenter(EtablissementUpMenu);
             MedicamentUpMenu.setVisible(false);
@@ -255,8 +261,9 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
              loadUIMain("AddEtablissement");
-            
+
         });
+         
           btu411.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
             borderpanebutton.setCenter(EtablissementUpMenu);
@@ -266,44 +273,9 @@ public class MenuController implements Initializable {
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
             loadUIMain("ListeEtab");
+
             
         });
-          
-          
-         ListMedicament.setOnMouseClicked(e -> {
-            FichierUpMenu.setVisible(false);
-            borderpanebutton.setCenter(MedicamentUpMenu);
-            MedicamentUpMenu.setVisible(true);
-            EtablissementUpMenu.setVisible(false);
-            PanierUpMenu.setVisible(false);
-            RendezVousUpMenu.setVisible(false);
-            UserUpMenu.setVisible(false);
-            loadUIMain("ListeProduit");
-            
-        });  
-         PanierUpMenu.setOnMouseClicked(e -> {
-            FichierUpMenu.setVisible(false);
-            borderpanebutton.setCenter(MedicamentUpMenu);
-            MedicamentUpMenu.setVisible(false);
-            EtablissementUpMenu.setVisible(false);
-            PanierUpMenu.setVisible(true);
-            RendezVousUpMenu.setVisible(false);
-            UserUpMenu.setVisible(false);
-            loadUIMain("Panier");
-            
-        });  
-         
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
         btl6.setOnMouseClicked(e -> {
             FichierUpMenu.setVisible(false);
             MedicamentUpMenu.setVisible(false);
@@ -312,18 +284,15 @@ public class MenuController implements Initializable {
             borderpanebutton.setCenter(PanierUpMenu);
             RendezVousUpMenu.setVisible(false);
             UserUpMenu.setVisible(false);
-        });
-         
-       
-    }
+           loadUIMain("Panier");
 
-   /*method that takes the FXML file name as input  which will be concatinated with ".fxml" 
-    then  loaded and centerd in the "work area" the border pane borderpanemain */ 
-    
+    });
+
+    }
     public void loadUIMain(String ui) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));
+            root = FXMLLoader.load(getClass().getResource(ui + ".fxml"));       
         } catch (IOException ex) {
             Logger.getLogger(MenuController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -331,16 +300,18 @@ public class MenuController implements Initializable {
 
     }
 
-
-
     private void userMenu(MouseEvent e) {
         loadUIMain("UI1");
 
     }
+    
+        @FXML
+    private void userViewMenu(MouseEvent e) {
+        loadUIMain("userView");
 
+    }
 
     private void medicamentMenu(MouseEvent e) {
-
 
         loadUIMain("UI1");
 
@@ -357,9 +328,8 @@ public class MenuController implements Initializable {
         loadUIMain("UI1");
 
     }
-    
-    
-/* this method calls the loadUIMain method to add the addFile.fxml 
+
+    /* this method calls the loadUIMain method to add the addFile.fxml 
 to the work area and associated to slider menu button btl5 "Fichier" and 
  the Upper menu button "AddFile"
 Slider Menu:the button action is initialized in the initialize method
@@ -367,68 +337,39 @@ Upper Menu:the button action (Mouse click event) is set with Scene builder in th
     @FXML
     private void fichierMenuAdd(MouseEvent e) {
         loadUIMain("addFile");
-       
-     
+
     }
- @FXML
-    private void Panier(MouseEvent e) {
-        loadUIMain("Panier");
-       
-     
-    }
+
     /* this method calls the loadUIMain method to load the listFile.fxml 
 to the work area and associated to Upper menu button "ListFile"
 the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
     @FXML
     private void fichierMenulist(MouseEvent e) {
         loadUIMain("listFile");
-        
+
     }
 
-     /* this method calls the loadUIMain method to load the editFile.fxml 
+    /* this method calls the loadUIMain method to load the editFile.fxml 
 to the work area and associated to Upper menu button "EditFile"
 the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
     @FXML
     public void fichierMenuEdit(MouseEvent e) throws IOException {
         loadUIMain("editFile");
 
-
     }
-@FXML
-public void ajoutermedi(MouseEvent e) throws IOException {
-        loadUIMain("ajouterProduit");
-
-
-    }
-@FXML
-public void Suppmedi(MouseEvent e) throws IOException {
-        loadUIMain("Suppproduit");
+    
+     @FXML
+    public void panierMenuEdit(MouseEvent e) throws IOException {
+        loadUIMain("editPanier");
 
 
     }
-public void ListMedicament(MouseEvent e) throws IOException {
-    loadUIMain("ListeProduit");
-
-    }
-    private void panierMenu(MouseEvent e) {
-
-        loadUIMain("Panier");
-
-    }
+    
 
 
     @FXML
     private void AddEtablissement(ActionEvent event) {
 
-        
-        
-    }
-    
-    @FXML
-    private void AddPanier(ActionEvent event) {
-
-       loadUIMain("Panier"); 
-        
     }
 
 }

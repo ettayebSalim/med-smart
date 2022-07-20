@@ -1,24 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="MyPane" prefHeight="544.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.PanierController">
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Default.PanierController">
    <children>
-      <ScrollPane prefHeight="544.0" prefWidth="782.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <content>
-            <GridPane fx:id="grid" prefHeight="5.0" prefWidth="0.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <padding>
-                  <Insets left="-40.0" />
-               </padding>
-            </GridPane>
-         </content>
-      </ScrollPane>
+      <BorderPane fx:id="BplistPanier" layoutX="408.0" layoutY="38.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="479.0" prefWidth="504.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="490.0" prefWidth="983.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="81.0" layoutY="14.0" text="Ajouter Un panier " textFill="#212aae" AnchorPane.leftAnchor="81.0">
+                     <font>
+                        <Font name="Lucida Console" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="19.0" layoutY="151.0" text="Date du panier" textFill="#293696">
+                     <font>
+                        <Font name="Lucida Console" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="19.0" layoutY="107.0" prefHeight="18.0" prefWidth="100.0" text="Nom produit" textFill="#203484">
+                     <font>
+                        <Font name="Lucida Console" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfdate" layoutX="167.0" layoutY="146.0" prefHeight="26.0" prefWidth="236.0" />
+                  <TextField fx:id="tfproduit" layoutX="146.0" layoutY="103.0" prefHeight="26.0" prefWidth="236.0" />
+                  <Button fx:id="ajouterpanier" layoutX="226.0" layoutY="251.0" mnemonicParsing="false" onAction="#ajoutpanier" prefHeight="26.0" prefWidth="166.0" text="Ajouter Panier" textFill="#293fa1">
+                     <font>
+                        <Font name="Lucida Console" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="editmode" layoutX="534.0" layoutY="461.0" mnemonicParsing="false" onMouseClicked="#loadEditpanier" prefHeight="42.0" prefWidth="200.0" text="Pass Selection to edit" />
+                  <TableView fx:id="listpanier" layoutX="535.0" layoutY="30.0" prefHeight="385.0" prefWidth="414.0">
+                    <columns>
+                      <TableColumn fx:id="nomprod" prefWidth="161.0" text="Nom Produit" />
+                      <TableColumn fx:id="datepanier" minWidth="1.60003662109375" prefWidth="127.0" text="Date du Panier" />
+                        <TableColumn fx:id="id" minWidth="0.60003662109375" prefWidth="141.0" text="Identifiant" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="762.0" layoutY="463.0" mnemonicParsing="false" onAction="#deletePanier" prefHeight="38.0" prefWidth="158.0" text="Supprimer Produit" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

@@ -15,36 +15,33 @@ import java.time.LocalDateTime;
  */
 public class Panier {
     private int id;
-    private int idUser ;
-    private Date date ;
+    private String nomProd;
+    private String date ;
 
-    public Panier(int id, int idUser, Date date) {
+    public Panier(int id, String nomProd, String date) {
         this.id = id;
-        this.idUser = idUser;
+        this.nomProd = nomProd;
         this.date = date;
     }
 
-    public Panier(int idUser, Date date) {
-        this.idUser = idUser;
+    public Panier(String nomProd, String date) {
+        this.nomProd = nomProd;
         this.date = date;
     }
 
     public Panier() {
     }
 
-    public Panier(Date date) {
-        this.date = date;
-    }
 
     public int getId() {
         return id;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getNomProd() {
+        return nomProd;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -52,21 +49,19 @@ public class Panier {
         this.id = id;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setNomProd(String nomProd) {
+        this.nomProd = nomProd;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return "Panier{" + "id=" + id + ", idUser=" + idUser + ", date=" + date + '}';
+        return "Panier{" + "id=" + id + ", nomProd=" + nomProd + ", date=" + date + '}';
     }
-    
-    
-    
+
     
     
 }
