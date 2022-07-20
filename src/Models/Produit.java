@@ -16,8 +16,8 @@ public class Produit {
     private int id_prod;
     private String nom_prod;
     private String id_physique;
-    private int qte_prod;
-    private int id_etab;
+    private double qte_prod;
+    private double id_etab;
      
 //constructeur 
     public Produit() {
@@ -64,15 +64,15 @@ public class Produit {
         this.id_physique = id_physique;
     }
 
-    public int getQte_prod() {
+    public double getQte_prod() {
         return qte_prod;
     }
 
-    public void setQte_prod(int qte_prod) {
+    public void setQte_prod(double qte_prod) {
         this.qte_prod = qte_prod;
     }
 
-    public int getId_etab() {
+    public double getId_etab() {
         return id_etab;
     }
 

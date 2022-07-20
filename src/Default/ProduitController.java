@@ -28,10 +28,11 @@ public class ProduitController implements Initializable {
     private Label labelName;
     private Produit produ;
     private SupprimerProduit supProd;
+    private ModifierProduit modifProd;
     @FXML
     private Label labelqte;
     @FXML
-    private Button btnSupp1;
+    private Button btnModif;
 
     /**
      * Initializes the controller class.
@@ -58,6 +59,12 @@ public class ProduitController implements Initializable {
     private void Supprimer(ActionEvent event) {
        // supEtab.supprimer(etabli);
        supProd.supprimer(produ);
+
+    }
+    @FXML
+    private void Modifier(ActionEvent event) {
+       // supEtab.supprimer(etabli);
+       modifProd.modifier(produ);
 
     }
 }

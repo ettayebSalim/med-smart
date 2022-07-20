@@ -7,6 +7,7 @@ package Default;
 
 import Models.Produit;
 import Services.ProduitService;
+import Default.ListeProduitController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -24,12 +24,13 @@ import javafx.scene.layout.Region;
  *
  * @author NAD
  */
-public class ListeProduitController implements Initializable {
+public class PanierController implements Initializable {
 
     @FXML
     private GridPane grid;
     private SupprimerProduit supProd;
     
+    @FXML
     private AnchorPane MyPane;
 
    private void supprimerr(Produit prod) {
@@ -40,32 +41,6 @@ public class ListeProduitController implements Initializable {
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
         alert.setContentText("Produit deleted successfully");
-        alert.showAndWait();
-
-        MyPane.getChildren().clear();
-
-        try {
-            // TODO
-            FXMLLoader cards = new FXMLLoader();
-            cards.setLocation(getClass().getResource("ListeProduit.fxml"));
-
-            AnchorPane anchorPane = cards.load();
-
-            MyPane.getChildren().add(anchorPane);
-
-            GridPane.setMargin(anchorPane, new javafx.geometry.Insets(10));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-      private void modifierr(Produit prod) {
-        ProduitService produit = new ProduitService();
-        produit.ModifProduits(prod);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Erreur");
-        alert.setHeaderText(null);
-        alert.setContentText("Produit modified successfully");
         alert.showAndWait();
 
         MyPane.getChildren().clear();

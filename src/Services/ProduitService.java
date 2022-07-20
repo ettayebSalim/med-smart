@@ -38,8 +38,8 @@ public class ProduitService {
             PreparedStatement ps = cnx2.prepareStatement(req);
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getId_physique());
-            ps.setInt(3, p.getQte_prod());
-            ps.setInt(4, p.getId_etab());
+            ps.setDouble(3, p.getQte_prod());
+            ps.setDouble(4, p.getId_etab());
             System.out.println("Product " + p.getNom_prod() + " added successfully");
             ps.executeUpdate();
                System.out.println("Medicament Ajouté avec Succé");
@@ -106,8 +106,8 @@ public class ProduitService {
 
             ps.setString(1, p.getNom_prod());
             ps.setString(2, p.getId_physique());
-            ps.setInt(3, p.getQte_prod());
-            ps.setInt(4, p.getId_etab());
+            ps.setDouble(3, p.getQte_prod());
+            ps.setDouble(4, p.getId_etab());
             System.out.println("Product " + p.getNom_prod() + " Modified successfully");
             ps.executeUpdate();
         } catch (SQLException ex) {

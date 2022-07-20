@@ -281,6 +281,18 @@ public class MenuController implements Initializable {
             loadUIMain("ListeProduit");
             
         });  
+         PanierUpMenu.setOnMouseClicked(e -> {
+            FichierUpMenu.setVisible(false);
+            borderpanebutton.setCenter(MedicamentUpMenu);
+            MedicamentUpMenu.setVisible(false);
+            EtablissementUpMenu.setVisible(false);
+            PanierUpMenu.setVisible(true);
+            RendezVousUpMenu.setVisible(false);
+            UserUpMenu.setVisible(false);
+            loadUIMain("Panier");
+            
+        });  
+         
           
           
           
@@ -358,7 +370,12 @@ Upper Menu:the button action (Mouse click event) is set with Scene builder in th
        
      
     }
-
+ @FXML
+    private void Panier(MouseEvent e) {
+        loadUIMain("Panier");
+       
+     
+    }
     /* this method calls the loadUIMain method to load the listFile.fxml 
 to the work area and associated to Upper menu button "ListFile"
 the button action (Mouse click event) is set with Scene builder in the MainMenu.fxml*/
@@ -395,7 +412,7 @@ public void ListMedicament(MouseEvent e) throws IOException {
     }
     private void panierMenu(MouseEvent e) {
 
-        loadUIMain("UI1");
+        loadUIMain("Panier");
 
     }
 
@@ -404,6 +421,13 @@ public void ListMedicament(MouseEvent e) throws IOException {
     private void AddEtablissement(ActionEvent event) {
 
         
+        
+    }
+    
+    @FXML
+    private void AddPanier(ActionEvent event) {
+
+       loadUIMain("Panier"); 
         
     }
 
